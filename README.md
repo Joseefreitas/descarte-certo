@@ -17,6 +17,3 @@ Como o projeto está em fase de definição, estas são as tecnologias que prete
 - [ ] Modelagem do banco de dados
 - [ ] Protótipo da interface (UI/UX)
 - [ ] Desenvolvimento do MVP (Mínimo Produto Viável)
-
-## 🤝 Contribuição
-Sugestões sobre sustentabilidade ou tecnologia são muito bem-vindas! Sinta-se à vontade para abrir uma *Issue* com ideias.
