@@ -1,19 +1,40 @@
-# Descarte certo 🌿
+# 🌿 Descarte Certo 🌿
 > Transformando o descarte de resíduos em uma ação consciente e tecnológica.
 
 ## 📌 Sobre o Projeto
 Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e resíduos, conectando cidadãos a pontos de coleta adequados ou oferecendo guias de separação inteligente. O objetivo é reduzir o impacto ambiental através da informação e acessibilidade.
 
-## 🚀 O que o software pretende resolver?
-* **Mapeamento:** Localizar pontos de coleta de resíduos específicos (eletrônicos, óleo, recicláveis).
-* **Educação:** Guia rápido de como separar dejetos domésticos ou industriais.
-## 🛠️ Tecnologias Planejadas
-Como o projeto está em fase de definição, estas são as tecnologias que pretendo utilizar:
-* **Linguagem:** Python / JavaScript
-* **Interface:** HTML & CSS
-* **Banco de Dados:** PostgreSQL
+## 📦 Entregas do Projeto
+
+### 📋 Documentação
+
+* **📄 Historias de Usuários**
+    
+    [Link Para o Documento](https://docs.google.com/document/d/1Wt_PeB0h7rHcpQsIzcxfHMAt-mgc6cjF5P0ch-xN8cQ/edit?usp=sharing)
+
+### 🎨 Design
+
+* **🖼️ Protótipo no Figma**
+    
+    [Protótipo Figma](https://www.figma.com/design/MATJbU4Owwrt6v4ZktzZSZ/Descarte-certo---protótipo?node-id=0-1&p=f&t=B1BrSIIOwXCTTT7q-0)
+
+### 🎥 Apresentação
+
+* **▶️ Screencast do Protótipo**
+    
+    [Assistir no YouTube]()
+
+## 📊 Gestão de Projeto
+### 📌 Board Geral
+![alt text](image.png)
+
+### 📋 Quadro do Backlog
+
+### 🏃‍♂️ Quadro da Sprint 
+
+
 ## 📅 Status do Projeto
-- [x] Concepção da ideia
-- [ ] Modelagem do banco de dados
-- [ ] Protótipo da interface (UI/UX)
-- [ ] Desenvolvimento do MVP (Mínimo Produto Viável)
+- [x] Planejamento é Protótipo
+- [ ] Primeiras Funcionalidades
+- [ ] Testes E2E e Mais Funcionalidades 
+- [ ] Mais Testes E2E e Mais Funcionalidades 
