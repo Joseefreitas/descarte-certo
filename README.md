@@ -26,12 +26,13 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
-![alt text](image.png)
+![Imagem Board](imagens/img_board.png)
 
 ### 📋 Quadro do Backlog
+![Imagem Backlog](imagens/img_backlog.png)
 
 ### 🏃‍♂️ Quadro da Sprint 
-
+![Imagem Sprints](imagens/img_sprint.png)
 
 ## 📅 Status do Projeto
 - [x] Planejamento é Protótipo
