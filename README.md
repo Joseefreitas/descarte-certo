@@ -35,7 +35,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 ![Imagem Sprints](imagens/img_sprint.png)
 
 ## 📅 Status do Projeto
-- [x] Planejamento é Protótipo
+- [x] Planejamento e Protótipo
 - [ ] Primeiras Funcionalidades
 - [ ] Testes E2E e Mais Funcionalidades 
 - [ ] Mais Testes E2E e Mais Funcionalidades 
