@@ -16,7 +16,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 
 * **🖼️ Protótipo no Figma**
     
-    [Protótipo Figma](https://www.figma.com/proto/MATJbU4Owwrt6v4ZktzZSZ/Descarte-certo---prot%C3%B3tipo?node-id=52-47&p=f&t=oC6EKCNKqGrRkAFv-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2)
+    [Protótipo Figma](https://www.figma.com/proto/MATJbU4Owwrt6v4ZktzZSZ/Descarte-certo---prot%C3%B3tipo?node-id=2-2&p=f&t=5JiWXhrruoVQyQoX-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2)
 
 ### 🎥 Apresentação
 
