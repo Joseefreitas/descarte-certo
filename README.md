@@ -22,7 +22,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 
 * **▶️ Screencast do Protótipo**
     
-https://youtu.be/oRUKpDUxBtQ 
+    [Assista no YouTube](https://youtu.be/oRUKpDUxBtQ)
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
 ![Imagem Board](imagens/img_board.png)
