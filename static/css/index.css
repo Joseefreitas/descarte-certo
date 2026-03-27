@@ -1,0 +1,15 @@
+.layout-home {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.caixa-forum { background-color: blue; padding: 20px; border-radius: 8px; }
+.caixa-mapa { background-color: red; padding: 20px; border-radius: 8px; }
+
+/* Responsividade teste */
+@media (max-width: 768px) {
+    .layout-home {
+        grid-template-columns: 1fr; 
+    }
+}

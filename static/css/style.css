@@ -1,0 +1,27 @@
+body {
+    background-color: white;
+    margin: 0;
+}
+
+.layout-global {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    min-height: 100vh;
+}
+
+.caixa-menu {
+    background-color: green;
+    padding: 20px;
+    border-right: 4px solid rgb(2, 91, 2);
+}
+
+.apps-dinamico {
+    padding: 20px;
+}
+
+/*Responsividade teste*/
+@media (max-width: 768px) {
+    .layout-global {
+        grid-template-columns: 1fr; 
+    }
+}

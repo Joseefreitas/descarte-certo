@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Descarte Certo</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <div class="layout-global">
+        
+        <aside class="caixa-menu">
+            <h3>Menu</h3>
+            <p>Meu Perfil</p>
+            <p>Configurações</p>
+        </aside>
+
+        <main class="apps-dinamico">
+            {% block content %}
+            {% endblock %}
+        </main>
+
+    </div>
+
+</body>
+</html>
