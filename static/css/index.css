@@ -1,15 +1,21 @@
-.layout-home {
+.grid-botoes {
     display: grid;
-    grid-template-columns: 1fr 300px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    padding: 20px;
 }
 
-.caixa-forum { background-color: blue; padding: 20px; border-radius: 8px; }
-.caixa-mapa { background-color: red; padding: 20px; border-radius: 8px; }
+.card-botao {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-align: center;
+}
 
-/* Responsividade teste */
-@media (max-width: 768px) {
-    .layout-home {
-        grid-template-columns: 1fr; 
-    }
+.card-botao:hover {
+    transform: translateY(-5px);
 }
