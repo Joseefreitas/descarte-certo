@@ -34,7 +34,13 @@
         // Adiciona os pinos de coleta do banco de dados
         {% for ponto in pontos %}
             var marker = L.marker([{{ ponto.latitude|stringformat:"f" }}, {{ ponto.longitude|stringformat:"f" }}]).addTo(map);
-            marker.bindPopup("<b>{{ ponto.nome }}</b><br>Aceita: {{ ponto.tipo_residuo }}<br>📍 {{ ponto.endereco }}");
+            
+            marker.bindPopup(
+                "<b>{{ ponto.nome }}</b><br>" +
+                "Aceita: {{ ponto.tipo_residuo }}<br>" +
+                "📍 {{ ponto.endereco }}<br><br>" +
+                "<a href='https://www.google.com/maps/dir/?api=1&destination={{ ponto.latitude|stringformat:"f" }},{{ ponto.longitude|stringformat:"f" }}' target='_blank' style='display: block; background-color: #008000; color: white; text-align: center; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold;'>Traçar Rota 🚗</a>"
+            );
         {% endfor %}
 
         // Geolocalização
