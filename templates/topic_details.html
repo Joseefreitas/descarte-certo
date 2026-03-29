@@ -1,0 +1,14 @@
+<h1>{{ topic.title }}</h1>
+<p>{{ topic.content }}</p>
+<hr>
+
+<h3>Respostas</h3>
+
+{% for post in posts %}
+  <div>
+    <p>{{ post.content }}</p>
+    <small>Por {{ post.author }} em {{ post.created_at }}</small>
+  </div>
+{% empty %}
+  <p>Sem respostas ainda.</p>
+{% endfor %}

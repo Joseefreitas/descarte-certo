@@ -1,0 +1,11 @@
+<h1>Lista de Tópicos</h1>
+
+{% for topico in topicos %}
+  <div>
+    <h2><a href="{% url 'topic_detail' topico.id %}">{{ topico.title }}</a></h2>
+    <p>{{ topico.content|truncatechars:100 }}</p>
+    <small>Criado em {{ topico.created_at }}</small>
+  </div>
+{% empty %}
+  <p>Não há tópicos ainda.</p>
+{% endfor %}

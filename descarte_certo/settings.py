@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'mapa',
+    'comunidade',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +57,10 @@ ROOT_URLCONF = 'descarte_certo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], 
+        'DIRS': [
+            BASE_DIR / 'templates',
+            BASE_DIR / 'geral/templates',
+            ], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
