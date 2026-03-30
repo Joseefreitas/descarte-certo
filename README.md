@@ -6,6 +6,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 
 ## 📦 Entregas do Projeto
 
+## Semana 1
 ### 📋 Documentação
 
 * **📄 Historias de Usuários**
@@ -23,6 +24,23 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 * **▶️ Screencast do Protótipo**
     
     [Assista no YouTube](https://youtu.be/oRUKpDUxBtQ)
+
+## Semana 2
+
+### Issue/Bug Tracker 
+
+### Issue Open
+![Print issue 1](imagens/captura1.png)
+
+### Issue Closed
+![Print issue 2](imagens/captura2.png)
+
+### ▶️ Screencast do servidor
+
+
+### Programação par experimentada
+
+
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
 ![Imagem Board](imagens/img_board.png)
