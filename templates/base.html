@@ -5,10 +5,9 @@
     <meta charset="UTF-8">
     <title>Descarte Certo</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/leaf.png' %}" type="image/x-icon">
 
     {% block extra_css %}{% endblock %}
-
-    <link rel="shortcut icon" href="{% static 'image/leaf.png' %}" type="image/x-icon">
 </head>
 <body>
 
@@ -16,8 +15,13 @@
         
         <aside class="caixa-menu">
             <h3>Menu</h3>
-            <p>Meu Perfil</p>
-            <p>Configurações</p>
+            <nav class="menu-lateral">
+                <ul>
+                    <li><a href="{% url 'home' %}">Início</a></li>
+                    <li><a href="{% url 'mapa:index' %}">Mapa de Descarte</a></li>
+                    <li><a href="{% url 'comunidade' %}">Comunidade</a></li>
+                </ul>
+            </nav>
         </aside>
 
         <main class="apps-dinamico">
