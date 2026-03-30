@@ -1,16 +1,25 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Topic, Post
+from django.shortcuts import render, redirect
+from .models import Topic
 
 def comunidade(request):
+    if request.method == 'POST':
+        titulo = request.POST.get('titulo')
+        conteudo = request.POST.get('conteudo')
+
+      
+        if request.user.is_authenticated:
+            autor = request.user
+        else:
+            autor = None
+
+        Topic.objects.create(
+            title=titulo,
+            content=conteudo,
+            author=autor
+        )
+
+        return redirect('comunidade')
+
     topics = Topic.objects.all().order_by('-created_at')
+
     return render(request, 'comunidade/comunidade.html', {'topics': topics})
-
-
-def topic_detail(request, topic_id):
-    topic = get_object_or_404(Topic, id=topic_id)
-    posts = topic.posts.all()
-
-    return render(request, 'comunidade/topic_details.html', {
-        'topic': topic,
-        'posts': posts
-    })
