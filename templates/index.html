@@ -10,18 +10,29 @@
     <h1 class="titulo-home">O que você deseja fazer hoje?</h1>
     
     <div class="grid-botoes">
+
+
         <a href="{% url 'mapa:index' %}" class="card-botao">
             <div class="icone">📍</div>
             <h3>Ver Mapa</h3>
             <p>Encontre pontos de coleta perto de você</p>
         </a>
 
+
+  
         <a href="#" class="card-botao">
             <div class="icone">♻️</div>
             <h3>Guia de Descarte</h3>
             <p>Saiba como separar seu lixo corretamente</p>
         </a>
 
-        </div>
+      
+        <a href="{% url 'comunidade' %}" class="card-botao">
+            <div class="icone">🌱</div>
+            <h3>Comunidade</h3>
+            <p>Participe do fórum sobre reciclagem</p>
+        </a>
+
+    </div>
 </div>
 {% endblock %}
