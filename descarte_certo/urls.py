@@ -22,6 +22,6 @@ urlpatterns = [
     path('', include('core.urls')),
     path('mapa/', include('mapa.urls')),
     path('comunidade/', include('comunidade.urls')),
-  
+    path('guia_descarte/', include('guia_descarte.urls')),
 
 ]

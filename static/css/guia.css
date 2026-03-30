@@ -1,0 +1,55 @@
+.guia-container {
+    padding: 30px;
+    background: #f5f5f5;
+}
+
+.guia-container h1 {
+    color: #2d5c3f;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: #b5faff;
+    border-radius: 8px;
+    padding: 15px;
+}
+
+.card.verde {
+    background: #b7d7a8;
+}
+
+.card.cinza {
+    background: #d6d6d6;
+}
+
+.card.alerta {
+    background: #ffe0a3;
+}
+
+.info h3 {
+    margin-top: 0;
+}
+
+.info p {
+    margin: 8px 0;
+    font-size: 16px;
+}
+
+.card.roxo {
+    background: #f3c7ff;
+}
+
+.card.roupa {
+    background: #c0b7ed;
+}
+
+.card.comida {
+    background: #ffcf9f;
+}
