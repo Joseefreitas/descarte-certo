@@ -41,6 +41,10 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 ### Programação par experimentada
 
 
+### Quadro Sprint02 atualizado 
+![Sprint2 Foto](imagens/captura3.png)
+
+
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
 ![Imagem Board](imagens/img_board.png)
