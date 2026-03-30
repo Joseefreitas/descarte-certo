@@ -22,4 +22,4 @@ def comunidade(request):
 
     topics = Topic.objects.all().order_by('-created_at')
 
-    return render(request, 'comunidade/comunidade.html', {'topics': topics})
+    return render(request, 'comunidade.html', {'topics': topics})
