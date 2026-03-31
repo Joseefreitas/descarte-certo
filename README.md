@@ -36,7 +36,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 ![Print issue 2](imagens/captura2.png)
 
 ### ▶️ Screencast do servidor
-
+https://youtu.be/V3HxxY_-SRY 
 
 ### Programação par experimentada
 https://docs.google.com/document/d/1iwqeNJ4C3FlW2X-0eXM2-e5_rATPD7cKNhOl5aAS290/edit?usp=sharing
