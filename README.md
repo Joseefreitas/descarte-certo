@@ -6,6 +6,7 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 
 ## 📦 Entregas do Projeto
 
+## Semana 1
 ### 📋 Documentação
 
 * **📄 Historias de Usuários**
@@ -23,6 +24,27 @@ Este projeto nasce da necessidade de facilitar o descarte correto de dejetos e r
 * **▶️ Screencast do Protótipo**
     
     [Assista no YouTube](https://youtu.be/oRUKpDUxBtQ)
+
+## Semana 2
+
+### Issue/Bug Tracker 
+
+### Issue Open
+![Print issue 1](imagens/captura1.png)
+
+### Issue Closed
+![Print issue 2](imagens/captura2.png)
+
+### ▶️ Screencast do servidor
+
+
+### Programação par experimentada
+https://docs.google.com/document/d/1iwqeNJ4C3FlW2X-0eXM2-e5_rATPD7cKNhOl5aAS290/edit?usp=sharing
+
+### Quadro Sprint02 atualizado 
+![Sprint2 Foto](imagens/captura3.png)
+
+
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
 ![Imagem Board](imagens/img_board.png)
