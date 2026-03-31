@@ -44,6 +44,8 @@ https://docs.google.com/document/d/1iwqeNJ4C3FlW2X-0eXM2-e5_rATPD7cKNhOl5aAS290/
 ### Quadro Sprint02 atualizado 
 ![Sprint2 Foto](imagens/captura3.png)
 
+### link do deploy: 
+https://descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net/
 
 ## 📊 Gestão de Projeto
 ### 📌 Board Geral
@@ -55,7 +57,7 @@ https://docs.google.com/document/d/1iwqeNJ4C3FlW2X-0eXM2-e5_rATPD7cKNhOl5aAS290/
 ### 🏃‍♂️ Quadro da Sprint 
 ![Imagem Sprints](imagens/img_sprint.png)
 
-## 📅 Status do Projeto
+## 📅 Status do Projeto 
 - [x] Planejamento e Protótipo
 - [ ] Primeiras Funcionalidades
 - [ ] Testes E2E e Mais Funcionalidades 
