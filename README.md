@@ -17,7 +17,7 @@ O **Descarte Certo** é uma plataforma web desenvolvida em **Django** que facili
 
 | Nome | GitHub |
 |------|--------|
-| Eduardo | [JoseFeitas](https://github.com/Joseefreitas) |
+| Eduardo | [JoseeFeitas](https://github.com/Joseefreitas) |
 | Clara | [clarinhapontess](https://github.com/clarinhapontess) |
 | Leticia| [LeticiaCamelloBarros ](https://github.com/LeticiaCamelloBarros) |
 | Dandara | [DandaaGoxtosura](https://github.com/DandaaGoxtosura) |
