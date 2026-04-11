@@ -7,39 +7,40 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container-mapa" style="padding: 20px;">
-        <h2 style="margin-bottom: 20px;">Pontos de Descarte em Recife</h2>
-        
-        <div id="mapa-container" style="height: 600px; width: 100%; border-radius: 10px; z-index: 1;"></div>
+    <div style="padding: 20px 20px 0;">
+        <h2>Pontos de Descarte em Recife</h2>
+    </div>
+
+    <div class="mapa-wrapper">
+        <div id="mapa-container"></div>
+
+        <div id="lista-proximos">
+            <h3>📍 Pontos Mais Próximos</h3>
+            <button id="btn-localizar">📡 Usar minha localização</button>
+            <div id="status-localizacao">Clique no botão para calcular distâncias.</div>
+            <div id="cards-container"></div>
+        </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="{% static 'js/mapa.js' %}"></script>
-    
-    <script>
+    <script src="{% static 'js/proximos.js' %}"></script>
+
+    {# Único JS no template: passar os dados do Django pro JS #}
+<script>
+    const pontos = [
         {% for ponto in pontos %}
-            try {
-                // Força a troca de vírgula por ponts
-                var latText = "{{ ponto.latitude|default:'0' }}";
-                var lngText = "{{ ponto.longitude|default:'0' }}";
-                
-                var lat = parseFloat(latText.replace(',', '.'));
-                var lng = parseFloat(lngText.replace(',', '.'));
-                
-                // Só desenha se as coordenadas estiverem preenchidas e corretas
-                if (!isNaN(lat) && !isNaN(lng) && lat !== 0 && lng !== 0) {
-                    var marker = L.marker([lat, lng]).addTo(map);
-                    
-                    var conteudoPopup = "<b>{{ ponto.nome }}</b><br>" +
-                        "Aceita: {{ ponto.tipo_residuo }}<br>" +
-                        "📍 {{ ponto.endereco }}<br><br>" +
-                        "<a href='https://www.google.com/maps/dir/?api=1&destination=" + lat + "," + lng + "' target='_blank' style='display: block; background-color: #008000; color: white; text-align: center; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold;'>Traçar Rota 🚗</a>";
-                    
-                    marker.bindPopup(conteudoPopup);
-                }
-            } catch(e) {
-                console.error("Erro ao carregar o ponto {{ ponto.nome }}: ", e);
-            }
+        {
+            nome: "{{ ponto.nome|escapejs }}",
+            endereco: "{{ ponto.endereco|escapejs }}",
+            tipo: "{{ ponto.tipo_residuo|escapejs }}",
+            lat: {{ ponto.latitude|stringformat:".6f" }},
+            lng: {{ ponto.longitude|stringformat:".6f" }},
+        },
         {% endfor %}
-    </script>
+    ];
+
+    inicializarPins(pontos);
+    configurarBotao(pontos);
+</script>
 {% endblock %}
