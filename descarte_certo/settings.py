@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
-import dj_database_url
-import os
+# import dj_database_url
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,7 +24,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-luvzzy67=g-4$a0$=)%1r@=6i)ep5v_mx)##!xe2ayp_a5qf-t')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG   = True
 
 ALLOWED_HOSTS = [
     'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
@@ -88,29 +89,44 @@ WSGI_APPLICATION = 'descarte_certo.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+# DELETAR DEPOIS
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            ssl_require=True
-        )
-    }
-    DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
-else:
+
+# DATABASE_URL = os.environ.get('DATABASE_URL')
+
+# if DATABASE_URL:
+#    DATABASES = {
+#        'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+    
+#        'default': dj_database_url.config(
+#            default=DATABASE_URL,
+#            conn_max_age=600,
+#            ssl_require=True
+#        )
+#    } 
+   
+#    DATABASES['default']['OPTIONS'] = {'sslmode': 'require'}
+#else:
     # Desenvolvimento local: usa o PostgreSQL local
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'descarte_certo',
-            'USER': 'postgres',
-            'PASSWORD': 'descarte_certo_2026',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
-    }
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql',
+#            'NAME': 'descarte_certo',
+#            'USER': 'postgres',
+#            'PASSWORD': 'descarte_certo_2026',
+#            'HOST': 'localhost',
+#            'PORT': '5432',
+#        }
+#    }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators

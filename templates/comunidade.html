@@ -4,7 +4,7 @@
 
 <div style="padding: 30px;">
 
-    <h1 style="text-align: center;">Comunidade </h1>
+    <h1 style="text-align: center;">Comunidade</h1>
     <p style="text-align: center; color: #555;">
         Compartilhe ideias sobre reciclagem e sustentabilidade
     </p>
@@ -27,7 +27,7 @@
                 color: white;
                 padding: 10px 20px;
                 border: none;
-                border-radius: 8px;                    <li><a href="#">Configurações</a></li>
+                border-radius: 8px;
                 cursor: pointer;
             ">
                 Criar tópico
@@ -47,16 +47,17 @@
     ">
 
         {% for topic in topics %}
+
             <div style="
                 background-color: #f5f5f5;
                 padding: 20px;
                 border-radius: 12px;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             ">
+
                 <h3>{{ topic.title }}</h3>
                 <p style="color: #555;">{{ topic.content }}</p>
 
-                <!--  AUTOR (COM TRATAMENTO DE ANÔNIMO) -->
                 <small>
                     {% if topic.author %}
                         por {{ topic.author.username }}
@@ -71,10 +72,11 @@
                 <a href="/comunidade/{{ topic.id }}/">
                     Ver respostas
                 </a>
+
             </div>
 
         {% empty %}
-            <p style="text-align: center;">Nenhum tópico ainda </p>
+            <p style="text-align: center;">Nenhum tópico ainda</p>
         {% endfor %}
 
     </div>

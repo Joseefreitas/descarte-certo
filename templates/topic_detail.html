@@ -1,0 +1,26 @@
+<h1>{{ topic.title }}</h1>
+<p>{{ topic.content }}</p>
+<small>por {{ topic.author }}</small>
+
+<hr>
+
+<h2>Respostas</h2>
+
+{% for post in posts %}
+    <div style="margin-bottom: 15px; padding: 10px; background: #f0f0f0;">
+        <p>{{ post.content }}</p>
+        <small>por {{ post.author }}</small>
+    </div>
+{% empty %}
+    <p>Nenhuma resposta ainda.</p>
+{% endfor %}
+
+<hr>
+
+<h3>Responder</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    <textarea name="conteudo" placeholder="Escreva sua resposta..." required></textarea><br>
+    <button type="submit">Responder</button>
+</form>
