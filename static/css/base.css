@@ -1,0 +1,81 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.topo {
+  background: #2e7d32;
+  color: white;
+  padding: 35px;
+}
+
+/* botão */
+.menu-toggle {
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.caixa-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%); 
+    width: 250px;
+    height: 100%;
+    background: #4caf50;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+/* quando abre */
+.caixa-menu.ativo {
+    transform: translateX(0);
+}
+
+/* menu interno */
+.menu ul {
+  list-style: none;
+  padding: 20px;
+  padding-top: 60px;
+  margin: 0;
+
+}
+
+.menu li {
+  border-bottom: 1px solid white;
+}
+
+.menu a {
+  display: block;
+  padding: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+/* botão fixo separado */
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  z-index: 2000;
+  background: #2e7d32;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.caixa-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  width: 250px;
+  height: 100%;
+  background: #4caf50;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.caixa-menu.ativo {
+  transform: translateX(0);
+}
