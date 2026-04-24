@@ -1,30 +1,40 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
 {% block extra_css %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="{% static 'css/mapa.css' %}">
 {% endblock %}
 
+
 {% block content %}
-    <div style="padding: 20px 20px 0;">
+    <div class="topo-mapa">
         <h2>Pontos de Descarte em Recife</h2>
+
+        <a href="#" id="btn-add-ponto">
+            Adicionar ponto de descarte
+        </a>
     </div>
+
 
     <div class="mapa-wrapper">
         <div id="mapa-container"></div>
 
+
         <div id="lista-proximos">
-            <h3>📍 Pontos Mais Próximos</h3>
-            <button id="btn-localizar">📡 Usar minha localização</button>
-            <div id="status-localizacao">Clique no botão para calcular distâncias.</div>
+            <h3>Pontos mais próximos de você:</h3>
+            <button id="btn-localizar">Usar minha localização</button>
+            <div id="status-localizacao">Clique no botão para ver a lista de pontos de coleta próximos a você.</div>
             <div id="cards-container"></div>
         </div>
     </div>
 
+
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="{% static 'js/mapa.js' %}"></script>
     <script src="{% static 'js/proximos.js' %}"></script>
+
 
     {# Único JS no template: passar os dados do Django pro JS #}
 <script>
@@ -39,6 +49,7 @@
         },
         {% endfor %}
     ];
+
 
     inicializarPins(pontos);
     configurarBotao(pontos);
