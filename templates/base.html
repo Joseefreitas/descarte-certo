@@ -4,21 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Descarte Certo</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link rel="shortcut icon" href="{% static 'image/leaf.png' %}" type="image/x-icon">
-
-    {% block extra_css %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="shortcut icon" href="{% static 'image/cdlogo.png' %}" type="image/x-icon">
+{% block extra_css %}{% endblock %}
 </head>
-<body>
 
-    <div class="layout-global">
-        
+<body>
+    <header class="topo">
+        <div class="menu-toggle">☰ Menu</div>
+        <div class="logo">Descarte Certo</div>
+    </header>
+
         <aside class="caixa-menu">
-            <h3>Menu</h3>
-            <nav class="menu-lateral">
+            <nav class="menu">
                 <ul>
                     <li><a href="{% url 'home' %}">Início</a></li>
-                    <li><a href="{% url 'mapa:index' %}">Mapa de Descarte</a></li>
+                    <li><a href="{% url 'guia_descarte' %}">Guia de descarte</a></li>
+                    <li><a href="{% url 'mapa:index' %}">Ver Mapa</a></li>
                     <li><a href="{% url 'comunidade' %}">Comunidade</a></li>
                 </ul>
             </nav>
@@ -28,8 +30,7 @@
             {% block content %}
             {% endblock %}
         </main>
-
-    </div>
-
+        
+<script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
