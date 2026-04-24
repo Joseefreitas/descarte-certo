@@ -1,9 +1,21 @@
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: sans-serif;
+}
+
+.logo {
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    padding-top: 11px;
+    font-family: sans-serif;
 }
 
 .topo {
+  display: flex;
   position: static;
   top: 0;
   width: 100%;
@@ -19,7 +31,7 @@ body {
     width: 250px;
     height: 100%;
     background: #4caf50;
-    transition: 0.5s ease;
+    transition: 0.3s ease;
     z-index: 1000;
     }
 
@@ -51,9 +63,12 @@ body {
 /* botão fixo separado */
 .menu-toggle {
   position: relative;
-  display: inline-block;
+  white-space: nowrap; 
+  display: flex;
   top: 8px;
   left: 10px;
+  width: 75px;
+  height: 28px;
   background: #2e7d32;
   color: white;
   padding: 8px;
