@@ -24,7 +24,7 @@ h2 {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border: #1b5e20 solid 4px;
+    border: #2e7d32 solid 2px;
 }
 
 
@@ -32,9 +32,9 @@ h2 {
     flex: 1;
     height: 95%;
     overflow-y: auto;
-    background: #eae6e1;
+    background: #F5F2EB;
     border-radius: 8px;
-    border: #1b5e20 solid 4px;
+    border: #2e7d32 solid 2px;
     padding: 16px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
