@@ -4,6 +4,9 @@
 
 .titulo {
     text-align: center;
+    font-size: 28px;
+    color: #2e7d32;
+    font-weight: bold;
 }
 
 .subtitulo {
@@ -77,13 +80,16 @@
 }
 
 .imagem {
-    max-width: 100%;
+    max-width: 300px;
+    width: 100%;
     border-radius: 8px;
     margin-top: 10px;
 }
 
 .info {
     color: #777;
+    display: block;
+    margin-top: 10px;
 }
 
 .link {

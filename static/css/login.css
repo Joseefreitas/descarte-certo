@@ -35,3 +35,29 @@ button:hover {
     color: red;
     margin-bottom: 15px;
 }
+
+.senha-container {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.senha-container input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* ← aqui resolve o alinhamento */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.olho {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-63%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666;
+}
