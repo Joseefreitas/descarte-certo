@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Topic
+from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.decorators import login_required
 
@@ -43,3 +44,11 @@ def topic_detail(request, topic_id):
         return redirect('topic_detail', topic_id=topic_id)
     
     return render(request, 'topic_detail.html', {'topic': topic, 'posts': posts})
+
+@login_required
+# função para o usuário conseguir deletar seu post
+def deletar_topic(request, topic_id):
+    topic = Topic.objects.get(id=topic_id)
+    if request.user == topic.author:
+        topic.delete()
+    return redirect('comunidade')
