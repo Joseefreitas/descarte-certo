@@ -1,29 +1,25 @@
-.login-container {
+.container {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 80px auto;
     padding: 30px;
-}
-
-.login-titulo {
     text-align: center;
 }
 
-.erro {
-    color: red;
-    text-align: center;
+h1 {
+    margin-bottom: 20px;
 }
 
-/* Inputs */
-.input {
+input {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
 }
 
-/* Botão */
-.botao {
+button {
     width: 100%;
-    background: green;
+    background-color: green;
     color: white;
     padding: 10px;
     border: none;
@@ -31,13 +27,11 @@
     cursor: pointer;
 }
 
-/* Texto cadastro */
-.cadastro-texto {
-    text-align: center;
-    margin-top: 20px;
+button:hover {
+    background-color: darkgreen;
 }
 
-.link {
-    color: green;
-    text-decoration: none;
+.erro {
+    color: red;
+    margin-bottom: 15px;
 }

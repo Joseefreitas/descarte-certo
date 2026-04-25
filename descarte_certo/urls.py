@@ -20,28 +20,21 @@ from django.urls import path, include
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.shortcuts import redirect
 
 urlpatterns = [
-    # admin
     path('admin/', admin.site.urls),
 
-    # login na página inicial
-    path('', views.login_usuario, name='login'),
-
-    # cadastro
+    path('', views.login_usuario),
+    path('login/', views.login_usuario, name='login'),
     path('cadastro/', views.cadastro, name='cadastro'),
-
-    # página inicial depois do login
-    path('home/', views.home, name='home'),
-
-    # guia de descarte
-    path('guia-descarte/', views.guia_descarte, name='guia_descarte'),
-
-    # logout
     path('logout/', views.logout_usuario, name='logout'),
 
-    # apps
+    path('home/', views.home, name='home'),
+
     path('comunidade/', include('comunidade.urls')),
     path('mapa/', include('mapa.urls')),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# para conseguir o usuário dar post de midia 
+    path('guia-descarte/', views.guia_descarte, name='guia_descarte'),
+
+    path('accounts/login/', lambda request: redirect('/login/')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
