@@ -1,0 +1,43 @@
+.cadastro-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+}
+
+.cadastro-titulo {
+    text-align: center;
+}
+
+.erro {
+    color: red;
+    text-align: center;
+}
+
+/* Inputs */
+.input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+/* Botão */
+.botao {
+    width: 100%;
+    background: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Texto login */
+.login-texto {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link {
+    color: green;
+    text-decoration: none;
+}

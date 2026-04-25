@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div style="max-width: 400px; margin: 50px auto; padding: 30px;">
+<div class="login-container">
 
-    <h1 style="text-align: center;">Login</h1>
+    <h1 class="login-titulo">Login</h1>
 
     {% if erro %}
-        <p style="color: red; text-align: center;">
+        <p class="erro">
             {{ erro }}
         </p>
     {% endif %}
@@ -20,7 +25,7 @@
             name="username"
             placeholder="Usuário"
             required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
+            class="input"
         >
 
         <input
@@ -28,28 +33,17 @@
             name="password"
             placeholder="Senha"
             required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
+            class="input"
         >
 
-        <button
-            type="submit"
-            style="
-                width: 100%;
-                background: green;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-            "
-        >
+        <button type="submit" class="botao">
             Entrar
         </button>
     </form>
 
-    <p style="text-align: center; margin-top: 20px;">
+    <p class="cadastro-texto">
         Não possui conta?
-        <a href="{% url 'cadastro' %}">
+        <a href="{% url 'cadastro' %}" class="link">
             Cadastre-se
         </a>
     </p>

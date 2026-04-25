@@ -1,13 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/cadastro.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div style="max-width: 400px; margin: 50px auto; padding: 30px;">
+<div class="cadastro-container">
 
-    <h1 style="text-align: center;">Cadastro</h1>
+    <h1 class="cadastro-titulo">Cadastro</h1>
 
     {% if erro %}
-        <p style="color: red; text-align: center;">
+        <p class="erro">
             {{ erro }}
         </p>
     {% endif %}
@@ -20,7 +25,7 @@
             name="username"
             placeholder="Usuário"
             required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
+            class="input"
         >
 
         <input
@@ -28,7 +33,7 @@
             name="email"
             placeholder="Email"
             required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
+            class="input"
         >
 
         <input
@@ -36,28 +41,17 @@
             name="senha"
             placeholder="Senha"
             required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
+            class="input"
         >
 
-        <button
-            type="submit"
-            style="
-                width: 100%;
-                background: green;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-            "
-        >
+        <button type="submit" class="botao">
             Cadastrar
         </button>
     </form>
 
-    <p style="text-align: center; margin-top: 20px;">
+    <p class="login-texto">
         Já possui conta?
-        <a href="{% url 'login' %}">
+        <a href="{% url 'login' %}" class="link">
             Fazer login
         </a>
     </p>
