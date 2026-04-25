@@ -6,103 +6,142 @@
 {% endblock %}
 
 {% block content %}
+
 <div class="guia-container">
 
-    <h1>Preparando seu material para o descarte seguro</h1>
+    <h1>Preparando seu material para o descarte seguro:</h1>
 
-    <div class="grid">
+    <div class="grid-categorias">
 
-    <!-- RECICLÁVEIS -->
-    <div class="card verde">
-        <div class="info">
-            <h3>♻️ Recicláveis</h3>
+        <!-- RECICLÁVEIS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/materiais.reciclaveis.jpg' %}">
+            </div>
 
-            <p><strong>Exemplos:</strong><br>
-            Papel, plástico, vidro e metal</p>
-
-            <p><strong>Como descartar:</strong><br>
-            • Limpar e secar<br>
-            • Saco azul/transparente</p>
-        </div>
-    </div>
-
-    <!-- REJEITOS -->
-    <div class="card cinza">
-        <div class="info">
-            <h3>🚫 Rejeitos</h3>
-
-            <p><strong>Exemplos:</strong><br>
-            Papel higiênico, embalagens sujas, fraldas, absorventes</p>
+            <h3>Recicláveis</h3>
 
             <p><strong>Como descartar:</strong><br>
-            • Saco preto<br>
-            • Lixo comum</p>
+            Lave embalagens e separe plástico, papel, metal e vidro.</p>
 
-            <p><strong>Dica:</strong><br>
-            Prefira opções reutilizáveis quando possível</p>
+            <p><strong>Riscos:</strong><br>
+            Pode se contaminar com outros resíduos e dificultar sua reciclagem.</p>
         </div>
-    </div>
 
-    <!-- CUIDADOS -->
-    <div class="card alerta">
-        <div class="info">
-            <h3>⚠️ Cuidados especiais</h3>
+        <!-- VIDROS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descartevidro.jpg' %}">
+            </div>
+            <h3>Vidros</h3>
 
-            <p><strong>Vidros:</strong> embrulhar e identificar (risco de corte)</p>
-            <p><strong>Pilhas:</strong> pontos de coleta (contaminação ambiental)</p>
-            <p><strong>Remédios:</strong> farmácias/postos (riscos à saúde)</p>
-            <p><strong>Eletrônicos:</strong> pontos de coleta (componentes tóxicos)</p> 
-            <p><strong>Óleo de cozinha:</strong> pontos de coleta (poluição da água)</p>
+            <p><strong>Como descartar:</strong><br>
+            Embale em jornal ou caixa e sinalize que é vidro para evitar cortes.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Pode causar ferimentos em pessoas e animais.</p>
         </div>
-    </div>
 
-    <!-- COSMÉTICOS -->
-    <div class="card roxo">
-        <div class="info">
-            <h3>💄 Cosméticos</h3>
+        <!-- ELETRÔNICOS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descarteeletronicos.jpeg' %}">
+            </div>
+            <h3>Eletrônicos</h3>
 
-            <p><strong>Onde descartar:</strong><br>
-            Algumas lojas recebem embalagens</p>
+            <p><strong>Como descartar:</strong><br>
+            Leve a pontos específicos ou lojas que recebem.</p>
 
-            <p><strong>Exemplos:</strong><br>
-            • O Boticário<br>
-            • Natura<br>
-            • MAC</p>
+            <p><strong>Riscos:</strong><br>
+            Libera metais pesados contaminando solo e água.</p>
         </div>
-    </div>
 
-    <!-- ROUPAS -->
-    <div class="card roupa">
-        <div class="info">
-            <h3>👕 Roupas</h3>
+        <!-- ROUPAS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descarteroupas.jpeg' %}">
+            </div>
+            <h3>Roupas</h3>
 
-            <p><strong>Prioridade:</strong><br>
-            Doar ou reutilizar</p>
+            <p><strong>Como descartar:</strong><br>
+            Doe ou leve a pontos de coleta têxtil.</p>
 
-            <p><strong>Recicláveis:</strong><br>
-            Algodão, jeans, lã, seda</p>
-
-            <p><strong>Não recicláveis:</strong><br>
-            Couro, nylon, tecidos mistos</p>
-
-            <p><strong>Onde levar:</strong><br>
-            Renner, C&A, Reserva,</p>
-            <p><strong>Dica:</strong><br>
-            Se estiver em bom estado, prefira doar para instituições ou brechós</p>
+            <p><strong>Riscos:</strong><br>
+            Acúmulo em lixões gera poluição e desperdício.</p>
         </div>
-    </div>
 
-    <!-- ALIMENTOS -->
-    <div class="card comida">
-        <div class="info">
-            <h3>🍎 Alimentos</h3>
+        <!-- MEDICAMENTOS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descartemedicamentos.jpeg' %}">
+            </div>
+            <h3>Medicamentos</h3>
 
-            <p><strong>O que fazer:</strong><br>
-            Pode fazer compostagem ou usa-los para adubo <p></p>
-            <p>Para evitar odores e pragas, acondicione os resíduos em sacos fechados ou potes no freezer.</p>
-            <p>óleo de cozinha: deve ser armazenado em garrafas PET e entregue a postos de coleta.<br></p>
+            <p><strong>Como descartar:</strong><br>
+            Entregue em farmácias ou pontos de coleta.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Contamina água e pode intoxicar pessoas e animais.</p>
         </div>
+
+        <!-- PNEUS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descartedepneus.jpeg' %}">
+            </div>
+            <h3>Pneus</h3>
+
+            <p><strong>Como descartar:</strong><br>
+            Leve a borracharias ou ecopontos.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Acumulam água e favorecem doenças como dengue.</p>
+        </div>
+
+        <!-- COSMÉTICOS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descartecosmeticos.jpg' %}">
+            </div>
+            <h3>Cosméticos</h3>
+
+            <p><strong>Como descartar:</strong><br>
+            Separe embalagens e veja programas de coleta.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Produtos químicos podem poluir água e solo.</p>
+        </div>
+
+        <!-- ORGÂNICOS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/descarteorganicos.jpg' %}">
+            </div>
+            <h3>Orgânicos</h3>
+
+            <p><strong>Como descartar:</strong><br>
+            Ideal para compostagem doméstica.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Gera mau cheiro, gás e atrai pragas.</p>
+        </div>
+
+        <!-- DEJETOS -->
+        <div class="card">
+            <div class="img-placeholder">
+                <img src="{% static 'image/imgg/dejetos.jpg' %}">
+            </div>
+            <h3>Dejetos</h3>
+
+            <p><strong>Como descartar:</strong><br>
+            Lixo comum, bem embalado.</p>
+
+            <p><strong>Riscos:</strong><br>
+            Pode transmitir doenças e contaminar o ambiente.</p>
+        </div>
+
     </div>
 
 </div>
+
 {% endblock %}

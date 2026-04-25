@@ -1,59 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div style="max-width: 400px; margin: 50px auto; padding: 30px;">
+<div class="container">
 
-    <h1 style="text-align: center;">Login</h1>
+    <h1>Login</h1>
 
     {% if erro %}
-        <p style="color: red; text-align: center;">
-            {{ erro }}
-        </p>
+        <p class="erro">{{ erro }}</p>
     {% endif %}
 
     <form method="POST">
         {% csrf_token %}
 
-        <input
-            type="text"
-            name="username"
-            placeholder="Usuário"
-            required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
-        >
+        <input type="text" name="username" placeholder="Usuário" required>
 
-        <input
-            type="password"
-            name="senha"
-            placeholder="Senha"
-            required
-            style="width: 100%; padding: 10px; margin-bottom: 15px;"
-        >
+        <div class="senha-container">
+            <input type="password" id="senha" name="password" placeholder="Senha" required class="input">
+    
+            <span class="olho" onclick="toggleSenha()">
+                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </span>
+        </div>
 
-        <button
-            type="submit"
-            style="
-                width: 100%;
-                background: green;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-            "
-        >
-            Entrar
-        </button>
+        <button type="submit">Entrar</button>
     </form>
 
-    <p style="text-align: center; margin-top: 20px;">
+    <p>
         Não possui conta?
-        <a href="{% url 'cadastro' %}">
-            Cadastre-se
-        </a>
+        <a href="{% url 'cadastro' %}">Cadastre-se</a>
     </p>
 
 </div>
+
+<script>
+function toggleSenha() {
+    const input = document.getElementById("senha");
+
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+}
+</script>
 
 {% endblock %}

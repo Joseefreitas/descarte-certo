@@ -1,0 +1,66 @@
+.container {
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    padding-right: 40px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    display: block; /* garante comportamento igual input */
+    box-sizing: border-box;
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkgreen;
+}
+
+.erro {
+    color: red;
+    margin-bottom: 15px;
+}
+
+.senha-container {
+    position: relative;
+    width: 100%;
+}
+
+.senha-container input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* espaço pro olho */
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.olho {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-83%);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666;
+}

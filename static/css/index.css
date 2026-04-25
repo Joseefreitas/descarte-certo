@@ -31,37 +31,38 @@ h1 {
 
 h2 {
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: -6px;
     font-family: sans-serif;
-    color: white;
+    color: #4d4d4d;
     text-align: center;
 }
 
 p {
     font-size: 14px;
-    margin-bottom: 10px;
     font-family: sans-serif;
-    color: white;
+    color: #4d4d4d;
     text-align: center;
 }
 
 .card {
     border-radius: 10px;
-    padding: 15px;
-    margin-right: 8px;
+    border: 2px solid #4d4d4d;
+    padding: 10px;
     text-decoration: none;
-
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
 
     transition: 0.25s ease;
 }
 
 /* CORES */
-.card-b1 { background-color: #f8b466; }
-.card-b2 { background-color: #7af0f9; }
-.card-b3 { background-color: #f08ff6; }
+.card-b1 { background-color: #f9c387; }
+.card-b2 { background-color: #97f3fa; }
+.card-b3 { background-color: #f7b5fb; }
 
 /* HOVER */
 .card:hover {

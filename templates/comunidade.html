@@ -1,35 +1,42 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/comunidade.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div style="padding: 30px;">
+<div class="container">
 
-    <h1 style="text-align: center;">Comunidade</h1>
-    <p style="text-align: center; color: #555;">
+    <h1 class="titulo">Comunidade</h1>
+    <p class="subtitulo">
         Compartilhe ideias sobre reciclagem e sustentabilidade
     </p>
 
-    <!-- Formulário para criar tópico -->
-    <div style="max-width: 600px; margin: auto; margin-bottom: 30px;">
-        <form method="POST">
+    <!-- Formulário -->
+    <div class="form-container">
+        <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             
-            <input type="text" name="titulo" placeholder="Título do tópico" required
-                   style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 8px; border: 1px solid #ccc;">
-            
-            <textarea name="conteudo" placeholder="Escreva sua dica ou dúvida..." required
-                      style="width: 100%; padding: 10px; height: 100px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
-            
+            <input type="text" name="titulo" placeholder="Título do tópico" required class="input">
+
+            <textarea name="conteudo" placeholder="Escreva sua dica ou dúvida..." required class="textarea"></textarea>
+
+            <br><br>
+
+            <!-- Upload -->
+            <label class="upload-label">
+                + Adicionar foto
+                <input type="file" name="imagem" accept="image/*" class="input-file"
+                       onchange="mostrarNomeArquivo(this)">
+            </label>
+
+            <span id="nome-arquivo" class="nome-arquivo"></span>
+
             <br><br>
             
-            <button type="submit" style="
-                background-color: green;
-                color: white;
-                padding: 10px 20px;
-                border: none;
-                border-radius: 8px;
-                cursor: pointer;
-            ">
+            <button type="submit" class="botao">
                 Criar tópico
             </button>
         </form>
@@ -37,28 +44,19 @@
 
     <hr>
 
-    <!-- Lista de tópicos -->
-    <div style="
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        max-width: 800px;
-        margin: auto;
-    ">
+    <!-- Lista -->
+    <div class="lista-topicos">
 
         {% for topic in topics %}
-
-            <div style="
-                background-color: #f5f5f5;
-                padding: 20px;
-                border-radius: 12px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            ">
-
+            <div class="card">
                 <h3>{{ topic.title }}</h3>
-                <p style="color: #555;">{{ topic.content }}</p>
+                <p class="conteudo">{{ topic.content }}</p>
 
-                <small>
+                {% if topic.imagem %}
+                    <img src="{{ topic.imagem.url }}" class="imagem">
+                {% endif %}
+
+                <small class="info">
                     {% if topic.author %}
                         por {{ topic.author.username }}
                     {% else %}
@@ -69,18 +67,28 @@
 
                 <br><br>
 
-                <a href="/comunidade/{{ topic.id }}/">
+                <a href="/comunidade/{{ topic.id }}/" class="link">
                     Ver respostas
                 </a>
-
             </div>
 
         {% empty %}
-            <p style="text-align: center;">Nenhum tópico ainda</p>
+            <p class="vazio">Nenhum tópico ainda</p>
         {% endfor %}
 
     </div>
 
 </div>
+
+<script>
+function mostrarNomeArquivo(input) {
+    const span = document.getElementById('nome-arquivo');
+    if (input.files && input.files[0]) {
+        span.textContent = input.files[0].name;
+    } else {
+        span.textContent = '';
+    }
+}
+</script>
 
 {% endblock %}
