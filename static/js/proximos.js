@@ -3,9 +3,7 @@ const markers = {};
 function inicializarPins(pontos) {
     pontos.forEach((ponto, i) => {
         if (isNaN(ponto.lat) || isNaN(ponto.lng) || ponto.lat === 0) return;
-
         const marker = L.marker([ponto.lat, ponto.lng]).addTo(map);
-
         const popup = `<b>${ponto.nome}</b><br>
             Aceita: ${ponto.tipo}<br>
             📍 ${ponto.endereco}<br><br>
@@ -15,7 +13,6 @@ function inicializarPins(pontos) {
                       padding:8px;border-radius:5px;text-decoration:none;font-weight:bold;'>
                Traçar Rota 🚗
             </a>`;
-
         marker.bindPopup(popup);
         markers[i] = marker;
     });
@@ -50,24 +47,41 @@ function mostrarProximos(userLat, userLng, pontos) {
     const container = document.getElementById('cards-container');
     container.innerHTML = '';
 
-    comDistancia.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'ponto-card';
-        card.innerHTML = `
-            <div class="nome">${p.nome}</div>
-            <div class="distancia">🚶 ${p.dist.toFixed(2)} km de distância</div>
-            <div class="tipo">♻️ ${p.tipo}</div>
-            <div style="font-size:11px;color:#999;margin-top:4px">${p.endereco}</div>
-        `;
-        card.addEventListener('click', () => {
-            map.setView([p.lat, p.lng], 16);
-            markers[p.i]?.openPopup();
+    const LIMITE = 5;
+    const visiveis = comDistancia.slice(0, LIMITE);
+    const restantes = comDistancia.slice(LIMITE);
+
+    visiveis.forEach(p => renderizarCard(p, container));
+
+    if (restantes.length > 0) {
+        const btnVerMais = document.createElement('button');
+        btnVerMais.textContent = `Ver mais ${restantes.length} pontos`;
+        btnVerMais.style = 'width:100%;padding:8px;margin-top:4px;background:white;border:1px solid #4caf50;color:#4caf50;border-radius:6px;cursor:pointer;font-size:13px;';
+        btnVerMais.addEventListener('click', () => {
+            restantes.forEach(p => renderizarCard(p, container));
+            btnVerMais.remove();
         });
-        container.appendChild(card);
-    });
+        container.appendChild(btnVerMais);
+    }
 
     document.getElementById('status-localizacao').textContent =
         `${comDistancia.length} pontos encontrados, ordenados por distância.`;
+}
+
+function renderizarCard(p, container) {
+    const card = document.createElement('div');
+    card.className = 'ponto-card';
+    card.innerHTML = `
+        <div class="nome">${p.nome}</div>
+        <div class="distancia">🚶 ${p.dist.toFixed(2)} km de distância</div>
+        <div class="tipo">♻️ ${p.tipo}</div>
+        <div style="font-size:11px;color:#999;margin-top:4px">${p.endereco}</div>
+    `;
+    card.addEventListener('click', () => {
+        map.flyTo([p.lat, p.lng], 16);
+        markers[p.i]?.openPopup();
+    });
+    container.appendChild(card);
 }
 
 function configurarBotao(pontos) {
