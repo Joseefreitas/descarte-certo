@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="{% static 'css/adicionar_ponto.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2>Adicionar Ponto de Descarte</h2>
+    <p>Clique no mapa para definir a localização do ponto de descarte.</p>
+
+    <div id="mapa-adicionar"></div>
+    <p id="instrucao-mapa">📍 Nenhuma localização selecionada ainda.</p>
+
+    {% if erro %}
+        <div class="erro">{{ erro }}</div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-grupo">
+            <label>Nome do local</label>
+            <input type="text" name="nome" placeholder="Ex: Cooperativa Verde Vida">
+        </div>
+
+        <div class="form-grupo">
+            <label>Endereço</label>
+            <input type="text" name="endereco" placeholder="Ex: Rua das Flores, 123 - Boa Viagem">
+        </div>
+
+        <div class="form-grupo">
+            <label>Tipo de resíduo aceito</label>
+            <input type="text" name="tipo_residuo" placeholder="Ex: Eletrônicos, Plástico, Papel">
+        </div>
+
+        <div class="form-coordenadas">
+            <div class="form-grupo">
+                <label>Latitude</label>
+                <input type="text" name="latitude" id="id_latitude" placeholder="Clique no mapa" readonly>
+            </div>
+            <div class="form-grupo">
+                <label>Longitude</label>
+                <input type="text" name="longitude" id="id_longitude" placeholder="Clique no mapa" readonly>
+            </div>
+        </div>
+
+        <button type="submit" class="btn-salvar">Salvar ponto</button>
+        <a href="{% url 'mapa:index' %}" class="btn-cancelar">Cancelar</a>
+    </form>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="{% static 'js/adicionar_ponto.js' %}"></script>
+{% endblock %}

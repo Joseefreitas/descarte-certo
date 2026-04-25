@@ -1,0 +1,93 @@
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.form-container h2 {
+    margin-bottom: 8px;
+}
+
+.form-container p {
+    color: #666;
+    margin-bottom: 16px;
+}
+
+#mapa-adicionar {
+    height: 300px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 2px solid #ccc;
+}
+
+#mapa-adicionar.selecionado {
+    border-color: #2e7d32;
+}
+
+#instrucao-mapa {
+    font-size: 13px;
+    color: #2e7d32;
+    margin-bottom: 20px;
+}
+
+.form-grupo {
+    margin-bottom: 16px;
+}
+
+.form-grupo label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.form-grupo input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+.form-grupo input[readonly] {
+    background: #f5f5f5;
+    color: #444;
+}
+
+.form-coordenadas {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.form-coordenadas .form-grupo {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.btn-salvar {
+    background: #2e7d32;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.btn-salvar:hover {
+    background: #1b5e20;
+}
+
+.btn-cancelar {
+    margin-left: 12px;
+    color: #666;
+    text-decoration: none;
+}
+
+.erro {
+    background: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
