@@ -13,8 +13,8 @@ SECRET_KEY = os.environ.get(
     'django-insecure-luvzzy67=g-4$a0$=)%1r@=6i)ep5v_mx)##!xe2ayp_a5qf-t'
 )
 #TEMPORARIO
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-#DEBUG = True
+# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
@@ -79,7 +79,9 @@ WSGI_APPLICATION = 'descarte_certo.wsgi.application'
 #}
 
 DATABASE_URL = os.environ.get('DATABASE_URL')
-
+# para conseguir fazer um post de uma foto no app comunidade 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 if DATABASE_URL:
      DATABASES = {
         'default': dj_database_url.config(
