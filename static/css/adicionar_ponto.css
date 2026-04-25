@@ -93,3 +93,18 @@
     border-radius: 6px;
     margin-bottom: 16px;
 }
+
+.btn-buscar {
+    background: #1b5e20;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.btn-buscar:hover {
+    background: #1b5e20;
+}
