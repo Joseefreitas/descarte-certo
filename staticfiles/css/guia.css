@@ -1,0 +1,81 @@
+/* RESET BÁSICO */
+body {
+    margin: 0;
+    background: #f6f4ef; /* bege suave */
+    font-family: Arial, sans-serif;
+}
+
+/* CONTAINER */
+.guia-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px;
+}
+
+/* TÍTULO */
+.guia-container h1 {
+    text-align: center;
+    color: #2e7d32;
+    margin-bottom: 30px;
+}
+
+/* GRID */
+.grid-categorias {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* CARD */
+.card {
+    background: #F5F2EB;
+    border-radius: 16px;
+    border:#2e7d32 solid 2px;
+    padding: 18px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* HOVER */
+.card:hover {
+    box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* TÍTULO DO CARD */
+.card h3 {
+    margin: 0;
+    margin-top: 6px;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* TEXTO */
+.card p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.4;
+}
+
+/* IMAGEM PLACEHOLDER */
+.img-placeholder {
+    height: 130px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* REMOVE AZUL DE LINKS */
+a {
+    text-decoration: none;
+    color: inherit;
+}
