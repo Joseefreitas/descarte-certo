@@ -4,7 +4,10 @@ body{
     box-sizing: border-box;
     font-family: sans-serif;
 }
-
+title {
+  text-align :center;
+  color:beige;
+}
 .home{
     display: flex;
     flex-direction: column;
@@ -24,7 +27,7 @@ h1 {
     margin-bottom: 30px;
     font-family: sans-serif;
     color: #2d5c3f;
-    text-align: center;
+    text-align: left;
     width: 50%;
     margin-left: auto;
 }
