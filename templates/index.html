@@ -11,7 +11,7 @@
 
     <div class="header">
         <img src="{% static 'image/cdlogo.png' %}" class="logo-home" alt="Logo">
-        {% if user.is_authenticated %}
+        {% if user.is_authenticated and not request.session.modo_visitante %}
             <h1>Olá, {{ user.username }} 👋</h1>
         {% else %}
             <h1>Bem-vindo! 👋</h1>

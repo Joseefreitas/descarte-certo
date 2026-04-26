@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/', views.login_usuario, name='login'),
     path('cadastro/', views.cadastro, name='cadastro'),
     path('logout/', views.logout_usuario, name='logout'),
+    path('guest/', views.modo_visitante, name='guest'),
 
     path('home/', views.home, name='home'),
 
@@ -37,4 +38,4 @@ urlpatterns = [
     path('guia-descarte/', views.guia_descarte, name='guia_descarte'),
 
     path('accounts/login/', lambda request: redirect('/login/')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+ ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

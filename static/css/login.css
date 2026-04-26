@@ -68,3 +68,26 @@ button:hover {
     cursor: pointer;
     color: #666;
 }
+
+.btn-guest {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 12px;
+
+    text-align: center;
+    text-decoration: none;
+
+    background: #f1f1f1;
+    color: #2d5c3f;
+
+    border-radius: 8px;
+    border: 1px solid #ccc;
+
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.btn-guest:hover {
+    background: #e0e0e0;
+}
