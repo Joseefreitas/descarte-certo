@@ -143,3 +143,52 @@
     line-height: 1.5;
 }
 
+.section-2 {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 20px;
+    align-items: stretch;
+}
+
+/* lado esquerdo */
+.section2-content {
+    flex: 2;
+}
+
+/* lado direito (card interno) */
+.section2-tip {
+    position: relative;
+    z-index: 2;
+    background: #a78db1;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid rgba(0,0,0,0.08);
+    flex: 0.8; 
+    max-width: 220px; 
+    min-height: 120px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-right: 70px;
+}
+
+.section2-tip::before {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: 4px;
+    right: -4px;
+    bottom: 6px;
+    background: #fce4ff;
+    border-radius: 14px;
+    border: 1px solid rgba(0,0,0,0.06);
+    z-index: -1;
+}
+
+/* responsivo (IMPORTANTE) */
+@media (max-width: 768px) {
+    .section-2 {
+        flex-direction: column;
+    }
+}
