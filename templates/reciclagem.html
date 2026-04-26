@@ -1,0 +1,301 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reciclagem.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="reciclagem-container">
+
+    <h1>Ideias de reciclagem criativa</h1>
+
+    <div class="rec-grid">
+
+        <!-- CARD 1 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/vela.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Vela aromática de sabonete</h3>
+                    <p>Transforme restos de sabonete em velas decorativas.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Sabonetes velhos</li>
+                        <li>Pavio</li>
+                        <li>Pote de vidro</li>
+                        <li>Panela</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Derreta os sabonetes</li>
+                        <li>Coloque o pavio</li>
+                        <li>Despeje no pote</li>
+                        <li>Espere endurecer</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/caixaovo.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Flor de caixa de ovos</h3>
+                    <p>Crie flores decorativas com papelão reciclado.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Caixa de ovos</li>
+                        <li>Tesoura</li>
+                        <li>Tinta</li>
+                        <li>Cola</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Corte a caixa</li>
+                        <li>Modele pétalas</li>
+                        <li>Pinte</li>
+                        <li>Monte a flor</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/latametal.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Latas em porta-lápis</h3>
+                    <p>Reaproveite latas de metal para organização.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Latas</li>
+                        <li>Tinta</li>
+                        <li>Pincel</li>
+                        <li>Cola</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Limpe as latas</li>
+                        <li>Pinte</li>
+                        <li>Decore</li>
+                        <li>Use como organizador</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/papelmache.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Papel machê</h3>
+                    <p>Crie objetos com jornais e revistas velhas.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Jornal</li>
+                        <li>Cola</li>
+                        <li>Água</li>
+                        <li>Pincel</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Pique o papel</li>
+                        <li>Misture com cola</li>
+                        <li>Modele</li>
+                        <li>Deixe secar</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/pneu.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Pneu em balanço</h3>
+                    <p>Transforme pneus antigos em brinquedos.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Pneu</li>
+                        <li>Corda</li>
+                        <li>Tinta</li>
+                        <li>Gancho</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Pinte o pneu</li>
+                        <li>Faça furos</li>
+                        <li>Prenda a corda</li>
+                        <li>Instale no suporte</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/garrafapet.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Vasos recicláveis</h3>
+                    <p>Crie vasos com materiais reaproveitados.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Garrafas</li>
+                        <li>Tesoura</li>
+                        <li>Tinta</li>
+                        <li>Terra</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Corte a garrafa</li>
+                        <li>Pinte</li>
+                        <li>Coloque terra</li>
+                        <li>Plante</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/papelhigienico.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Rolo de papel decorativo</h3>
+                    <p>Decorações com rolos de papel higiênico.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Rolos</li>
+                        <li>Tinta</li>
+                        <li>Cola</li>
+                        <li>Tesoura</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Corte os rolos</li>
+                        <li>Modele</li>
+                        <li>Pinte</li>
+                        <li>Monte decoração</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="rec-card">
+            <div class="rec-top">
+                <div class="rec-img"><img src="{% static 'image/imagr/papelao.jpg' %}"></div>
+
+                <div class="rec-info">
+                    <h3>Porta-livros de papelão</h3>
+                    <p>Organize livros com caixas recicladas.</p>
+                    <button onclick="toggleCard(this)" class="toggle-btn">Saiba mais</button>
+                </div>
+            </div>
+
+            <div class="rec-details">
+                <div>
+                    <h4>Materiais</h4>
+                    <ul>
+                        <li>Caixa de papelão</li>
+                        <li>Tesoura</li>
+                        <li>Cola</li>
+                        <li>Tinta</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Passo a passo</h4>
+                    <ol>
+                        <li>Corte a caixa</li>
+                        <li>Reforce estrutura</li>
+                        <li>Pinte</li>
+                        <li>Organize livros</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="{% static 'js/reciclagem.js' %}"></script>
+
+{% endblock %}

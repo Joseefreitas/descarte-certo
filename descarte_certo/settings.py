@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'core',
     'mapa',
     'comunidade',
+    'guia_descarte',
+    'reciclagem',
+    'login',
 ]
 
 MIDDLEWARE = [

@@ -36,6 +36,7 @@ urlpatterns = [
     path('comunidade/', include('comunidade.urls')),
     path('mapa/', include('mapa.urls')),
     path('guia-descarte/', views.guia_descarte, name='guia_descarte'),
+    path('reciclagem/', include('reciclagem.urls')),
 
     path('accounts/login/', lambda request: redirect('/login/')),
  ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
