@@ -2,58 +2,81 @@
 {% load static %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}?v=1">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
+
 <div class="home">
-    <h1>Bem vindo ao nosso site</h1>
-    <br>
-    <p> o descarte certo surgiu com o propósito para ser um site para os amantes do meio ambiente.
-        Pensado para aqueles que se preocupam com o bem-estar do planeta.E procura juntar em um só
-        canto um montante de funcionalidades que ajudem quem se interessa mais pelo assunto 
-        desenvolvimento sustentável e economia circular à ajudar o planeta  <p>
-    <br>
-    <img src ="{%static 'C:\CC_local\MY_PROJECT\static\image\imgg\descarte_certo_ilustre.jpg' %}" width="300" height="250">
-    <h2> Funcionalidades <h2>
-    <h4>obs :para ve-las basta clicar nas barrinhas do menu<h4>
-    <br>
-    <center><h3>comunidade<h3></center>
-    <br>
-    <p> na parte de comunidade você pode enviar posts e responder posts de outros usuários , como 
-        se fosse um twitter , mas focado para o tema desenvolviemento sustentável 
-    <br>
-    <br>
-    <center><h3>ver mapa<h3></center>
-    <br>
-    <p>nessa aba você pode visualizar a localização e a distância dos pontos de coleta mais próximos 
-    de você. <p>
-    <br>
-    <br>
-    <center><h2>guia de descarte<h2></center>
-    <p> nessa aba você poderá aprender a forma adequada de descartar cada matérial ou lixo .<p>
-    </body>
-<div>
-    <h1>O que você deseja fazer hoje?</h1>
 
-    <div class="grid">
+    <div class="header">
+        <img src="{% static 'image/cdlogo.png' %}" class="logo-home" alt="Logo">
+        {% if user.is_authenticated and not request.session.modo_visitante %}
+            <h1>Olá, {{ user.username }} 👋</h1>
+        {% else %}
+            <h1>Bem-vindo! 👋</h1>
+{% endif %}
+        <p>Bem-vindo ao nosso site — vamos descartar melhor hoje?</p>
+    </div>
 
-        <a href="{% url 'mapa:index' %}" class="card card-b1">
-            <h2>Ver Mapa</h2>
-            <p>Encontre pontos de coleta perto de você</p>
+    <div class="main-action">
+        <a href="{% url 'mapa:index' %}" class="cta">
+            👉 Encontrar ponto de coleta perto de mim
         </a>
+    </div>
 
-        <a href="{% url 'guia_descarte' %}" class="card card-b2">
-            <h2>Guia de Descarte</h2>
-            <p>Aprenda a separar corretamente</p>
-        </a>
+    <div class="section section-1">
 
-        <a href="{% url 'comunidade' %}" class="card card-b3">
-            <h2>Comunidade</h2>
-            <p>Participe de discussões</p>
-        </a>
+    <h2>Por onde começar</h2>
+
+    <div class="step step-1">
+        <div class="step-number">1</div>
+        <p>Procure o material que quer descartar</p>
+    </div>
+
+    <div class="step step-2">
+        <div class="step-number">2</div>
+        <p>Veja o ponto de coleta mais próximo no mapa</p>
+    </div>
+
+    <div class="step step-3">
+        <div class="step-number">3</div>
+        <p>Descarte corretamente e ajude o meio ambiente</p>    
+    </div>
+
+</div>
+
+<div class="section section-2">
+
+    <div class="section2-content">
+        <h2>Dicas importantes</h2>
+        <ul>
+            <li>Lave embalagens antes de reciclar</li>
+            <li>Separe orgânico de reciclável</li>
+            <li>Alguns materiais vão para pontos específicos</li>
+        </ul>
+    </div>
+
+    <div class="section2-tip">
+        <span>💡 Dica do dia</span>
+        <p id="tip-text"></p>
+    </div>
+
+</div>
+
+    <div class="section section-3">
+        <h2>Sobre o nosso projeto:</h2>
+        <p>
+            O Descarte Certo é um projeto desenvolvido para facilitar o acesso à informação sobre o descarte correto de resíduos. A proposta é ajudar as pessoas a entenderem onde e como descartar diferentes tipos de materiais, como recicláveis, orgânicos e eletrônicos, de forma simples e acessível. Através de um mapa interativo, o usuário consegue encontrar pontos de coleta próximos e contribuir diretamente para uma cidade mais limpa e sustentável.
+        </p>
+        <p>
+            Além de conectar pessoas aos locais de descarte, o projeto também busca conscientizar sobre a importância da separação correta do lixo. Pequenas atitudes no dia a dia, como lavar embalagens ou separar materiais corretamente, fazem grande diferença no impacto ambiental. O Descarte Certo nasce com o objetivo de transformar informação em ação, incentivando hábitos mais sustentáveis e responsáveis.
+        </p>
 
     </div>
 
 </div>
+
+<script src="{% static 'js/index.js' %}"></script>
+
 {% endblock %}

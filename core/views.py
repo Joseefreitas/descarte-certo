@@ -3,14 +3,15 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-
 # ======================
 # HOME (protegida)
 # ======================
-@login_required(login_url='/login/')
 def home(request):
-    return render(request, 'index.html')
+    modo_visitante = request.session.get('modo_visitante', False)
 
+    return render(request, 'index.html', {
+        'modo_visitante': modo_visitante
+    })
 
 # ======================
 # GUIA DE DESCARTE (protegida)
@@ -57,19 +58,26 @@ def cadastro(request):
 def login_usuario(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password')  # ⚠️ TEM QUE SER "password"
+        password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
+            request.session.pop('modo_visitante', None)
             return redirect('home')
 
-        return render(request, 'login.html', {
-            'erro': 'Usuário ou senha inválidos.'
-        })
+        return render(request, 'login.html', {'erro': 'Usuário ou senha inválidos.'})
 
     return render(request, 'login.html')
+
+
+# ======================
+# MODO VISITANTE
+# ======================
+def modo_visitante(request):
+    request.session['modo_visitante'] = True
+    return redirect('home')
 
 
 # ======================
