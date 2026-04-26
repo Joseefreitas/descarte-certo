@@ -25,7 +25,6 @@
 
             <br><br>
 
-            <!-- Upload -->
             <label class="upload-label">
                 + Adicionar foto
                 <input type="file" name="imagem" accept="image/*" class="input-file"
@@ -36,9 +35,7 @@
 
             <br><br>
             
-            <button type="submit" class="botao">
-                Criar tópico
-            </button>
+            <button type="submit" class="botao">Criar tópico</button>
         </form>
     </div>
 
@@ -48,30 +45,48 @@
     <div class="lista-topicos">
 
         {% for topic in topics %}
-            <div class="card">
-                <h3>{{ topic.title }}</h3>
-                <p class="conteudo">{{ topic.content }}</p>
+        <div class="card" style="position: relative;">
 
-                {% if topic.imagem %}
-                    <img src="{{ topic.imagem.url }}" class="imagem">
+            {% if request.user == topic.author %}
+            <form method="POST" action="/comunidade/{{ topic.id }}/deletar/"
+                  style="position: absolute; top: 12px; right: 12px;"
+                  onsubmit="return confirm('Tem certeza que deseja apagar este post?')">
+                {% csrf_token %}
+                <button type="submit" style="
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    color: red;
+                    font-size: 18px;
+                " title="Apagar post">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </form>
+            {% endif %}
+
+            <h3>{{ topic.title }}</h3>
+            <p class="conteudo">{{ topic.content }}</p>
+
+            {% if topic.imagem %}
+                <img src="{{ topic.imagem.url }}" class="imagem">
+            {% endif %}
+
+            <small class="info">
+                {% if topic.author %}
+                    por {{ topic.author.username }}
+                {% else %}
+                    por Anônimo
                 {% endif %}
+                • {{ topic.created_at }}
+            </small>
 
-                <small class="info">
-                    {% if topic.author %}
-                        por {{ topic.author.username }}
-                    {% else %}
-                        por Anônimo
-                    {% endif %}
-                    • {{ topic.created_at }}
-                </small>
+            <br><br>
 
-                <br><br>
+            <a href="/comunidade/{{ topic.id }}/" class="link">
+                Ver respostas
+            </a>
 
-                <a href="/comunidade/{{ topic.id }}/" class="link">
-                    Ver respostas
-                </a>
-            </div>
-
+        </div>
         {% empty %}
             <p class="vazio">Nenhum tópico ainda</p>
         {% endfor %}

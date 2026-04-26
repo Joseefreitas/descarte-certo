@@ -10,6 +10,21 @@
 </head>
 
 <body>
+    {% if messages %}
+        {% for message in messages %}
+            <div style="
+                background-color: red;
+                color: white;
+                padding: 12px 20px;
+                margin: 10px;
+                border-radius: 6px;
+                font-weight: bold;
+                text-align: center;
+            ">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <header class="topo">
         <div class="menu-toggle">☰ Menu</div>
         <div class="logo">Descarte Certo</div>
