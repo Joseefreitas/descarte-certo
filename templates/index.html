@@ -11,7 +11,11 @@
 
     <div class="header">
         <img src="{% static 'image/cdlogo.png' %}" class="logo-home" alt="Logo">
-        <h1>Olá, {{ user.username }} 👋</h1>
+        {% if user.is_authenticated %}
+            <h1>Olá, {{ user.username }} 👋</h1>
+        {% else %}
+            <h1>Bem-vindo! 👋</h1>
+{% endif %}
         <p>Bem-vindo ao nosso site — vamos descartar melhor hoje?</p>
     </div>
 

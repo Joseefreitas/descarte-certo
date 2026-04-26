@@ -4,10 +4,6 @@ from django.contrib.auth.decorators import login_required
 
 from django.contrib.auth.decorators import login_required
 
-@login_required(login_url='/login/')
-def comunidade(request):
-    return render(request, 'comunidade.html')
-
 def comunidade(request):
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
