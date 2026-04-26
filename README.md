@@ -12,6 +12,7 @@ O **Descarte Certo** é uma plataforma web desenvolvida em **Django** que facili
 - **Front-end:** HTML, CSS, JavaScript
 - **Banco de Dados:** PostgreSQL
 - **Deploy:** Microsoft Azure
+- **testes** Selenium 
 
 ## 👥 Equipe
 
@@ -21,7 +22,6 @@ O **Descarte Certo** é uma plataforma web desenvolvida em **Django** que facili
 | Clara | [clarinhapontess](https://github.com/clarinhapontess) |
 | Leticia| [LeticiaCamelloBarros ](https://github.com/LeticiaCamelloBarros) |
 | Dandara | [DandaaGoxtosura](https://github.com/DandaaGoxtosura) |
-| João Pedro | [JoaoPedroSSBarbosa](https://github.com/JoaoPedroSSBarbosa) |
 
 ## 🚀 Como Executar Localmente
 
