@@ -30,21 +30,30 @@ def comunidade(request):
 
     topics = Topic.objects.all().order_by('-created_at')
     return render(request, 'comunidade.html', {'topics': topics})
+
 def topic_detail(request, topic_id):
     topic = Topic.objects.get(id=topic_id)
-    posts = topic.post_set.all()
-    
+    posts = topic.posts.all()
+
     if request.method == 'POST':
         conteudo = request.POST.get('conteudo')
+
         if request.user.is_authenticated:
             autor = request.user
         else:
             autor = None
-        topic.post_set.create(content=conteudo, author=autor)
-        return redirect('topic_detail', topic_id=topic_id)
-    
-    return render(request, 'topic_detail.html', {'topic': topic, 'posts': posts})
 
+        topic.posts.create(
+            content=conteudo,
+            author=autor
+        )
+
+        return redirect('topic_detail', topic_id=topic_id)
+
+    return render(request, 'topic_detail.html', {
+        'topic': topic,
+        'posts': posts
+    })
 @login_required
 # função para o usuário conseguir deletar seu post
 def deletar_topic(request, topic_id):
