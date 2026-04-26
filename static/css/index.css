@@ -154,6 +154,7 @@
 /* lado esquerdo */
 .section2-content {
     flex: 2;
+    min-width: 0;
 }
 
 /* lado direito (card interno) */
@@ -171,7 +172,6 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-right: 70px;
 }
 
 .section2-tip::before {

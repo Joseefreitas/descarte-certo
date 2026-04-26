@@ -13,10 +13,6 @@ def home(request):
         'modo_visitante': modo_visitante
     })
 
-def modo_visitante(request):
-    request.session['modo_visitante'] = True
-    return redirect('home')
-
 # ======================
 # GUIA DE DESCARTE (protegida)
 # ======================
@@ -62,19 +58,26 @@ def cadastro(request):
 def login_usuario(request):
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('password')  # ⚠️ TEM QUE SER "password"
+        password = request.POST.get('password')
 
         user = authenticate(request, username=username, password=password)
 
         if user:
             login(request, user)
+            request.session.pop('modo_visitante', None)
             return redirect('home')
 
-        return render(request, 'login.html', {
-            'erro': 'Usuário ou senha inválidos.'
-        })
+        return render(request, 'login.html', {'erro': 'Usuário ou senha inválidos.'})
 
     return render(request, 'login.html')
+
+
+# ======================
+# MODO VISITANTE
+# ======================
+def modo_visitante(request):
+    request.session['modo_visitante'] = True
+    return redirect('home')
 
 
 # ======================
