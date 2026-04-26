@@ -14,7 +14,9 @@ def cadastro(request):
         senha = request.POST.get('senha')
 
         if User.objects.filter(username=username).exists():
-            return render(request, 'cadastro.html', {'erro': 'Usuário já existe'})
+            return render(request, 'cadastro.html', {
+                'erro': 'Usuário já existe'
+            })
 
         user = User.objects.create_user(
             username=username,
@@ -38,7 +40,7 @@ def login_usuario(request):
         user = authenticate(request, username=username, password=password)
 
         if user:
-            auth_login(request, user)  # 🔥 ISSO GUARDA O LOGIN
+            auth_login(request, user)  
             return redirect('/home/')
         else:
             return render(request, 'login.html', {'erro': 'Dados inválidos'})
@@ -48,4 +50,4 @@ def login_usuario(request):
 def logout_usuario(request):
     logout(request)
     return redirect('/login/')
-# Create your views here.
+
