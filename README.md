@@ -92,6 +92,55 @@ Acesse em: `http://localhost:8000`
 
 ---
 
+
+<details>
+<summary>📅 Entrega 03 - Novas Funcionalidades e Testes (27/04) </summary>
+
+<br>
+
+
+### 🎥 Novo Screencast
+- ▶️ [Assista no YouTube]()
+
+---
+
+## 🐛 Issue/Bug Tracker Atualizado
+
+**Issues Abertas**
+![Print issue 1](imagens/issuesOpen.png)
+
+**Issues Fechadas**
+![Print issue 2](imagens/issuesClosed.png)
+
+
+---
+
+## 🧪 Testes de Sistema (E2E) Automatizados
+
+### 🎥 Screencast dos testes
+▶️ Inserir aqui o link do vídeo com a execução dos testes automatizados
+
+- ▶️ [Assista no YouTube]()
+
+---
+
+## 👥 Atualização sobre Programação em Pares
+
+- 📄 [Documento de Programação em Par](https://docs.google.com/document/d/1sKAck93-dVQePe9lxomUDlhdLKFdt41NO1dPbgR2X2M/edit?usp=sharing)
+
+---
+
+## 📋 Quadro da Sprint 03 Atualizado
+
+### Print da Sprint
+![Sprint3 Foto](imagens/sprint3.png)
+
+</details>
+
+
+
+---
+
 ## 📊 Gestão de Projeto
 
 | Board Geral | Backlog | Sprint Atual |
