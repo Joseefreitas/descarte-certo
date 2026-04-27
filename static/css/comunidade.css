@@ -2,19 +2,22 @@
     padding: 30px;
 }
 
+/* TÍTULO */
 .titulo {
     text-align: center;
     font-size: 28px;
     color: #2e7d32;
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .subtitulo {
     text-align: center;
     color: #555;
+    margin-bottom: 25px;
 }
 
-/* Formulário */
+/* FORM */
 .form-container {
     max-width: 600px;
     margin: auto;
@@ -59,7 +62,16 @@
     cursor: pointer;
 }
 
-/* Lista de tópicos */
+/* 🔥 LINHA (HR) COM RESPIRO */
+hr {
+    margin: 40px auto;
+    max-width: 800px;
+    border: none;
+    height: 1px;
+    background: #ddd;
+}
+
+/* LISTA */
 .lista-topicos {
     display: flex;
     flex-direction: column;
@@ -68,36 +80,88 @@
     margin: auto;
 }
 
+/* CARD */
 .card {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: #f8f6f3;
+    border-radius: 16px;
+    border: 2px solid #2e7d32;
+    padding: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
 }
 
+/* LAYOUT INTERNO (IMPORTANTE) */
+.card-top {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+/* IMAGEM */
+.img-holder {
+    width: 110px;
+    aspect-ratio: 1 / 1;
+
+    border-radius: 12px;
+    border: 2px solid #2e7d32;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f5f5f5;
+
+    flex-shrink: 0;
+}
+
+.img-holder img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* TEXTO */
+.card-texto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🔥 TÍTULO */
+.card-texto h3 {
+    margin: 0;
+    margin-bottom: 6px;
+    color: #2e7d32;
+    font-size: 20px;
+}
+
+/* 🔥 CONTEÚDO */
 .conteudo {
     color: #555;
+    margin: 0;
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
-.imagem {
-    max-width: 300px;
-    width: 100%;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
+/* 🔥 AUTOR */
 .info {
     color: #777;
-    display: block;
-    margin-top: 10px;
+    font-size: 13px;
+    margin-bottom: 10px;
 }
 
+/* 🔥 LINK */
 .link {
     text-decoration: none;
     color: green;
     font-weight: bold;
+    align-self: flex-start;
+    margin-top: auto; /* empurra pra baixo bonito */
 }
 
+/* VAZIO */
 .vazio {
     text-align: center;
 }

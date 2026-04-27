@@ -79,3 +79,23 @@ button:hover {
 .cadastro-text a:hover {
     text-decoration: underline;
 }
+
+.senha-container {
+    position: relative;
+    width: 100%;
+}
+
+.senha-container input {
+    padding-right: 40px; /* espaço pro olho */
+}
+
+.olho {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #666;
+}
