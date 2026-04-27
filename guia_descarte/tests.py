@@ -70,10 +70,10 @@ class TesteGuiaDescarte(LiveServerTestCase):
     # a melhor forma de preparar um produto para o descarte
     def test_preparar_produto_descarte(self):
         self._fazer_login()
-        self.browser.get(f'{self.live_server_url}/guia-descarte/')
+        self.browser.get(f'{self.live_server_url}/reciclagem/')
         time.sleep(2)
 
-        self.assertIn('guia-descarte', self.browser.current_url)
+        self.assertIn('reciclagem', self.browser.current_url)
         time.sleep(1)
 
         body = self.browser.find_element(By.TAG_NAME, 'body').text
