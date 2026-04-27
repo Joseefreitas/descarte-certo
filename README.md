@@ -118,7 +118,6 @@ Acesse em: `http://localhost:8000`
 ## 🧪 Testes de Sistema (E2E) Automatizados
 
 ### 🎥 Screencast dos testes
-▶️ Inserir aqui o link do vídeo com a execução dos testes automatizados
 
 - ▶️ [Assista no YouTube]()
 
