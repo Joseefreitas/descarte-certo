@@ -46,8 +46,7 @@
 
         {% for topic in topics %}
         <div class="card" style="position: relative;">
-
-            {% if request.user == topic.author %}
+            {% if request.user.id == topic.author.id %}
             <form method="POST" action="/comunidade/{{ topic.id }}/deletar/"
                   style="position: absolute; top: 12px; right: 12px;"
                   onsubmit="return confirm('Tem certeza que deseja apagar este post?')">
