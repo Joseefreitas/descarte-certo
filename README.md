@@ -135,15 +135,3 @@ Acesse em: `http://localhost:8000`
 ![Sprint3 Foto](imagens/sprint3.png)
 
 </details>
-
-
-
----
-
-## 📊 Gestão de Projeto
-
-| Board Geral | Backlog | Sprint Atual |
-|:-----------:|:-------:|:------------:|
-| ![Board](imagens/img_board.png) | ![Backlog](imagens/img_backlog.png) | ![Sprint](imagens/img_sprint.png) |
-
----
