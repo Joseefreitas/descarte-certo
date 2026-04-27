@@ -1,26 +1,57 @@
-<h1>{{ topic.title }}</h1>
-<p>{{ topic.content }}</p>
-<small>por {{ topic.author }}</small>
+{% extends 'base.html' %}
+{% load static %}
 
-<hr>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/topic_detail.css' %}">
+{% endblock %}
 
-<h2>Respostas</h2>
+{% block content %}
 
-{% for post in posts %}
-    <div style="margin-bottom: 15px; padding: 10px; background: #f0f0f0;">
-        <p>{{ post.content }}</p>
-        <small>por {{ post.author }}</small>
+<div class="container">
+
+    <!-- PERGUNTA -->
+    <h1 class="titulo">Postagem</h1>
+
+    <div class="card">
+        <h3>{{ topic.title }}</h3>
+        <p class="conteudo">{{ topic.content }}</p>
+
+        {% if topic.imagem %}
+            <img src="{{ topic.imagem.url }}" class="imagem">
+        {% endif %}
+
+        <small class="info">por {{ topic.author }}</small>
     </div>
-{% empty %}
-    <p>Nenhuma resposta ainda.</p>
-{% endfor %}
 
-<hr>
+    <!-- RESPOSTAS -->
+    <h2 class="subtitulo">Respostas</h2>
 
-<h3>Responder</h3>
+    {% for post in posts %}
+        <div class="card">
+            <p class="conteudo">{{ post.content }}</p>
+            <small class="info">por {{ post.author }}</small>
+        </div>
+    {% empty %}
+        <p class="vazio">Nenhuma resposta ainda.</p>
+    {% endfor %}
 
-<form method="POST">
-    {% csrf_token %}
-    <textarea name="conteudo" placeholder="Escreva sua resposta..." required></textarea><br>
-    <button type="submit">Responder</button>
-</form>
+    <!-- BOTÃO -->
+    <button class="botao-responder" onclick="toggleResposta()">
+    Responder essa postagem
+    </button>
+
+    <div id="formResposta" class="form-resposta">
+        <form method="POST">
+            {% csrf_token %}
+            
+            <textarea name="conteudo" placeholder="Escreva sua resposta..." required></textarea>
+            
+            <button type="submit">Enviar resposta</button>
+        </form>
+    </div>
+
+</div>
+
+<script src="{% static 'js/topic_detail.js' %}"></script>
+
+{% endblock %}
