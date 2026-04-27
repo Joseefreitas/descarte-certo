@@ -100,7 +100,7 @@ Acesse em: `http://localhost:8000`
 
 
 ### 🎥 Novo Screencast
-- ▶️ [Assista no YouTube]()
+- ▶️ [Assista no YouTube](https://youtu.be/WzCMuhyZRjc)
 
 ---
 
