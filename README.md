@@ -130,6 +130,11 @@ Acesse em: `http://localhost:8000`
 ---
 
 ## 📋 Quadro da Sprint 03 Atualizado
+<img width="996" height="760" alt="image" src="https://github.com/user-attachments/assets/a538a67f-b9d6-43fc-b20f-8952bea7dfd5" />
+<img width="1001" height="761" alt="image" src="https://github.com/user-attachments/assets/7c6026e2-9790-45e1-8dd7-00c011493d67" />
+<img width="996" height="755" alt="image" src="https://github.com/user-attachments/assets/62edd551-f0e3-4b20-946e-d638d858a983" />
+
+
 
 ### Print da Sprint
 ![Sprint3 Foto](imagens/sprint3.png)
