@@ -110,7 +110,7 @@ Acesse em: `http://localhost:8000`
 <img width="1698" height="538" alt="image" src="https://github.com/user-attachments/assets/6aad9208-cb9b-4480-8204-935c86e44650" />
 
 **Issues Fechadas**
-![Print issue 2](imagens/issuesClosed.png)
+<img width="1734" height="772" alt="image" src="https://github.com/user-attachments/assets/44935645-4071-4c40-b997-85d101faee00" />
 
 
 ---
