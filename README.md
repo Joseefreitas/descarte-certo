@@ -119,7 +119,7 @@ Acesse em: `http://localhost:8000`
 
 ### 🎥 Screencast dos testes
 
-- ▶️ [Assista no YouTube]()
+- ▶️ [Assista no YouTube](https://youtu.be/-XTFX8xC0rs)
 
 ---
 
