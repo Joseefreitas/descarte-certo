@@ -9,9 +9,11 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get(
-    'SECRET_KEY',
-    'django-insecure-luvzzy67=g-4$a0$=)%1r@=6i)ep5v_mx)##!xe2ayp_a5qf-t'
+    'SECRET_KEY' 
 )
+#'django-insecure-luvzzy67=g-4$a0$=)%1r@=6i)ep5v_mx)##!xe2ayp_a5qf-t'- coloquem isso 
+    # por segurança no .env (sem aspas). O ultimo a inserir , apaga isso do
+    #leticia ok
 #TEMPORARIO
 # DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 DEBUG = True
@@ -101,7 +103,7 @@ else:
             'ENGINE': 'django.db.backends.postgresql',
             'NAME': 'descarte_certo',
             'USER': 'postgres',
-            'PASSWORD': 'descarte_certo_2026',
+             'PASSWORD':os.environ.get('DB_PASSWORD'),
             'HOST': 'localhost',
             'PORT': '5432',
         }
@@ -155,8 +157,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/home/'
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
