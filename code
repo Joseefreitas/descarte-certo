@@ -60,7 +60,7 @@
         {% endblock %}
     </main>
 
-    {% comment %} <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
     <script>
     function fecharAlerta() {
       const alerta = document.getElementById('alert-message');
@@ -76,7 +76,7 @@
       setTimeout(fecharAlerta, 4000);
       console.log("alerta encontrado ?",alerta);
     });
-    </script> {% endcomment %}
+    </script>
 
 </body>
 </html>

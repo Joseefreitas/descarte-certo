@@ -26,23 +26,23 @@ def comunidade(request):
     return render(request, 'comunidade.html', {'topics': topics})
 
 
-def topic_detail(request, topic_id):
-    topic = get_object_or_404(Topic, id=topic_id)
-    posts = topic.posts.all()
+# def topic_detail(request, topic_id):
+#     topic = get_object_or_404(Topic, id=topic_id)
+#     posts = topic.posts.all()
 
-    if request.method == 'POST':
-        conteudo = request.POST.get('conteudo')
-        if request.user.is_authenticated:
-            topic.posts.create(content=conteudo, author=request.user)
-        return redirect('topic_detail', topic_id=topic_id)
+#     if request.method == 'POST':
+#         conteudo = request.POST.get('conteudo')
+#         if request.user.is_authenticated:
+#             topic.posts.create(content=conteudo, author=request.user)
+#         return redirect('topic_detail', topic_id=topic_id)
 
-    return render(request, 'topic_detail.html', {'topic': topic, 'posts': posts})
+#     return render(request, 'topic_detail.html', {'topic': topic, 'posts': posts})
 
 
-@login_required(login_url='/login/')
-def deletar_topic(request, topic_id):
-    topic = get_object_or_404(Topic, id=topic_id)
-    if request.user == topic.author:
-        topic.delete()
-        messages.error(request, 'Post apagado com sucesso!')
-    return redirect('comunidade')
+# @login_required(login_url='/login/')
+# def deletar_topic(request, topic_id):
+#     topic = get_object_or_404(Topic, id=topic_id)
+#     if request.user == topic.author:
+#         topic.delete()
+#         messages.success(request, 'Post apagado com sucesso!')
+#     return redirect('comunidade')
