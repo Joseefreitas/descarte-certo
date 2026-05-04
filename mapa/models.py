@@ -9,7 +9,7 @@ class PontoColeta(models.Model):
     latitude = models.FloatField()
     longitude = models.FloatField()
     
-    tipo_residuo = models.CharField(max_length=100) 
+    tipo_residuo = models.CharField(max_length=255)
 
     def __str__(self):
         return self.nome

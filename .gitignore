@@ -7,4 +7,4 @@ media/
 staticfiles/
 MY_PROJECT/
 *.pyc
-geckodriver-v0.36.0-linux64.tar.gz
+geckodriver-v0.36.0-linux64.tar.gz.env

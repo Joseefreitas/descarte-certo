@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get(
     #leticia ok
 #TEMPORARIO
 # DEBUG = os.environ.get('DEBUG', 'False') == 'True'
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
