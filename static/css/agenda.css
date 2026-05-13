@@ -1,0 +1,79 @@
+.agenda-container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    font-family: Arial, sans-serif;
+}
+
+.busca-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.input-busca {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.btn-busca {
+    padding: 10px 20px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-busca:hover {
+    background-color: #1b5e20;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.coleta-card {
+    border: 1px solid #81c784;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #f8fff8;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+}
+
+.coleta-card:hover {
+    transform: translateY(-5px);
+}
+
+.coleta-card h5 {
+    color: #2e7d32;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #e8f5e9;
+    padding-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.coleta-card p {
+    margin: 8px 0;
+    color: #424242;
+    line-height: 1.4;
+}
+
+.alerta-erro {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 1rem;
+    border-left: 5px solid #ffeeba;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+}

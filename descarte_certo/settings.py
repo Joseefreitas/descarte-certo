@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'guia_descarte',
     'reciclagem',
     'login',
+    'coleta',
 ]
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),

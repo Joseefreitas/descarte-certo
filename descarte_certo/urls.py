@@ -41,4 +41,6 @@ urlpatterns = [
 
     path('accounts/login/', lambda request: redirect('/login/')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+
+    path('coleta/', include('coleta.urls')),
 ]

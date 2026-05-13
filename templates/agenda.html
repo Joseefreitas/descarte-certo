@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/agenda.css' %}">
+
+<div class="agenda-container">
+    <h2>Consultar Agenda de Coleta</h2>
+    
+    <form method="GET" action="{% url 'buscar_agenda' %}" class="busca-form">
+        <input type="text" name="regiao" class="input-busca" placeholder="Digite o nome do seu bairro (Ex: Boa Viagem)..." value="{{ query|default_if_none:'' }}">
+        <button class="btn-busca" type="submit">Buscar Horários</button>
+    </form>
+
+    {% if erro %}
+        <div class="alerta-erro">
+            <strong>Atenção:</strong> {{ erro }}
+        </div>
+    {% endif %}
+
+    {% if resultados %}
+        <h4>Resultados Oficiais para "{{ query }}":</h4>
+        
+        <div class="cards-grid">
+            {% for item in resultados %}
+                <div class="coleta-card">
+                    <h5>{{ item.regiao|title }}</h5>
+                    <p><strong>Tipo de Coleta:</strong> <br>{{ item.tipo_coleta|title }}</p>
+                    <p><strong>Frequência:</strong> <br>{{ item.dias_semana|title }}</p>
+                    <p><strong>Turno:</strong> <br>{{ item.horario|title }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
