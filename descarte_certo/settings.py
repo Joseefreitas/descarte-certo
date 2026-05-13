@@ -11,11 +11,7 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 SECRET_KEY = os.environ.get(
     'SECRET_KEY' 
 )
-#'django-insecure-luvzzy67=g-4$a0$=)%1r@=6i)ep5v_mx)##!xe2ayp_a5qf-t'- coloquem isso 
-    # por segurança no .env (sem aspas). O ultimo a inserir , apaga isso do
-    #leticia ok
-#TEMPORARIO
-# DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
