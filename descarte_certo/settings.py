@@ -1,23 +1,36 @@
 """
 Django settings for descarte_certo project.
 """
-
+from dotenv import load_dotenv
 import os
 from pathlib import Path
 import dj_database_url
-
+# o base dir é uma variável que aponta automáticamente para a raíz do meu projeto 
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
+def is_production_environment():
+    """Detecta automaticamente se está em produção ou desenvolvimento."""
+    env = os.environ.get('ENVIRONMENT', '').strip().lower()
+    if env in ['production', 'prod']:
+        return True
+    if env in ['development', 'dev', 'local']:
+        return False
+    
+    # Se DATABASE_URL existe, é produção
+    if 'DATABASE_URL' in os.environ:
+        return True
+    
+    return False  # Padrão: desenvolvimento
+
+DEBUG = not is_production_environment()
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 SECRET_KEY = os.environ.get(
     'SECRET_KEY' 
 )
 
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
-    'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
-    'localhost',
-    '127.0.0.1'
+    '*'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -77,40 +90,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'descarte_certo.wsgi.application'
 
-# Database
-# TEMPORÁRIO para rodar localmente sem erro no PostgreSQL
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#}
-#}
+DATABASES = {}
 
-DATABASE_URL = os.environ.get('DATABASE_URL', None)
-
-# para conseguir fazer upload de imagens
-
-
-if DATABASE_URL:
-    DATABASES = {
-        'default': dj_database_url.config(
-            default=DATABASE_URL,
-            conn_max_age=600,
-            ssl_require=True
-        )
-    }
+if os.environ.get('DATABASE_URL'):
+    conn_max_age = 600 if not DEBUG else 0
+    config = dj_database_url.parse(os.environ['DATABASE_URL'], conn_max_age=conn_max_age)
+    sslmode = 'disable' if DEBUG else 'require'
+    config['OPTIONS'] = {**config.get('OPTIONS', {}), 'sslmode': sslmode}
+    DATABASES['default'] = config
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'descarte_certo',
-            'USER': 'postgres',
-             'PASSWORD':os.environ.get('DB_PASSWORD'),
-            'HOST': 'localhost',
-            'PORT': '5432',
-        }
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'postgres'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
-
+    sslmode = 'disable' if DEBUG else 'require'
+    DATABASES['default']['OPTIONS'] = {'sslmode': sslmode}
 # Validação de senha
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -131,7 +129,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # WhiteNoise config
