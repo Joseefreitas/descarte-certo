@@ -19,10 +19,6 @@ def comunidade(request):
         return redirect('comunidade')
 
     topics = Topic.objects.all().order_by('-created_at')
-    
-    for t in topics:
-        print(f"topic: {t.title} | author_id: {t.author_id} | user_id: {request.user.id}")
-    
     return render(request, 'comunidade.html', {'topics': topics})
 
 
@@ -45,4 +41,4 @@ def deletar_topic(request, topic_id):
     if request.user == topic.author:
         topic.delete()
         messages.success(request, 'Post apagado com sucesso!')
-    return redirect('comunidade')
+        return redirect('comunidade')
