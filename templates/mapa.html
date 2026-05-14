@@ -1,26 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 
-
 {% block extra_css %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="{% static 'css/mapa.css' %}">
 {% endblock %}
 
-
 {% block content %}
     <div class="topo-mapa">
         <h2>Pontos de Descarte em Recife</h2>
-
         <a href="{% url 'mapa:adicionar' %}" id="btn-add-ponto">
             Adicionar ponto de descarte
         </a>
     </div>
 
-
     <div class="mapa-wrapper">
         <div id="mapa-container"></div>
-
 
         <div id="lista-proximos">
             <h3>Pontos mais próximos de você:</h3>
@@ -30,28 +25,28 @@
         </div>
     </div>
 
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="{% static 'js/mapa.js' %}"></script>
     <script src="{% static 'js/proximos.js' %}"></script>
 
+    <script>
+        const pontos = [
+            {% for ponto in pontos %}
+            {
+                nome: "{{ ponto.nome|escapejs }}",
+                endereco: "{{ ponto.endereco|escapejs }}",
+                tipo: "{{ ponto.tipo_residuo|escapejs }}",
+                lat: {{ ponto.latitude|stringformat:".6f" }},
+                lng: {{ ponto.longitude|stringformat:".6f" }},
+            },
+            {% endfor %}
+        ];
 
-    {# Único JS no template: passar os dados do Django pro JS #}
-<script>
-    const pontos = [
-        {% for ponto in pontos %}
-        {
-            nome: "{{ ponto.nome|escapejs }}",
-            endereco: "{{ ponto.endereco|escapejs }}",
-            tipo: "{{ ponto.tipo_residuo|escapejs }}",
-            lat: {{ ponto.latitude|stringformat:".6f" }},
-            lng: {{ ponto.longitude|stringformat:".6f" }},
-        },
-        {% endfor %}
-    ];
-
-
-    inicializarPins(pontos);
-    configurarBotao(pontos);
-</script>
+        if (typeof inicializarPins === "function") {
+            inicializarPins(pontos);
+        }
+        if (typeof configurarBotao === "function") {
+            configurarBotao(pontos);
+        }
+    </script>
 {% endblock %}
