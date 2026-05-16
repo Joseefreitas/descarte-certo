@@ -7,6 +7,7 @@ from mapa.models import PontoColeta
 @login_required(login_url='/login/')
 def criar_agendamento(request):
     pontos = PontoColeta.objects.all()
+    agendamentos = Agendamento.objects.filter(usuario=request.user).order_by('-data')
 
     if request.method == 'POST':
         ponto_id = request.POST.get('ponto_coleta')
@@ -28,9 +29,4 @@ def criar_agendamento(request):
         except PontoColeta.DoesNotExist:
             messages.error(request, 'Ponto de coleta inválido.')
 
-    return render(request, 'agendamento.html', {'pontos': pontos})
-
-@login_required(login_url='/login/')
-def meus_agendamentos(request):
-    agendamentos = Agendamento.objects.filter(usuario=request.user).order_by('-data')
-    return render(request, 'agendamento.html', {'agendamentos': agendamentos})
+    return render(request, 'agendamento.html', {'pontos': pontos , 'agendamentos': agendamentos})
