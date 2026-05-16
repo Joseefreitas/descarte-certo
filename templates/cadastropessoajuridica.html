@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Empresa</title>
+    <link rel="stylesheet" href="{% static 'css/cadastro_empresa.css' %}">
+</head>
+<body>
+
+<main class="wrap">
+    <div class="header">
+        <a class="voltar" href="{% url 'eusou' %}">← Voltar</a>
+        <h1 class="title">Cadastro de Empresa</h1>
+        <p class="subtitle">Preencha os dados da sua empresa</p>
+    </div>
+
+    <form class="form" method="POST">
+        {% csrf_token %}
+
+        {% if erro %}
+        <div class="erro">{{ erro }}</div>
+        {% endif %}
+
+        <fieldset>
+            <legend>Dados de acesso</legend>
+
+            <div class="campo">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Nome de usuário" required>
+            </div>
+
+            <div class="campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="empresa@email.com" required>
+            </div>
+
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Dados da empresa</legend>
+
+            <div class="campo">
+                <label for="razao_social">Razão social</label>
+                <input type="text" id="razao_social" name="razao_social" placeholder="Razão social da empresa" required>
+            </div>
+
+            <div class="campo">
+                <label for="nome_fantasia">Nome fantasia</label>
+                <input type="text" id="nome_fantasia" name="nome_fantasia" placeholder="Nome fantasia (opcional)">
+            </div>
+
+            <div class="campo">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18" required>
+            </div>
+
+            <div class="linha">
+                <div class="campo">
+                    <label for="first_name">Nome do responsável</label>
+                    <input type="text" id="first_name" name="first_name" placeholder="Nome" required>
+                </div>
+                <div class="campo">
+                    <label for="last_name">Sobrenome</label>
+                    <input type="text" id="last_name" name="last_name" placeholder="Sobrenome" required>
+                </div>
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn">Cadastrar empresa</button>
+
+        <p class="login-link">Já tem conta? <a href="{% url 'login' %}">Entrar</a></p>
+    </form>
+</main>
+
+<script>
+    // Máscara CNPJ
+    document.getElementById('cnpj').addEventListener('input', function (e) {
+        let v = e.target.value.replace(/\D/g, '');
+        if (v.length <= 14) {
+            v = v.replace(/^(\d{2})(\d)/, '$1.$2');
+            v = v.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            v = v.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            v = v.replace(/(\d{4})(\d)/, '$1-$2');
+        }
+        e.target.value = v;
+    });
+</script>
+
+</body>
+</html>
