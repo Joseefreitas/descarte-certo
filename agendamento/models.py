@@ -3,11 +3,12 @@ from django.contrib.auth.models import User
 from mapa.models import PontoColeta
 
 TIPOS_RESIDUO = [
-    ('domiciliar', 'Domiciliar'),
-    ('reciclavel', 'Reciclável'),
+    ('papel', 'Papel e papelão'),
+    ('plastico', 'Plástico'),
     ('organico', 'Orgânico'),
     ('eletronico', 'Eletrônico'),
-    ('volumoso', 'Volumoso'),
+    ('metais', 'Metais'),
+    ('vidro', 'Vidro'),
 ]
 
 TURNOS = [
