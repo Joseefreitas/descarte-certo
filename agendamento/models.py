@@ -10,11 +10,17 @@ TIPOS_RESIDUO = [
     ('volumoso', 'Volumoso'),
 ]
 
+TURNOS = [
+    ('manha', 'Manhã (06h - 12h)'),
+    ('tarde', 'Tarde (12h - 18h)'),
+    ('noite', 'Noite (18h - 22h)'),
+]
+
 class Agendamento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos')
     ponto_coleta = models.ForeignKey(PontoColeta, on_delete=models.CASCADE, related_name='agendamentos')
     data = models.DateField()
-    horario = models.TimeField()
+    horario = models.TimeField(max_length=10, choices=TURNOS)
     tipo_residuo = models.CharField(max_length=50, choices=TIPOS_RESIDUO)
     criado_em = models.DateTimeField(auto_now_add=True)
 
