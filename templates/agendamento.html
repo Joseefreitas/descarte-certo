@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if messages %}
+    {% for msg in messages %}
+        <p>{{ msg }}</p>
+    {% endfor %}
+{% endif %}
+
+<h2>Agendar Coleta</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label for="ponto_coleta">Ponto de Coleta:</label>
+    <select name="ponto_coleta" id="ponto_coleta" required>
+        <option value="">Selecione um ponto...</option>
+        {% for ponto in pontos %}
+            <option value="{{ ponto.id }}">{{ ponto.nome }} — {{ ponto.endereco }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="data">Data:</label>
+    <input type="date" name="data" id="data" required>
+
+    <label for="horario">Horário:</label>
+    <input type="time" name="horario" id="horario" required>
+
+    <label for="tipo_residuo">Tipo de Resíduo:</label>
+    <select name="tipo_residuo" id="tipo_residuo" required>
+        <option value="domiciliar">Domiciliar</option>
+        <option value="reciclavel">Reciclável</option>
+        <option value="organico">Orgânico</option>
+        <option value="eletronico">Eletrônico</option>
+        <option value="volumoso">Volumoso</option>
+    </select>
+
+    <button type="submit">Confirmar Agendamento</button>
+</form>
+
+<hr>
+
+<h2>Meus Agendamentos</h2>
+
+{% if agendamentos %}
+    <table>
+        <thead>
+            <tr>
+                <th>Ponto de Coleta</th>
+                <th>Endereço</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Tipo de Resíduo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ag in agendamentos %}
+                <tr>
+                    <td>{{ ag.ponto_coleta.nome }}</td>
+                    <td>{{ ag.ponto_coleta.endereco }}</td>
+                    <td>{{ ag.data }}</td>
+                    <td>{{ ag.horario }}</td>
+                    <td>{{ ag.get_tipo_residuo_display }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Você ainda não tem agendamentos.</p>
+{% endif %}
+
+{% endblock %}

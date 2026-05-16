@@ -26,7 +26,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+<<<<<<< HEAD
     # 'sua_app',
+=======
+    'cloudinary_storage',
+    'cloudinary',
+    'core',
+    'mapa',
+    'comunidade',
+    'guia_descarte',
+    'reciclagem',
+    'login',
+    'coleta',
+    'agendamento',
+>>>>>>> d5d7a2cb8efce7cd9aa7f170269534a6275d4874
 ]
 
 MIDDLEWARE = [
