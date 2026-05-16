@@ -43,4 +43,5 @@ urlpatterns = [
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
     path('coleta/', include('coleta.urls')),
+    path('agendamento/', include('agendamento.urls')),
 ]
