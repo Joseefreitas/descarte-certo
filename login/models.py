@@ -20,6 +20,9 @@ class PessoaJuridica(models.Model):
         # unique=True impede cadastro de cnpj´s duplicados 
     razao_social = models.CharField(max_length=255)
     nome_fantasia = models.CharField(max_length=255, blank=True)
+    
+    bairros_atendidos = models.CharField(max_length=500, blank=True, help_text="Separe os bairros por vírgula. Ex: Boa Viagem, Recife, Afogados")
+    tipos_residuo = models.CharField(max_length=255, blank=True, help_text="Separe por vírgula. Ex: papel, plastico, vidro")
 
     def __str__(self):
         return f'{self.razao_social} - {self.cnpj}'

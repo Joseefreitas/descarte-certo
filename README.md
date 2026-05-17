@@ -140,3 +140,56 @@ Acesse em: `http://localhost:8000`
 ![Sprint3 Foto](imagens/sprint3.png)
 
 </details>
+
+---
+
+<details>
+<summary>📅 Entrega 04 - Funcionalidades Finais e CI/CD (18/05)</summary>
+<br>
+
+### 🚀 Novas Histórias Implementadas
+- Implementação das histórias restantes atingindo o mínimo estabelecido para o projeto
+- Criação de nova sprint no JIRA
+
+---
+
+### 🔁 CI/CD - Integração e Deployment Contínuo
+
+Pipeline criada no GitHub com execução dos testes automatizados.
+
+#### 🎥 Screencast do CI/CD
+- ▶️ [Assista no YouTube]()
+
+---
+
+### 🧪 Testes de Sistema (E2E) Automatizados
+
+#### 🎥 Screencast dos testes
+- ▶️ [Assista no YouTube]()
+
+---
+
+### 🐛 Issue/Bug Tracker Atualizado
+
+**Issues Abertas**
+<!-- Adicione o print aqui -->
+
+**Issues Fechadas**
+<!-- Adicione o print aqui -->
+
+---
+
+### 👥 Atualização sobre Programação em Pares
+- 📄 [Documento de Programação em Par](https://docs.google.com/document/d/1MXLwBMmlWpoNGL9CCRT1B4_EDs41VW8V4bGoacdAZKU/edit?usp=sharing)
+
+---
+
+### 📋 Quadro da Sprint 04 Atualizado
+<!-- Adicione o print do quadro aqui -->
+
+---
+
+### 📖 Como Contribuir com o Projeto
+Consulte o arquivo [CONTRIBUTING.md](CONTRIBUTING.md) para instruções detalhadas sobre como montar o ambiente e contribuir com o projeto.
+
+</details>
