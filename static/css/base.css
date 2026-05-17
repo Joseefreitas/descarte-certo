@@ -1,7 +1,12 @@
+/* ==========================================================================
+   ESTILOS GLOBAIS (SEUS ESTILOS ORIGINAIS)
+   ========================================================================== */
+
 html, body {
     margin: 0;
     font-family: sans-serif;
     background-color: #e8f5e9 !important;
+    overflow-x: hidden; /* Evita barra de rolagem horizontal indesejada no mobile */
 }
 
 .logo {
@@ -13,6 +18,7 @@ html, body {
     font-weight: bold;
     padding-top: 11px;
     font-family: sans-serif;
+    transition: all 0.3s ease;
 }
 
 .topo {
@@ -31,11 +37,11 @@ html, body {
     left: -250px;
     width: 250px;
     height: 100vh;
-
     background: #4caf50;
-
     display: flex;
     z-index: 9998;
+    /* AJUSTE: Adicionado para o menu deslizar suavemente em vez de aparecer do nada */
+    transition: left 0.3s ease-in-out; 
 }
 
 .menu {
@@ -89,6 +95,8 @@ html, body {
   font-size: 20px;
   border-radius: 8px;
   z-index: 9999;
+  justify-content: center;
+  align-items: center;
 }
 
 .menu-bottom {
@@ -100,18 +108,53 @@ html, body {
     margin-bottom: 20px;
     background: #e74c3c;
     color: white;
-
     padding: 10px 6px;
     border-radius: 8px;
-
     text-align: center;
     text-decoration: none;
     font-weight: bold;
-
     width: 60%;
     margin: 0 auto;
 }
 
 .menu-logout:hover {
     background: #c0392b;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES - RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS (Telas até 768px)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* Diminui o logo para não colidir com o botão do menu em celulares pequenos */
+    .logo {
+        font-size: 20px;
+        padding-top: 18px;
+        width: auto;
+        white-space: nowrap;
+    }
+
+    /* Ajusta a largura do menu lateral para ocupar uma área mais confortável no smartphone */
+    .caixa-menu {
+        width: 80%;
+        max-width: 280px;
+        left: -280px; /* Esconde com base na nova largura máxima */
+    }
+
+    .caixa-menu.ativo {
+        left: 0;
+    }
+
+    /* Deixa o botão de logout ligeiramente maior e mais fácil de tocar com o polegar */
+    .menu-logout {
+        width: 80%;
+        padding: 14px 10px;
+    }
+
+    /* Classe utilitária caso você use um container de conteúdo nas suas páginas */
+    .container, .main-content, .apps-dinamico {
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
