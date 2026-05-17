@@ -13,3 +13,10 @@ if (btn && menu) {
     }
   });
 }
+
+document.addEventListener('click', (e) => {
+  if (menu.classList.contains('ativo') && !menu.contains(e.target) && e.target !== btn) {
+    menu.classList.remove('ativo');
+    btn.textContent = '☰ Menu';
+  }
+});

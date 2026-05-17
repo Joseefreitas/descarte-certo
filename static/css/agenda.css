@@ -1,79 +1,124 @@
+/* Container Principal */
 .agenda-container {
-    max-width: 1000px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-.busca-form {
+/* Caixa de Busca */
+.busca-box {
     display: flex;
     gap: 10px;
-    margin-bottom: 2rem;
+    margin-bottom: 30px;
 }
 
-.input-busca {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1rem;
+.busca-box input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
 }
 
-.btn-busca {
-    padding: 10px 20px;
-    background-color: #2e7d32;
+.busca-box button {
+    padding: 12px 25px;
+    background: #2ecc71;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: 0.3s;
 }
 
-.btn-busca:hover {
-    background-color: #1b5e20;
-}
-
+/* Grid de Cards */
 .cards-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 1.5rem;
+    gap: 20px;
 }
 
-.coleta-card {
-    border: 1px solid #81c784;
-    border-radius: 8px;
-    padding: 1.5rem;
-    background-color: #f8fff8;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    transition: transform 0.2s;
+/* Estilo do Card */
+.card-coleta {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
 }
 
-.coleta-card:hover {
+.card-coleta:hover {
     transform: translateY(-5px);
 }
 
-.coleta-card h5 {
+.card-header {
+    background: #f8f9fa;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.tag-tipo {
+    font-size: 11px;
+    background: #e8f5e9;
     color: #2e7d32;
-    margin-top: 0;
-    margin-bottom: 1rem;
-    border-bottom: 2px solid #e8f5e9;
-    padding-bottom: 0.5rem;
-    font-size: 1.25rem;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.coleta-card p {
-    margin: 8px 0;
-    color: #424242;
-    line-height: 1.4;
+.card-body {
+    padding: 20px;
 }
 
-.alerta-erro {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 1rem;
-    border-left: 5px solid #ffeeba;
-    border-radius: 4px;
-    margin-bottom: 1.5rem;
+.card-body h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #2c3e50;
+}
+
+/* Turnos */
+.turno-box {
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+/* Manhã - Amarelo vibrante */
+.turno-manha { 
+    background: #fff9c4; 
+    color: #f57f17; 
+}
+
+/* Tarde - Laranja suave */
+.turno-tarde { 
+    background: #ffe0b2; 
+    color: #e65100; 
+}
+
+/* Noite - Azul sereno */
+.turno-noite { 
+    background: #e1f5fe; 
+    color: #0288d1; 
+}
+/* Erros e Empty States */
+.erro-agenda, .empty-state {
+    text-align: center;
+    padding: 40px;
+    background: #fff5f5;
+    color: #c53030;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.empty-state {
+    background: #f7fafc;
+    color: #4a5568;
 }

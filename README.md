@@ -29,7 +29,7 @@ O **Descarte Certo** é uma plataforma web desenvolvida em **Django** que facili
 git clone https://github.com/seu-usuario/descarte-certo.git
 cd descarte-certo
 
-python -m venv venv
+python -m venv .venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
