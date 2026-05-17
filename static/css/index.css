@@ -49,33 +49,29 @@ body {
 }
 
 .carousel {
-    position: relative;
-
     width: 90%;
-    max-width: 1400px;
-
-    height: 650px;
-
+    max-width: 1200px;
+    height: 420px;
     margin: auto;
-
+    border-radius: 28px;
     overflow: hidden;
-    border-radius: 30px;
+    position: relative;
+    display: flex;
 }
 
 .slide {
-    position: absolute;
-
-    width: 100%;
+    min-width: 100%;
     height: 100%;
-
-    object-fit: cover;
-
-    opacity: 0;
-    transition: opacity 0.7s ease;
+    object-fit: contain;
+    flex-shrink: 0;
+    transition: transform 0.8s ease-in-out;
 }
 
-.slide.active {
-    opacity: 1;
+@media (max-width: 900px) {
+    .carousel {
+        height: 240px;
+        width: 94%;
+    }
 }
 
 /* SOBRE */

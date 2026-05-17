@@ -1,18 +1,14 @@
 const slides = document.querySelectorAll('.slide');
+let current = 0;
 
-let currentSlide = 0;
-
-function nextSlide() {
-
-    slides[currentSlide].classList.remove('active');
-
-    currentSlide++;
-
-    if (currentSlide >= slides.length) {
-        currentSlide = 0;
-    }
-
-    slides[currentSlide].classList.add('active');
+function goTo(index) {
+    slides.forEach(slide => {
+        slide.style.transform = `translateX(-${index * 100}%)`;
+    });
+    current = index;
 }
 
-setInterval(nextSlide, 4000);
+setInterval(() => {
+    const next = (current + 1) % slides.length;
+    goTo(next);
+}, 4000);
