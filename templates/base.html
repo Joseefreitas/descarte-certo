@@ -47,7 +47,6 @@
         <nav class="menu">
             <div class="menu-topo">
                 <ul>
-<<<<<<< HEAD
                     <li><a href="{% url 'home' %}">Início</a></li>
                     <li><a href="{% url 'mapa:index' %}">Ver Mapa</a></li>
                     <li><a href="{% url 'guia_descarte' %}">Guia de descarte</a></li>
@@ -55,8 +54,6 @@
                     <li><a href="{% url 'comunidade' %}">Comunidade</a></li>
                     <li><a href="{% url 'buscar_agenda' %}">Horários de Coleta</a></li>
                     <li><a href="{% url 'criar_agendamento' %}">Agendar de Coleta</a></li>
-                </ul>
-=======
                     <li><a href="{% url 'home' %}"><i class="fa-solid fa-house"></i> Início</a></li>
                     <li><a href="{% url 'mapa:index' %}"><i class="fa-solid fa-map-location-dot"></i> Ver Mapa</a></li>
                     <li><a href="{% url 'guia_descarte' %}"><i class="fa-solid fa-book"></i> Guia de Descarte</a></li>
@@ -64,7 +61,6 @@
                     <li><a href="{% url 'comunidade' %}"><i class="fa-solid fa-users"></i> Comunidade</a></li>
                     <li><a href="{% url 'buscar_agenda' %}"><i class="fa-solid fa-calendar-days"></i> Agenda de Coleta</a></li>
                </ul>
->>>>>>> 981c3bb (feat: adiciona testes E2E para história SCRUM-9 de agenda de coleta)
             </div>
 
             {% if user.is_authenticated %}
