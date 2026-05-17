@@ -42,6 +42,8 @@ def cadastropessoajuridica(request):
         cnpj = request.POST.get('cnpj')
         razao_social = request.POST.get('razao_social')
         nome_fantasia = request.POST.get('nome_fantasia')
+        bairros_atendidos = request.POST.get('bairros_atendidos')
+        tipos_residuo = request.POST.getlist('tipos_residuo')
 
         if User.objects.filter(username=username).exists():
             return render(request, 'cadastropessoajuridica.html', {'erro': 'Usuário já existe'})
@@ -51,7 +53,7 @@ def cadastropessoajuridica(request):
         user.last_name = last_name
         user.save()
 
-        PessoaJuridica.objects.create(user=user, cnpj=cnpj, razao_social=razao_social, nome_fantasia=nome_fantasia)
+        PessoaJuridica.objects.create(user=user, cnpj=cnpj, razao_social=razao_social, nome_fantasia=nome_fantasia,  bairros_atendidos=bairros_atendidos,  tipos_residuo=','.join(tipos_residuo),)
 
         return redirect('/login/')
 

@@ -41,6 +41,7 @@
                 <label for="senha">Senha</label>
                 <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
             </div>
+            
         </fieldset>
 
         <fieldset>
@@ -70,7 +71,25 @@
                     <label for="last_name">Sobrenome</label>
                     <input type="text" id="last_name" name="last_name" placeholder="Sobrenome" required>
                 </div>
-            </div>
+
+            
+            <div class="campo">
+                 <label for="bairros_atendidos">Bairros atendidos</label>
+                 <input type="text" id="bairros_atendidos" name="bairros_atendidos" placeholder="Ex: Boa Viagem, Recife, Afogados" required>
+           </div>
+
+           <div class="campo">
+                <label>Tipos de resíduo coletados</label>
+                <div class="checkboxes">
+                    <label><input type="checkbox" name="tipos_residuo" value="papel"> Papel e Papelão</label>
+                    <label><input type="checkbox" name="tipos_residuo" value="plastico"> Plástico</label>
+                    <label><input type="checkbox" name="tipos_residuo" value="organico"> Orgânico</label>
+                    <label><input type="checkbox" name="tipos_residuo" value="eletronico"> Eletrônico</label>
+                    <label><input type="checkbox" name="tipos_residuo" value="metais"> Metais</label>
+                    <label><input type="checkbox" name="tipos_residuo" value="vidro"> Vidro</label>
+           </div>
+        </div>
+        
         </fieldset>
 
         <button type="submit" class="btn">Cadastrar empresa</button>
