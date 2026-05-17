@@ -5,24 +5,34 @@ html, body {
 }
 
 .logo {
-    transform: translateX(-50%);
     position: absolute;
     left: 50%;
+    transform: translateX(-50%);
+
     color: white;
-    font-size: 30px;
+    font-size: 1.4rem;
     font-weight: bold;
-    padding-top: 11px;
-    font-family: sans-serif;
+
+    white-space: nowrap;
 }
 
 .topo {
-  display: flex;
-  position: static;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  background: #2e7d32;
-  z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 60px;
+
+    background: #2e7d32;
+
+    z-index: 1000;
+
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .caixa-menu {
@@ -46,7 +56,7 @@ html, body {
 }
 
 .menu-topo {
-    flex: 1;
+    flex-grow: 1;
 }
 
 /* quando abre */
@@ -75,20 +85,30 @@ html, body {
 
 /* botão fixo separado */
 .menu-toggle {
-  position: relative;
-  white-space: nowrap; 
-  display: flex;
-  top: 8px;
-  left: 10px;
-  width: 75px;
-  height: 28px;
-  background: #2e7d32;
-  color: white;
-  padding: 8px;
-  cursor: pointer;
-  font-size: 20px;
-  border-radius: 8px;
-  z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 90px;
+    height: 40px;
+
+    background: #2e7d32;
+    color: white;
+
+    padding: 0 12px;
+
+    cursor: pointer;
+    font-size: 1rem;
+
+    border-radius: 8px;
+
+    z-index: 9999;
+
+    white-space: nowrap;
+}
+
+.caixa-menu {
+    transition: left 0.3s ease;
 }
 
 .menu-bottom {
@@ -108,10 +128,65 @@ html, body {
     text-decoration: none;
     font-weight: bold;
 
-    width: 60%;
+    width: 100%;
+    box-sizing: border-box;
     margin: 0 auto;
 }
 
 .menu-logout:hover {
     background: #c0392b;
+}
+
+@media (max-width: 768px) {
+
+    .topo {
+        height: 55px;
+        padding: 0 10px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+    }
+
+    .menu-toggle {
+        min-width: 75px;
+        height: 36px;
+        font-size: 0.9rem;
+        padding: 0 10px;
+    }
+
+    .caixa-menu {
+        width: 80%;
+        left: -80%;
+    }
+
+    .caixa-menu.ativo {
+        left: 0;
+    }
+
+    .menu ul {
+        padding-top: 70px;
+    }
+
+    .menu a {
+        font-size: 1rem;
+        padding: 15px 12px;
+    }
+
+    .menu-logout {
+        width: 100%;
+    }
+
+    .alert-message {
+        width: 90%;
+        min-width: unset !important;
+        font-size: 0.9rem;
+        padding: 12px !important;
+    }
+
+    .menu {
+        justify-content: space-between;
+        overflow-y: auto;
+    }
+
 }

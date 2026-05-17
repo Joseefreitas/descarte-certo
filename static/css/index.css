@@ -1,195 +1,277 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .home {
-    position: relative;
+    width: 100%;
+    background: #f5f7f5;
+}
+
+/* HERO */
+
+.hero {
+    width: 100%;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
-    gap: 25px;
-    background-color: #e8f5e9;
+    justify-content: center;
+
+    text-align: center;;
 }
 
-.logo-home {
-    width: 150px;
-    height: 150px;
-    margin-bottom: -16px;
-    align-self: flex-start;
-}
-
-.header {
-    text-align: center;
-    max-width: 800px;
-}
-
-.header h1 {
+.hero h1 {
+    font-size: 52px;
     color: #2d5c3f;
-    margin-bottom: 5px;
+
+    margin-bottom: -10px;
 }
 
-.header p {
+.hero p {
+    max-width: 750px;
+
+    font-size: 25px;
+    line-height: 1.8;
+
     color: #555;
 }
 
-/* BOTÃO PRINCIPAL */
-.cta {
-    display: block;
-    text-align: center;
-    background-color: #2d5c3f;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.25s ease;
-}
+/* CARROSSEL */
 
-.cta:hover {
-    background-color: #244a33;
-    transform: translateY(-2px);
-}
-
-/* SEÇÕES COMO CARD */
-.section {
+.carousel-section {
     width: 100%;
-    max-width: 800px;
-    background: #fffcf7;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-    border: 1px solid rgba(0,0,0,0.05);
+    padding: 60px 0;
+    background: #f5f7f5;
 }
 
-/* TÍTULO DAS SEÇÕES */
-.section h2 {
-    margin-bottom: 12px;
+.carousel {
+    position: relative;
+
+    width: 90%;
+    max-width: 1400px;
+
+    height: 650px;
+
+    margin: auto;
+
+    overflow: hidden;
+    border-radius: 30px;
+}
+
+.slide {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+/* SOBRE */
+
+.about-section {
+    width: 100%;
+    padding: 100px 20px;
+}
+
+.about-container {
+    max-width: 1000px;
+    margin: auto;
+    text-align: center;
+}
+
+.about-container h2 {
+    font-size: 42px;
     color: #2d5c3f;
+    margin-bottom: 30px;
 }
 
-/* TEXTO */
-.section p,
-.section li {
+.about-container p {
+    font-size: 18px;
+    line-height: 1.9;
     color: #444;
-    font-size: 14px;
-    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-/* LISTA SEM BOLINHA + SETA */
-.section ul {
-    list-style: none;
-    padding-left: 0;
-}
+/* INFO SECTIONS */
 
-.section li {
-    position: relative;
-    padding-left: 18px;
-    margin-bottom: 8px;
-}
-
-.section li::before {
-    content: "➜";
-    position: absolute;
-    left: 0;
-    color: #2d5c3f;
-    font-weight: bold;
-}
-
-.section-1 {
+.info-section {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    padding: 100px 20px;
 }
 
-/* CARD BASE */
-.step {
+.light {
+    background: #f7faf7;
+}
+
+.info-container {
+    max-width: 1400px;
+
+    margin: auto;
+
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 14px;
-    border-radius: 12px;
-
-    width: 100%;
-    box-sizing: border-box;
-
-    border: 1px solid rgba(0,0,0,0.05);
+    gap: 70px;
 }
 
-.step-number {
-    min-width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: rgba(45, 92, 63, 0.15);
-    color: #2d5c3f;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.info-text {
+    flex: 1;
+}
+
+.info-tag {
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    background: #ffe5e5;
+    color: #c0392b;
+
+    border-radius: 999px;
+
+    font-size: 13px;
     font-weight: bold;
+
+    margin-bottom: 20px;
 }
 
-/* CORES DIFERENTES POR PASSO */
-.step-1 {
-    background: #ffdcf1 !important; /* verde claro */
+.info-tag.green {
+    background: #dff5e5;
+    color: #2d5c3f;
 }
 
-.step-2 {
-    background: #c0e4fd !important; /* azul claro */
+.info-text h2 {
+    font-size: 44px;
+    color: #1f1f1f;
+    margin-bottom: 24px;
+    line-height: 1.2;
 }
 
-.step-3 {
-    background: #faf9cf !important; /* laranja claro */
+.info-text p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.9;
+    margin-bottom: 18px;
 }
 
-/* TEXTO */
-.step p {
-    margin: 0;
+.info-image {
+    flex: 1;
+}
+
+.info-image img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    border-radius: 24px;
+}
+
+/* STATS */
+
+.info-stats {
+    display: flex;
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.stat h3 {
+    margin-top: 10px;
+    font-size: 42px;
+    color: #2d5c3f;
+    margin-bottom: 6px;
+}
+
+.stat span {
+    color: #666;
+    font-size: 16px;
+}
+
+/* MATERIAIS */
+
+.materials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 25px;
+}
+
+.materials span {
+    padding: 10px 16px;
+
+    background: #edf5ee;
+    color: #2d5c3f;
+
+    border-radius: 999px;
+
     font-size: 14px;
-    line-height: 1.5;
+    font-weight: 600;
 }
 
-.section-2 {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: stretch;
-}
+/* RESPONSIVO */
 
-/* lado esquerdo */
-.section2-content {
-    flex: 2;
-    min-width: 0;
-}
+@media (max-width: 900px) {
 
-/* lado direito (card interno) */
-.section2-tip {
-    position: relative;
-    z-index: 2;
-    background: #a78db1;
-    border-radius: 14px;
-    padding: 16px;
-    border: 1px solid rgba(0,0,0,0.08);
-    flex: 0.8; 
-    max-width: 220px; 
-    min-height: 120px;  
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-.section2-tip::before {
-    content: "";
-    position: absolute;
-    top: -6px;
-    left: 4px;
-    right: -4px;
-    bottom: 6px;
-    background: #fce4ff;
-    border-radius: 14px;
-    border: 1px solid rgba(0,0,0,0.06);
-    z-index: -1;
-}
-
-/* responsivo (IMPORTANTE) */
-@media (max-width: 768px) {
-    .section-2 {
-        flex-direction: column;
+    .hero {
+        padding: 50px 20px 20px;
     }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .carousel {
+        height: 260px;
+        width: 94%;
+    }
+
+    .about-section,
+    .info-section {
+        padding: 60px 18px;
+    }
+
+    .about-container h2,
+    .info-text h2 {
+        font-size: 30px;
+    }
+
+    .about-container p,
+    .info-text p {
+        font-size: 16px;
+    }
+
+    .info-container,
+    .reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .info-image img {
+        height: 260px;
+    }
+
+    .info-stats {
+        flex-direction: column;
+        gap: 18px;
+    }
+
 }

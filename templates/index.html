@@ -9,71 +9,214 @@
 
 <div class="home">
 
-    <div class="header">
-        <img src="{% static 'image/cdlogo.png' %}" class="logo-home" alt="Logo">
+    <!-- HERO -->
+
+    <section class="hero">
+
         {% if user.is_authenticated and not request.session.modo_visitante %}
-            <h1>Olá, {{ user.username }} 👋</h1>
+            <h1>Olá, {{ user.username }}! 👋</h1>
         {% else %}
             <h1>Bem-vindo! 👋</h1>
-{% endif %}
-        <p>Bem-vindo ao nosso site — vamos descartar melhor hoje?</p>
-    </div>
+        {% endif %}
 
-    <div class="main-action">
-        <a href="{% url 'mapa:index' %}" class="cta">
-            👉 Encontrar ponto de coleta perto de mim
-        </a>
-    </div>
-
-    <div class="section section-1">
-
-    <h2>Por onde começar</h2>
-
-    <div class="step step-1">
-        <div class="step-number">1</div>
-        <p>Procure o material que quer descartar</p>
-    </div>
-
-    <div class="step step-2">
-        <div class="step-number">2</div>
-        <p>Veja o ponto de coleta mais próximo no mapa</p>
-    </div>
-
-    <div class="step step-3">
-        <div class="step-number">3</div>
-        <p>Descarte corretamente e ajude o meio ambiente</p>    
-    </div>
-
-</div>
-
-<div class="section section-2">
-
-    <div class="section2-content">
-        <h2>Dicas importantes</h2>
-        <ul>
-            <li>Lave embalagens antes de reciclar</li>
-            <li>Separe orgânico de reciclável</li>
-            <li>Alguns materiais vão para pontos específicos</li>
-        </ul>
-    </div>
-
-    <div class="section2-tip">
-        <span>💡 Dica do dia</span>
-        <p id="tip-text"></p>
-    </div>
-
-</div>
-
-    <div class="section section-3">
-        <h2>Sobre o nosso projeto:</h2>
         <p>
-            O Descarte Certo é um projeto desenvolvido para facilitar o acesso à informação sobre o descarte correto de resíduos. A proposta é ajudar as pessoas a entenderem onde e como descartar diferentes tipos de materiais, como recicláveis, orgânicos e eletrônicos, de forma simples e acessível. Através de um mapa interativo, o usuário consegue encontrar pontos de coleta próximos e contribuir diretamente para uma cidade mais limpa e sustentável.
-        </p>
-        <p>
-            Além de conectar pessoas aos locais de descarte, o projeto também busca conscientizar sobre a importância da separação correta do lixo. Pequenas atitudes no dia a dia, como lavar embalagens ou separar materiais corretamente, fazem grande diferença no impacto ambiental. O Descarte Certo nasce com o objetivo de transformar informação em ação, incentivando hábitos mais sustentáveis e responsáveis.
+            Venha descartar de forma correta!
         </p>
 
-    </div>
+    </section>
+
+    <!-- CARROSSEL -->
+    <section class="carousel-section">
+
+        <div class="carousel">
+
+            <img src="{% static 'image/carrossel1.jpg' %}" class="slide active">
+            <img src="{% static 'image/carrossel2.jpg' %}" class="slide">
+            <img src="{% static 'image/carrossel3.jpg' %}" class="slide">
+            <img src="{% static 'image/carrossel4.jpg' %}" class="slide">
+
+        </div>
+
+    </section>
+
+    <!-- SOBRE -->
+    <section class="about-section">
+
+        <div class="about-container">
+
+            <h2>Sobre a plataforma</h2>
+
+            <p>
+                O Descarte Certo foi desenvolvido com o objetivo de facilitar o acesso à informação sobre o descarte correto de resíduos recicláveis, orgânicos e eletrônicos. 
+                Muitas pessoas ainda possuem dúvidas sobre como separar materiais, onde descartá-los e quais impactos o descarte incorreto pode causar no meio ambiente e na saúde pública. Pensando nisso, 
+                a plataforma reúne informações de forma simples, acessível e intuitiva, ajudando usuários a adotarem hábitos mais sustentáveis no dia a dia.
+            </p>
+
+            <p>
+                Através de um mapa interativo, os usuários conseguem localizar pontos de coleta próximos, identificar locais adequados para diferentes tipos de resíduos e compreender melhor a importância da separação correta do lixo. 
+                Além de auxiliar no descarte consciente, o projeto também busca incentivar a educação ambiental e a conscientização coletiva, mostrando que pequenas atitudes podem gerar grandes impactos positivos para as cidades, 
+                para a preservação dos recursos naturais e para a construção de um futuro mais sustentável.
+
+        </div>
+
+    </section>
+
+    <!-- BLOCO 1 -->
+    <section class="info-section">
+
+        <div class="info-container">
+
+            <div class="info-text">
+
+                <span class="info-tag">POLUIÇÃO URBANA</span>
+
+                <h2>O descarte irregular afeta diretamente a saúde pública</h2>
+
+                <p>
+                    O acúmulo de lixo em ruas, rios e terrenos baldios contribui para enchentes,
+                    proliferação de doenças e contaminação ambiental.
+                </p>
+
+                <p>
+                    Materiais descartados incorretamente podem bloquear sistemas de drenagem,
+                    aumentar a presença de insetos transmissores e prejudicar a qualidade da água.
+                </p>
+
+                <div class="info-stats">
+
+                    <div class="stat">
+                        <h3>100+</h3>
+                        <span>anos para decomposição do plástico</span>
+                    </div>
+
+                    <div class="stat">
+                        <h3>1kg</h3>
+                        <span>de óleo pode contaminar milhares de litros de água</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="info-image">
+                <img src="{% static 'image/poluicao.jpg' %}">
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BLOCO 2 -->
+    <section class="info-section light">
+
+        <div class="info-container reverse">
+
+            <div class="info-text">
+
+                <span class="info-tag green">RECICLAGEM</span>
+
+                <h2>Separar resíduos corretamente reduz impactos ambientais</h2>
+
+                <p>
+                    A reciclagem ajuda a diminuir a extração de recursos naturais,
+                    reduz a quantidade de lixo enviada para aterros e economiza energia.
+                </p>
+
+                <p>
+                    Materiais como papel, vidro, plástico e alumínio podem retornar
+                    para a cadeia produtiva quando separados corretamente.
+                </p>
+
+                <div class="materials">
+
+                    <span>Papel</span>
+                    <span>Vidro</span>
+                    <span>Plástico</span>
+                    <span>Metal</span>
+                    <span>Eletrônicos</span>
+
+                </div>
+
+            </div>
+
+            <div class="info-image">
+                <img src="{% static 'image/reciclagem.jpg' %}">
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BLOCO 3 -->
+    <section class="info-section">
+
+        <div class="info-container">
+
+            <div class="info-text">
+
+                <span class="info-tag">LIXO ELETRÔNICO</span>
+
+                <h2>Eletrônicos possuem componentes tóxicos</h2>
+
+                <p>
+                    Pilhas, baterias, celulares e computadores contêm metais pesados
+                    que podem contaminar o solo e a água quando descartados incorretamente.
+                </p>
+
+                <p>
+                    O descarte em pontos especializados evita danos ambientais
+                    e permite o reaproveitamento de componentes importantes.
+                </p>
+
+                <div class="materials">
+
+                    <span>Pilhas</span>
+                    <span>Baterias</span>
+                    <span>Celulares</span>
+                    <span>Computadores</span>
+
+                </div>
+
+            </div>
+
+            <div class="info-image">
+                <img src="{% static 'image/eletronico.jpg' %}">
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BLOCO 4 -->
+    <section class="info-section light">
+
+        <div class="info-container reverse">
+
+            <div class="info-text">
+
+                <span class="info-tag green">SUSTENTABILIDADE</span>
+
+                <h2>Pequenas atitudes geram grandes mudanças</h2>
+
+                <p>
+                    Separar resíduos, utilizar pontos de coleta e reduzir desperdícios
+                    são atitudes simples que ajudam a construir cidades mais sustentáveis.
+                </p>
+
+                <p>
+                    Quando mais pessoas participam, maiores são os impactos positivos
+                    para o meio ambiente e para a qualidade de vida da população.
+                </p>
+
+            </div>
+
+            <div class="info-image">
+                <img src="{% static 'image/sustentabilidade.jpg' %}">
+            </div>
+
+        </div>
+
+    </section>
 
 </div>
 
