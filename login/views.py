@@ -8,7 +8,7 @@ def eusou(request):
     return render(request, 'eusou.html')
 
 
-def cadastro_pessoa_fisica(request):
+def cadastropessoafisica(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         first_name = request.POST.get('first_name')
@@ -18,7 +18,7 @@ def cadastro_pessoa_fisica(request):
         cpf = request.POST.get('cpf')
 
         if User.objects.filter(username=username).exists():
-            return render(request, 'cadastro_pessoa_fisica.html', {'erro': 'Usuário já existe'})
+            return render(request, 'cadastropessoafisica.html', {'erro': 'Usuário já existe'})
 
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.first_name = first_name
@@ -29,10 +29,10 @@ def cadastro_pessoa_fisica(request):
 
         return redirect('/login/')
 
-    return render(request, 'cadastro_pessoa_fisica.html')
+    return render(request, 'cadastropessoafisica.html')
 
 
-def cadastro_empresa(request):
+def cadastropessoajuridica(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         first_name = request.POST.get('first_name')
@@ -44,7 +44,7 @@ def cadastro_empresa(request):
         nome_fantasia = request.POST.get('nome_fantasia')
 
         if User.objects.filter(username=username).exists():
-            return render(request, 'cadastro_empresa.html', {'erro': 'Usuário já existe'})
+            return render(request, 'cadastropessoajuridica.html', {'erro': 'Usuário já existe'})
 
         user = User.objects.create_user(username=username, email=email, password=senha)
         user.first_name = first_name
@@ -55,7 +55,7 @@ def cadastro_empresa(request):
 
         return redirect('/login/')
 
-    return render(request, 'cadastro_empresa.html')
+    return render(request, 'cadastropessoajuridica.html')
 
 
 def login_usuario(request):
