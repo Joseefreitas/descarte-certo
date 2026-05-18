@@ -1,229 +1,273 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}Descarte Certo — Descarte correto de resíduos{% endblock %}
+
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{# index não precisa de CSS adicional — tudo está em styles.css #}
 {% endblock %}
 
 {% block content %}
 
+<!-- HOME -->
 <div class="home">
 
-    <!-- HERO -->
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <h1 class="hero__greeting" id="hero-heading">
+      {% if user.is_authenticated and not request.session.modo_visitante %}
+        Olá, {{ user.username }}! 👋
+      {% else %}
+        Bem-vindo! 👋
+      {% endif %}
+    </h1>
+    <p class="hero__tagline">
+      Venha descartar de forma correta e ajudar o meio ambiente.
+    </p>
+  </section>
 
-    <section class="hero">
+  <!-- CARROSSEL -->
+  <section class="carousel-section" aria-label="Galeria de imagens">
+    <!--
+      Estrutura do carrossel:
+        .carousel              - container (aspect-ratio, overflow:hidden)
+          .carousel__track     - faixa de slides (movida via transform)
+            .carousel__slide   - cada imagem
+          .carousel__btn--prev - botão anterior
+          .carousel__btn--next - botão próximo
+          .carousel__dots      - indicadores (gerados pelo carousel.js)
 
-        {% if user.is_authenticated and not request.session.modo_visitante %}
-            <h1>Olá, {{ user.username }}! 👋</h1>
-        {% else %}
-            <h1>Bem-vindo! 👋</h1>
-        {% endif %}
+      O carousel.js vai inserir clones de slides no track para o loop infinito.
+      Não adicione manualmente clones aqui — isso é responsabilidade do JS.
+    -->
+    <div class="carousel" role="region" aria-label="Carrossel de imagens" aria-roledescription="carrossel">
+      <div class="carousel__track" aria-live="off">
 
-        <p>
-            Venha descartar de forma correta!
+        <div class="carousel__slide">
+          <img
+            src="{% static 'image/carrossel/1.png' %}"
+            alt="Descarte correto de resíduos — imagem ilustrativa"
+            loading="eager"
+          />
+          <!--
+            O primeiro slide usa loading="eager" porque é visível na carga inicial.
+            Os demais usam loading="lazy" para economizar largura de banda.
+          -->
+        </div>
+
+        <div class="carousel__slide">
+          <img
+            src="{% static 'image/carrossel/2.png' %}"
+            alt="Pontos de coleta seletiva na cidade"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="carousel__slide">
+          <img
+            src="{% static 'image/carrossel/3.png' %}"
+            alt="Reciclagem e sustentabilidade"
+            loading="lazy"
+          />
+        </div>
+
+        <div class="carousel__slide">
+          <img
+            src="{% static 'image/carrossel/4.png' %}"
+            alt="Comunidade engajada no descarte consciente"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+
+      <!-- Botões de navegação: aria-label descritivo para leitores de tela -->
+      <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Slide anterior">
+        <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+      </button>
+      <button class="carousel__btn carousel__btn--next" type="button" aria-label="Próximo slide">
+        <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+      </button>
+
+      <!-- Dots (indicadores de posição) — conteúdo gerado pelo carousel.js -->
+      <div class="carousel__dots" role="group" aria-label="Navegação por slide"></div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about-section" aria-labelledby="sobre-heading">
+    <div class="about-section__inner">
+      <h2 class="about-section__title" id="sobre-heading">Sobre a plataforma</h2>
+      <p class="about-section__body">
+        O Descarte Certo foi desenvolvido para tornar o descarte correto de resíduos mais simples,
+        acessível e presente no dia a dia das pessoas.
+        A plataforma ajuda usuários a entenderem como separar materiais recicláveis,
+        orgânicos e eletrônicos corretamente,
+        além de facilitar a busca por pontos de coleta próximos através de um mapa interativo.
+      </p>
+      <p class="about-section__body">
+        Além de auxiliar no descarte consciente, o projeto também busca incentivar a
+        conscientização ambiental e a participação da população na construção de cidades mais limpas e sustentáveis.
+        Através da informação e da tecnologia, o Descarte Certo mostra como pequenas atitudes podem gerar
+        impactos positivos para o meio ambiente e para a qualidade de vida da população.
+      </p>
+    </div>
+  </section>
+
+  <!-- BLOCO 1: Poluição Urbana -->
+  <section class="info-section" aria-labelledby="poluicao-heading">
+    <div class="info-section__inner">
+
+      <div class="info-section__text">
+        <span class="info-tag" aria-label="Categoria: Poluição Urbana">POLUIÇÃO URBANA</span>
+        <h2 class="info-section__title" id="poluicao-heading">
+          O descarte irregular afeta diretamente a saúde pública
+        </h2>
+        <p class="info-section__body">
+          O acúmulo de lixo em ruas, rios e terrenos baldios contribui para enchentes,
+          proliferação de doenças e contaminação ambiental.
+        </p>
+        <p class="info-section__body">
+          Materiais descartados incorretamente podem bloquear sistemas de drenagem,
+          aumentar a presença de insetos transmissores e prejudicar a qualidade da água.
         </p>
 
-    </section>
-
-    <!-- CARROSSEL -->
-    <section class="carousel-section">
-
-        <div class="carousel">
-
-            <img src="{% static 'image/carrossel/1.png' %}" class="slide active">
-            <img src="{% static 'image/carrossel/2.png' %}" class="slide">
-            <img src="{% static 'image/carrossel/3.png' %}" class="slide">
-            <img src="{% static 'image/carrossel/4.png' %}" class="slide">
-
+        <div class="stats" aria-label="Dados sobre poluição">
+          <div class="stat">
+            <p class="stat__number">100+</p>
+            <p class="stat__label">anos para decomposição do plástico</p>
+          </div>
+          <div class="stat">
+            <p class="stat__number">1 kg</p>
+            <p class="stat__label">de óleo pode contaminar milhares de litros de água</p>
+          </div>
         </div>
+      </div>
 
-    </section>
+      <div class="info-section__image-wrap">
+        <img
+          class="info-section__img"
+          src="{% static 'image/carrossel/descarteirregular.jpg' %}"
+          alt="Descarte irregular de lixo em área urbana"
+          loading="lazy"
+        />
+      </div>
 
-    <!-- SOBRE -->
-    <section class="about-section">
+    </div>
+  </section>
 
-        <div class="about-container">
+  <!-- BLOCO 2: Reciclagem -->
+  <section class="info-section info-section--alt" aria-labelledby="reciclagem-heading">
+    <div class="info-section__inner info-section__inner--reverse">
 
-            <h2>Sobre a plataforma</h2>
+      <div class="info-section__text">
+        <span class="info-tag info-tag--green" aria-label="Categoria: Reciclagem">RECICLAGEM</span>
+        <h2 class="info-section__title" id="reciclagem-heading">
+          Separar resíduos corretamente reduz impactos ambientais
+        </h2>
+        <p class="info-section__body">
+          A reciclagem ajuda a diminuir a extração de recursos naturais,
+          reduz a quantidade de lixo enviada para aterros e economiza energia.
+        </p>
+        <p class="info-section__body">
+          Materiais como papel, vidro, plástico e alumínio podem retornar
+          para a cadeia produtiva quando separados corretamente.
+        </p>
 
-            <p>
-                O Descarte Certo foi desenvolvido para tornar o descarte correto de resíduos mais simples, 
-                acessível e presente no dia a dia das pessoas. 
-                A plataforma ajuda usuários a entenderem como separar materiais recicláveis, 
-                orgânicos e eletrônicos corretamente, 
-                além de facilitar a busca por pontos de coleta próximos através de um mapa interativo.
-            </p>
+        <ul class="materials" aria-label="Materiais recicláveis" role="list">
+          <li class="materials__tag">Papel</li>
+          <li class="materials__tag">Vidro</li>
+          <li class="materials__tag">Plástico</li>
+          <li class="materials__tag">Metal</li>
+          <li class="materials__tag">Eletrônicos</li>
+        </ul>
+      </div>
 
-            <p>
-                Além de auxiliar no descarte consciente, o projeto também busca incentivar a 
-                conscientização ambiental e a participação da população na construção de cidades mais limpas e sustentáveis. 
-                Através da informação e da tecnologia, o Descarte Certo mostra como pequenas atitudes podem gerar 
-                impactos positivos para o meio ambiente e para a qualidade de vida da população.
-            </p>
+      <div class="info-section__image-wrap">
+        <img
+          class="info-section__img"
+          src="{% static 'image/carrossel/lixoseparado.webp' %}"
+          alt="Lixo corretamente separado por tipo para reciclagem"
+          loading="lazy"
+        />
+      </div>
 
-        </div>
+    </div>
+  </section>
 
-    </section>
+  <!-- BLOCO 3: Lixo Eletrônico -->
+  <section class="info-section" aria-labelledby="eletronico-heading">
+    <div class="info-section__inner">
 
-    <!-- BLOCO 1 -->
-    <section class="info-section">
+      <div class="info-section__text">
+        <span class="info-tag" aria-label="Categoria: Lixo Eletrônico">LIXO ELETRÔNICO</span>
+        <h2 class="info-section__title" id="eletronico-heading">
+          Eletrônicos possuem componentes tóxicos
+        </h2>
+        <p class="info-section__body">
+          Pilhas, baterias, celulares e computadores contêm metais pesados
+          que podem contaminar o solo e a água quando descartados incorretamente.
+        </p>
+        <p class="info-section__body">
+          O descarte em pontos especializados evita danos ambientais
+          e permite o reaproveitamento de componentes importantes.
+        </p>
 
-        <div class="info-container">
+        <ul class="materials" aria-label="Tipos de lixo eletrônico" role="list">
+          <li class="materials__tag">Pilhas</li>
+          <li class="materials__tag">Baterias</li>
+          <li class="materials__tag">Celulares</li>
+          <li class="materials__tag">Computadores</li>
+        </ul>
+      </div>
 
-            <div class="info-text">
+      <div class="info-section__image-wrap">
+        <img
+          class="info-section__img"
+          src="{% static 'image/carrossel/lixoeletronico.png' %}"
+          alt="Pilha de lixo eletrônico incluindo celulares e computadores descartados"
+          loading="lazy"
+        />
+      </div>
 
-                <span class="info-tag">POLUIÇÃO URBANA</span>
+    </div>
+  </section>
 
-                <h2>O descarte irregular afeta diretamente a saúde pública</h2>
+  <!-- BLOCO 4: Sustentabilidade -->
+  <section class="info-section info-section--alt" aria-labelledby="sustentabilidade-heading">
+    <div class="info-section__inner info-section__inner--reverse">
 
-                <p>
-                    O acúmulo de lixo em ruas, rios e terrenos baldios contribui para enchentes,
-                    proliferação de doenças e contaminação ambiental.
-                </p>
+      <div class="info-section__text">
+        <span class="info-tag info-tag--green" aria-label="Categoria: Sustentabilidade">SUSTENTABILIDADE</span>
+        <h2 class="info-section__title" id="sustentabilidade-heading">
+          Pequenas atitudes geram grandes mudanças
+        </h2>
+        <p class="info-section__body">
+          Separar resíduos, utilizar pontos de coleta e reduzir desperdícios
+          são atitudes simples que ajudam a construir cidades mais sustentáveis.
+        </p>
+        <p class="info-section__body">
+          Quando mais pessoas participam, maiores são os impactos positivos
+          para o meio ambiente e para a qualidade de vida da população.
+        </p>
+      </div>
 
-                <p>
-                    Materiais descartados incorretamente podem bloquear sistemas de drenagem,
-                    aumentar a presença de insetos transmissores e prejudicar a qualidade da água.
-                </p>
+      <div class="info-section__image-wrap">
+        <img
+          class="info-section__img"
+          src="{% static 'image/carrossel/sustentabilidade.jpg' %}"
+          alt="Pessoas praticando hábitos sustentáveis no cotidiano"
+          loading="lazy"
+        />
+      </div>
 
-                <div class="info-stats">
-
-                    <div class="stat">
-                        <h3>100+</h3>
-                        <span>anos para decomposição do plástico</span>
-                    </div>
-
-                    <div class="stat">
-                        <h3>1kg</h3>
-                        <span>de óleo pode contaminar milhares de litros de água</span>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="info-image">
-                <img src="{% static 'image/carrossel/descarteirregular.jpg' %}">
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- BLOCO 2 -->
-    <section class="info-section light">
-
-        <div class="info-container reverse">
-
-            <div class="info-text">
-
-                <span class="info-tag green">RECICLAGEM</span>
-
-                <h2>Separar resíduos corretamente reduz impactos ambientais</h2>
-
-                <p>
-                    A reciclagem ajuda a diminuir a extração de recursos naturais,
-                    reduz a quantidade de lixo enviada para aterros e economiza energia.
-                </p>
-
-                <p>
-                    Materiais como papel, vidro, plástico e alumínio podem retornar
-                    para a cadeia produtiva quando separados corretamente.
-                </p>
-
-                <div class="materials">
-
-                    <span>Papel</span>
-                    <span>Vidro</span>
-                    <span>Plástico</span>
-                    <span>Metal</span>
-                    <span>Eletrônicos</span>
-
-                </div>
-
-            </div>
-
-            <div class="info-image">
-                <img src="{% static 'image/carrossel/lixoseparado.webp' %}">
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- BLOCO 3 -->
-    <section class="info-section">
-
-        <div class="info-container">
-
-            <div class="info-text">
-
-                <span class="info-tag">LIXO ELETRÔNICO</span>
-
-                <h2>Eletrônicos possuem componentes tóxicos</h2>
-
-                <p>
-                    Pilhas, baterias, celulares e computadores contêm metais pesados
-                    que podem contaminar o solo e a água quando descartados incorretamente.
-                </p>
-
-                <p>
-                    O descarte em pontos especializados evita danos ambientais
-                    e permite o reaproveitamento de componentes importantes.
-                </p>
-
-                <div class="materials">
-
-                    <span>Pilhas</span>
-                    <span>Baterias</span>
-                    <span>Celulares</span>
-                    <span>Computadores</span>
-
-                </div>
-
-            </div>
-
-            <div class="info-image">
-                <img src="{% static 'image/carrossel/lixoeletronico.png' %}">
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- BLOCO 4 -->
-    <section class="info-section light">
-
-        <div class="info-container reverse">
-
-            <div class="info-text">
-
-                <span class="info-tag green">SUSTENTABILIDADE</span>
-
-                <h2>Pequenas atitudes geram grandes mudanças</h2>
-
-                <p>
-                    Separar resíduos, utilizar pontos de coleta e reduzir desperdícios
-                    são atitudes simples que ajudam a construir cidades mais sustentáveis.
-                </p>
-
-                <p>
-                    Quando mais pessoas participam, maiores são os impactos positivos
-                    para o meio ambiente e para a qualidade de vida da população.
-                </p>
-
-            </div>
-
-            <div class="info-image">
-                <img src="{% static 'image/carrossel/sustentabilidade.jpg' %}">
-            </div>
-
-        </div>
-
-    </section>
+    </div>
+  </section>
 
 </div>
 
-<script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
 
+{% block extra_js %}
+<script src="{% static 'js/carousel.js' %}" defer></script>
 {% endblock %}
