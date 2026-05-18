@@ -168,7 +168,7 @@ Acesse em: `http://localhost:8000`
 Pipeline criada no GitHub com execução dos testes automatizados.
 
 #### 🎥 Screencast do CI/CD
-- ▶️ [Assista no YouTube]()
+- ▶️ [Assista no YouTube](https://youtu.be/RV9PXccVn6g)
 
 ---
 
