@@ -112,8 +112,8 @@ html {
   --shadow-lg:  0 10px 40px rgba(0, 0, 0, 0.12);
  
   /* Tipografia */
-  --font-display: 'Syne', system-ui, sans-serif;
-  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-display: 'Poppins', system-ui, sans-serif;
+  --font-body:    'Inter', system-ui, sans-serif;
  
   /* Escala tipográfica modular (razão 1.25 — Major Third) */
   --text-xs:   0.64rem;   /*  ~10px */
