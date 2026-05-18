@@ -5,7 +5,6 @@ from .models import PessoaFisica, PessoaJuridica
 
 
 class EusouViewTest(TestCase):
-    # verifica status 200 e template correto.
     def setUp(self):
         self.client = Client()
 
@@ -19,8 +18,6 @@ class EusouViewTest(TestCase):
 
 
 class CadastroPessoaFisicaViewTest(TestCase):
-    #Testa GET, criação de User e PessoaFisica, salvamento do nome completo,
-    #redirecionamento para /login/ e bloqueio de username duplicado.
     def setUp(self):
         self.client = Client()
         self.url = reverse('cadastropessoafisica')
@@ -74,9 +71,6 @@ class CadastroPessoaFisicaViewTest(TestCase):
 
 
 class CadastroPessoaJuridicaViewTest(TestCase):
-     #mesma estrutura, validando também os campos exclusivos de PJ
-     #  (cnpj, razao_social, nome_fantasia). + 
-     # bairros atendidos e tipo de resíduo .
     def setUp(self):
         self.client = Client()
         self.url = reverse('cadastropessoajuridica')
@@ -114,14 +108,12 @@ class CadastroPessoaJuridicaViewTest(TestCase):
         self.assertEqual(pj.nome_fantasia, 'XYZ Store')
 
     def test_post_valido_salva_bairros_atendidos(self):
-        #verifica se o campo de texto é persistido corretamente.
         self.client.post(self.url, self.dados_validos)
         user = User.objects.get(username='empresa_xyz')
         pj = PessoaJuridica.objects.get(user=user)
         self.assertEqual(pj.bairros_atendidos, 'Boa Viagem, Piedade')
 
     def test_post_valido_salva_tipos_residuo_como_string_separada_por_virgula(self):
-        # valida o ','.join(tipos_residuo) que a view aplica antes de salvar.
         self.client.post(self.url, self.dados_validos)
         user = User.objects.get(username='empresa_xyz')
         pj = PessoaJuridica.objects.get(user=user)
@@ -136,7 +128,6 @@ class CadastroPessoaJuridicaViewTest(TestCase):
         self.assertEqual(pj.tipos_residuo, 'vidro')
 
     def test_post_valido_sem_tipos_residuo_salva_vazio(self):
-        # garante que nenhum tipo selecionado resulta em string vazia '', sem lançar erro.
         """Garante que ausência de tipos_residuo não quebra o cadastro."""
         dados = {**self.dados_validos}
         dados.pop('tipos_residuo')
@@ -209,8 +200,6 @@ class LoginUsuarioViewTest(TestCase):
 
 
 class LogoutUsuarioViewTest(TestCase):
-    # valida encerramento de sessão, redirect para /login/ 
-    # e que o logout sem sessão ativa não lança erro.
     def setUp(self):
         self.client = Client()
         self.url = reverse('logout_usuario')
