@@ -64,7 +64,6 @@
             </form>
             {% endif %}
 
-            <!-- 🔥 NOVO LAYOUT -->
             <div class="card-top">
 
                 {% if topic.imagem %}
@@ -78,12 +77,15 @@
                     <p class="conteudo">{{ topic.content }}</p>
 
                     <small class="info">
-                        {% if topic.author %}
-                            por {{ topic.author.username }}
-                        {% else %}
+                         {% if topic.author %}
+                             {% if topic.author.id in empresas_ids %}
+                                 <span class="tag-empresa">Empresa</span>
+                             {% endif %}
+                            por  {{ topic.author.username }}
+                         {% else %}
                             por Anônimo
-                        {% endif %}
-                        • {{ topic.created_at }}
+                         {% endif %}
+                         • {{ topic.created_at }}
                     </small>
 
                     <a href="/comunidade/{{ topic.id }}/" class="link">
