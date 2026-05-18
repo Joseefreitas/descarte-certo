@@ -46,6 +46,11 @@ Acesse em: `http://localhost:8000`
 
 ---
 
+### 📊 Apresentação
+- 📄 [Slides da Apresentação](https://canva.link/fspdozr933jbzmh)
+
+---
+
 ## 📦 Entregas do Projeto
 
 <details>
@@ -153,6 +158,11 @@ Acesse em: `http://localhost:8000`
 
 ---
 
+### 🎥 Novo Screencast
+- ▶️ [Assista no YouTube]()
+
+---
+
 ### 🔁 CI/CD - Integração e Deployment Contínuo
 
 Pipeline criada no GitHub com execução dos testes automatizados.
@@ -172,10 +182,10 @@ Pipeline criada no GitHub com execução dos testes automatizados.
 ### 🐛 Issue/Bug Tracker Atualizado
 
 **Issues Abertas**
-<!-- Adicione o print aqui -->
+![IssuesOpen Foto](imagens/issues4open.png)
 
 **Issues Fechadas**
-<!-- Adicione o print aqui -->
+![IssuesClosed Foto](imagens/issues4closed.png)
 
 ---
 
@@ -188,6 +198,7 @@ Pipeline criada no GitHub com execução dos testes automatizados.
 <!-- Adicione o print do quadro aqui -->
 <img width="1920" height="967" alt="image" src="https://github.com/user-attachments/assets/3e27153a-4b77-488b-94ef-90332e750621" />
 
+![Sprint4 Foto](imagens/sprint4.png)
 
 ---
 
