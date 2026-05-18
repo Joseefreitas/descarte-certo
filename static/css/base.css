@@ -10,25 +10,34 @@ html, body {
 }
 
 .logo {
-    transform: translateX(-50%);
     position: absolute;
     left: 50%;
+    transform: translateX(-50%);
+
     color: white;
-    font-size: 30px;
+    font-size: 1.4rem;
     font-weight: bold;
     padding-top: 11px;
     font-family: sans-serif;
-    transition: all 0.3s ease;
 }
 
 .topo {
-  display: flex;
-  position: static;
-  top: 0;
-  width: 100%;
-  height: 60px;
-  background: #2e7d32;
-  z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    position: sticky;
+    top: 0;
+
+    width: 100%;
+    height: 60px;
+
+    background: #2e7d32;
+
+    z-index: 1000;
+
+    padding: 0 15px;
+    box-sizing: border-box;
 }
 
 .caixa-menu {
@@ -52,7 +61,7 @@ html, body {
 }
 
 .menu-topo {
-    flex: 1;
+    flex-grow: 1;
 }
 
 /* quando abre */
@@ -95,8 +104,6 @@ html, body {
   font-size: 20px;
   border-radius: 8px;
   z-index: 9999;
-  justify-content: center;
-  align-items: center;
 }
 
 .menu-bottom {
@@ -113,48 +120,11 @@ html, body {
     text-align: center;
     text-decoration: none;
     font-weight: bold;
+
     width: 60%;
     margin: 0 auto;
 }
 
 .menu-logout:hover {
     background: #c0392b;
-}
-
-/* ==========================================================================
-   MEDIA QUERIES - RESPONSIVIDADE PARA DISPOSITIVOS MÓVEIS (Telas até 768px)
-   ========================================================================== */
-
-@media (max-width: 768px) {
-    /* Diminui o logo para não colidir com o botão do menu em celulares pequenos */
-    .logo {
-        font-size: 20px;
-        padding-top: 18px;
-        width: auto;
-        white-space: nowrap;
-    }
-
-    /* Ajusta a largura do menu lateral para ocupar uma área mais confortável no smartphone */
-    .caixa-menu {
-        width: 80%;
-        max-width: 280px;
-        left: -280px; /* Esconde com base na nova largura máxima */
-    }
-
-    .caixa-menu.ativo {
-        left: 0;
-    }
-
-    /* Deixa o botão de logout ligeiramente maior e mais fácil de tocar com o polegar */
-    .menu-logout {
-        width: 80%;
-        padding: 14px 10px;
-    }
-
-    /* Classe utilitária caso você use um container de conteúdo nas suas páginas */
-    .container, .main-content, .apps-dinamico {
-        padding: 15px;
-        width: 100%;
-        box-sizing: border-box;
-    }
 }

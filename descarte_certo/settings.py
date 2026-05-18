@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
+load_dotenv()
 
 LANGUAGE_CODE = 'pt-br'
 USE_L10N = True
@@ -107,14 +108,15 @@ if os.environ.get('DATABASE_URL'):
     config['OPTIONS'] = {**config.get('OPTIONS', {}), 'sslmode': sslmode}
     DATABASES['default'] = config
 else:
-    DATABASES['default'] = {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
-        'OPTIONS': {'sslmode': 'disable' if DEBUG else 'require'},
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'descarte_certo',
+            'USER': 'postgres',
+             'PASSWORD':os.environ.get('DB_PASSWORD'),
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
 
 # Validação de senha
