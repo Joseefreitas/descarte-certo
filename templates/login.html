@@ -1,103 +1,67 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Descarte Certo</title>
     <link rel="shortcut icon" href="{% static 'image/cdlogo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-        }
-
-        .topo {
-            background-color: #2e7d32;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- BARRA VERDE -->
-    <div class="topo">
-        <img src="{% static 'image/cdlogo.png' %}" alt="Logo Descarte Certo" style="height: 40px; vertical-align: middle; margin-right: 10px;">
-        Descarte Certo
-    </div>
+<div class="cadastro-page">
+    <div class="cadastro-card">
 
-    <div class="container">
-
-        <h1>Login</h1>
+        <div class="cadastro-card__header">
+            <div class="login-logo">
+                <img src="{% static 'image/cdlogo.png' %}" alt="Logo Descarte Certo">
+                <span>Descarte Certo</span>
+            </div>
+            <h1>Entrar</h1>
+            <p>Acesse sua conta para continuar</p>
+        </div>
 
         {% if erro %}
-            <p class="erro">{{ erro }}</p>
+            <div class="alerta-erro">{{ erro }}</div>
         {% endif %}
 
         <form method="POST">
             {% csrf_token %}
 
-            <input type="text" name="username" placeholder="Usuário" required>
-
-            <div class="senha-container">
-                <input 
-                    type="password"
-                    id="senha"
-                    name="password"
-                    placeholder="Senha"
-                    required
-                    class="input"
-                >
-
-                <span class="olho" onclick="toggleSenha()">
-                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg"
-                        width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor"
-                        stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
-
-                    </svg>
-                </span>
+            <div class="campo">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" placeholder="Nome de usuário" required>
             </div>
 
-            <button type="submit">Entrar</button>
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <div class="senha-wrap">
+                    <input type="password" id="senha" name="password" placeholder="Sua senha" required>
+                    <span class="olho" onclick="toggleSenha()">👁</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Entrar</button>
         </form>
 
-        <!-- visitante -->
-        <a href="{% url 'guest' %}" class="btn-guest">
-            Continuar como visitante
-        </a>
+        <a href="{% url 'guest' %}" class="btn-guest">Continuar como visitante</a>
 
-        <!-- cadastro -->
-        <p class="cadastro-text">
+        <p class="login-link">
             Não possui conta?
-            <a href="{% url 'cadastropessoafisica' %}">Cadastre-se como uma pessoa </a>
-            <a href="{% url 'cadastropessoajuridica' %}">Cadastre-se como uma empresa</a>
+            <a href="{% url 'cadastropessoafisica' %}">Pessoa Física</a> ou
+            <a href="{% url 'cadastropessoajuridica' %}">Empresa</a>
         </p>
 
     </div>
+</div>
 
-    <script>
-    function toggleSenha() {
-        const input = document.getElementById("senha");
-
-        if (input.type === "password") {
-            input.type = "text";
-        } else {
-            input.type = "password";
-        }
-    }
-    </script>
+<script>
+function toggleSenha() {
+    const input = document.getElementById("senha");
+    input.type = input.type === "password" ? "text" : "password";
+}
+</script>
 
 </body>
 </html>
