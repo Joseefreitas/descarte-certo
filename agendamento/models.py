@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from mapa.models import PontoColeta
+from login.models import PessoaJuridica
 
 TIPOS_RESIDUO = [
     ('papel', 'Papel e papelão'),
@@ -19,9 +19,10 @@ TURNOS = [
 
 class Agendamento(models.Model):
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name='agendamentos')
-    ponto_coleta = models.ForeignKey(PontoColeta, on_delete=models.CASCADE, related_name='agendamentos')
+    empresa = models.ForeignKey(PessoaJuridica, on_delete=models.SET_NULL, null=True, blank=True, related_name='agendamentos')
+    bairro = models.CharField(max_length=100)
     data = models.DateField()
-    horario = models.TimeField(max_length=10, choices=TURNOS)
+    horario = models.CharField(max_length=10, choices=TURNOS)
     tipo_residuo = models.CharField(max_length=50, choices=TIPOS_RESIDUO)
     criado_em = models.DateTimeField(auto_now_add=True)
 

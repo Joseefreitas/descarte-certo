@@ -12,27 +12,29 @@
 <form method="POST">
     {% csrf_token %}
 
-    <label for="ponto_coleta">Ponto de Coleta:</label>
-    <select name="ponto_coleta" id="ponto_coleta" required>
-        <option value="">Selecione um ponto...</option>
-        {% for ponto in pontos %}
-            <option value="{{ ponto.id }}">{{ ponto.nome }} — {{ ponto.endereco }}</option>
-        {% endfor %}
-    </select>
+    <label for="bairro">Bairro:</label>
+    <input type="text" name="bairro" id="bairro" placeholder="Ex: Boa Viagem" required>
 
     <label for="data">Data:</label>
-    <input type="date" name="data" id="data" required>
+    <input type="date" name="data" id="data" placeholder="dd/mm/aaaa" required>
 
-    <label for="horario">Horário:</label>
-    <input type="time" name="horario" id="horario" required>
+    <label for="horario">Turno:</label>
+    <select name="horario" id="horario" required>
+        <option value="">Selecione um turno...</option>
+        <option value="manha">Manhã (06h - 12h)</option>
+        <option value="tarde">Tarde (12h - 18h)</option>
+        <option value="noite">Noite (18h - 22h)</option>
+    </select>
 
     <label for="tipo_residuo">Tipo de Resíduo:</label>
     <select name="tipo_residuo" id="tipo_residuo" required>
-        <option value="domiciliar">Domiciliar</option>
-        <option value="reciclavel">Reciclável</option>
+        <option value="">Selecione o tipo...</option>
+        <option value="papel">Papel e Papelão</option>
+        <option value="plastico">Plástico</option>
         <option value="organico">Orgânico</option>
         <option value="eletronico">Eletrônico</option>
-        <option value="volumoso">Volumoso</option>
+        <option value="metais">Metais</option>
+        <option value="vidro">Vidro</option>
     </select>
 
     <button type="submit">Confirmar Agendamento</button>
@@ -46,20 +48,20 @@
     <table>
         <thead>
             <tr>
-                <th>Ponto de Coleta</th>
-                <th>Endereço</th>
+                <th>Bairro</th>
+                <th>Empresa Responsável</th>
                 <th>Data</th>
-                <th>Horário</th>
+                <th>Turno</th>
                 <th>Tipo de Resíduo</th>
             </tr>
         </thead>
         <tbody>
             {% for ag in agendamentos %}
                 <tr>
-                    <td>{{ ag.ponto_coleta.nome }}</td>
-                    <td>{{ ag.ponto_coleta.endereco }}</td>
+                    <td>{{ ag.bairro }}</td>
+                    <td>{% if ag.empresa %}{{ ag.empresa.nome_fantasia|default:ag.empresa.razao_social }}{% else %}Nenhuma empresa disponível{% endif %}</td>
                     <td>{{ ag.data }}</td>
-                    <td>{{ ag.horario }}</td>
+                    <td>{{ ag.get_horario_display }}</td>
                     <td>{{ ag.get_tipo_residuo_display }}</td>
                 </tr>
             {% endfor %}
