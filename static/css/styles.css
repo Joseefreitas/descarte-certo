@@ -1,0 +1,1072 @@
+Styles · CSS
+Copiar
+
+/* =============================================================================
+   styles.css — Descarte Certo
+   Organização:
+     1. Reset & Box Model
+     2. Variáveis CSS (tokens de design)
+     3. Dark Mode (prefers-color-scheme + data-theme)
+     4. Tipografia & Base
+     5. Utilitários
+     6. Componentes: Skip Link
+     7. Componentes: Notificações
+     8. Componentes: Site Header
+     9. Componentes: Nav Drawer (menu lateral)
+    10. Componentes: Theme Toggle
+    11. Componentes: Carrossel
+    12. Componentes: Seções da Home
+    13. Componentes: Site Footer
+    14. Responsivo (768px e 1024px)
+   ============================================================================= */
+ 
+/* =============================================================================
+   1. RESET & BOX MODEL
+   Decisão: reset mínimo em vez de normalize completo.
+   Preserva comportamentos úteis do navegador (scroll, foco, seleção).
+   ============================================================================= */
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ 
+/* Remove list-style somente quando role="list" está presente (BEM semântico) */
+[role="list"] {
+  list-style: none;
+}
+ 
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+ 
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+ 
+/* Evita overflow de texto em elementos com largura fixa */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+ 
+/* Scroll suave nativo — sem JS */
+html {
+  scroll-behavior: smooth;
+  /* Previne reflow de scrollbar ao alternar conteúdo */
+  overflow-y: scroll;
+}
+ 
+/* =============================================================================
+   2. VARIÁVEIS CSS — TEMA CLARO (padrão)
+   Decisão: tokens semânticos (--color-surface, --color-text) em vez de nomes
+   de cor literais (--green-500). Facilita troca de tema sem alterar componentes.
+   ============================================================================= */
+ 
+:root {
+  /* Cores primárias */
+  --color-primary:        #2e7d32;
+  --color-primary-dark:   #1b5e20;
+  --color-primary-light:  #4caf50;
+  --color-primary-subtle: #e8f5e9;
+ 
+  /* Cores de acento (alertas, tags) */
+  --color-danger:         #c62828;
+  --color-danger-subtle:  #ffebee;
+  --color-success:        #2e7d32;
+  --color-success-subtle: #e8f5e9;
+  --color-warning:        #e65100;
+  --color-warning-subtle: #fff3e0;
+ 
+  /* Superfícies — light */
+  --color-bg:             #f5f5f0;
+  --color-surface:        #ffffff;
+  --color-surface-alt:    #f0f4f0;
+  --color-border:         #d0dbd1;
+ 
+  /* Texto — light */
+  --color-text:           #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-text-muted:     #718096;
+  --color-text-on-primary:#ffffff;
+ 
+  /* Sombras */
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg:  0 10px 40px rgba(0, 0, 0, 0.12);
+ 
+  /* Tipografia */
+  --font-display: 'Syne', system-ui, sans-serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+ 
+  /* Escala tipográfica modular (razão 1.25 — Major Third) */
+  --text-xs:   0.64rem;   /*  ~10px */
+  --text-sm:   0.8rem;    /*  ~13px */
+  --text-base: 1rem;      /*   16px */
+  --text-md:   1.25rem;   /*   20px */
+  --text-lg:   1.563rem;  /*   25px */
+  --text-xl:   1.953rem;  /*  ~31px */
+  --text-2xl:  2.441rem;  /*  ~39px */
+  --text-3xl:  3.052rem;  /*  ~49px */
+ 
+  /* Espaçamento */
+  --space-1:  0.25rem;
+  --space-2:  0.5rem;
+  --space-3:  0.75rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+ 
+  /* Layout */
+  --header-height:    60px;
+  --nav-drawer-width: 280px;
+  --container-max:    1200px;
+  --radius-sm:  6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+ 
+  /* Transições */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-theme:  300ms ease; /* separada para controle de dark mode */
+}
+ 
+/* =============================================================================
+   3. DARK MODE
+   Decisão: data-theme no <html> permite controle via JS (3 modos: light/dark/system).
+   prefers-color-scheme cobre o modo "system" sem JS adicional.
+   Transição em `color` e `background-color` apenas — evitar transicionar `border`
+   e `box-shadow` que causam repaints caros em low-end devices.
+   ============================================================================= */
+ 
+/* Modo escuro via preferência do sistema (cobre data-theme="system") */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg:             #121212;
+    --color-surface:        #1e1e1e;
+    --color-surface-alt:    #252525;
+    --color-border:         #333333;
+ 
+    --color-text:           #e0e0e0;
+    --color-text-secondary: #a0aec0;
+    --color-text-muted:     #718096;
+ 
+    --color-primary:        #66bb6a;
+    --color-primary-dark:   #43a047;
+    --color-primary-light:  #81c784;
+    --color-primary-subtle: #1b2e1c;
+ 
+    --color-danger-subtle:  #2a1515;
+    --color-success-subtle: #1a2e1b;
+    --color-warning-subtle: #2a1e10;
+ 
+    --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+    --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.5);
+    --shadow-lg:  0 10px 40px rgba(0, 0, 0, 0.6);
+  }
+}
+ 
+/* Modo escuro explícito (data-theme="dark") — sobrescreve media query */
+[data-theme="dark"] {
+  --color-bg:             #121212;
+  --color-surface:        #1e1e1e;
+  --color-surface-alt:    #252525;
+  --color-border:         #333333;
+ 
+  --color-text:           #e0e0e0;
+  --color-text-secondary: #a0aec0;
+  --color-text-muted:     #718096;
+ 
+  --color-primary:        #66bb6a;
+  --color-primary-dark:   #43a047;
+  --color-primary-light:  #81c784;
+  --color-primary-subtle: #1b2e1c;
+ 
+  --color-danger-subtle:  #2a1515;
+  --color-success-subtle: #1a2e1b;
+  --color-warning-subtle: #2a1e10;
+ 
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg:  0 10px 40px rgba(0, 0, 0, 0.6);
+}
+ 
+/* Modo claro explícito (data-theme="light") — garante o override mesmo em sistema dark */
+[data-theme="light"] {
+  --color-bg:             #f5f5f0;
+  --color-surface:        #ffffff;
+  --color-surface-alt:    #f0f4f0;
+  --color-border:         #d0dbd1;
+ 
+  --color-text:           #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-text-muted:     #718096;
+ 
+  --color-primary:        #2e7d32;
+  --color-primary-dark:   #1b5e20;
+  --color-primary-light:  #4caf50;
+  --color-primary-subtle: #e8f5e9;
+ 
+  --color-danger-subtle:  #ffebee;
+  --color-success-subtle: #e8f5e9;
+  --color-warning-subtle: #fff3e0;
+ 
+  --shadow-sm:  0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md:  0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg:  0 10px 40px rgba(0, 0, 0, 0.12);
+}
+ 
+/* Transições suaves entre temas — aplicadas SOMENTE após carregamento inicial.
+   A classe .theme-transitions-ready é adicionada pelo darkmode.js depois do
+   primeiro render, evitando o flash de transição no carregamento da página. */
+.theme-transitions-ready *,
+.theme-transitions-ready *::before,
+.theme-transitions-ready *::after {
+  transition-property: background-color, color, border-color, fill, stroke;
+  transition-duration: var(--transition-theme);
+  transition-timing-function: ease;
+}
+ 
+/* =============================================================================
+   4. TIPOGRAFIA & BASE
+   ============================================================================= */
+ 
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Evita barra de rolagem horizontal global */
+  overflow-x: hidden;
+}
+ 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+ 
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+ 
+a:hover {
+  text-decoration: underline;
+}
+ 
+/* Foco visível: WCAG 2.1 SC 2.4.7 — todo elemento focável deve ter indicador claro */
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+ 
+/* Remove outline para mouse, mantém para teclado */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+ 
+/* =============================================================================
+   5. UTILITÁRIOS
+   ============================================================================= */
+ 
+/* Container centralizado com padding lateral responsivo */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+ 
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-8);
+  }
+}
+ 
+/* Visualmente oculto mas acessível para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+ 
+/* =============================================================================
+   6. COMPONENTE: SKIP LINK
+   Decisão: visível apenas ao receber foco (teclado). Posicionamento fixed
+   garante que apareça sobre qualquer elemento, incluindo o header sticky.
+   ============================================================================= */
+ 
+.skip-link {
+  position: fixed;
+  top: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%) translateY(-200%);
+  z-index: 10000;
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-base);
+}
+ 
+.skip-link:focus {
+  transform: translateX(-50%) translateY(0);
+}
+ 
+/* =============================================================================
+   7. COMPONENTE: NOTIFICAÇÕES (mensagens Django)
+   ============================================================================= */
+ 
+.notifications {
+  position: fixed;
+  top: calc(var(--header-height) + var(--space-4));
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: min(90vw, 480px);
+}
+ 
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  font-weight: 500;
+  animation: notification-in 300ms ease forwards;
+}
+ 
+@keyframes notification-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+.notification--success {
+  background-color: var(--color-success-subtle);
+  color: var(--color-success);
+  border-left: 4px solid var(--color-success);
+}
+ 
+.notification--error {
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+  border-left: 4px solid var(--color-danger);
+}
+ 
+.notification--info {
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border-left: 4px solid var(--color-primary);
+}
+ 
+.notification__close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.7;
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+  line-height: 1;
+  transition: opacity var(--transition-fast);
+}
+ 
+.notification__close:hover {
+  opacity: 1;
+}
+ 
+/* =============================================================================
+   8. COMPONENTE: SITE HEADER
+   ============================================================================= */
+ 
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  position: sticky;
+  top: 0;
+  height: var(--header-height);
+  background-color: var(--color-primary);
+  padding-inline: var(--space-4);
+  z-index: 1000;
+  box-shadow: var(--shadow-md);
+}
+ 
+/* Botão de menu (hamburger) */
+.site-header__menu-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  color: var(--color-text-on-primary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: background-color var(--transition-fast);
+  white-space: nowrap;
+}
+ 
+.site-header__menu-btn:hover,
+.site-header__menu-btn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 0.22);
+}
+ 
+/* Hamburger animado com 3 spans */
+.site-header__hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 18px;
+}
+ 
+.site-header__hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+  transform-origin: center;
+}
+ 
+/* Animação do hamburger → X quando menu está aberto */
+.site-header__menu-btn[aria-expanded="true"] .site-header__hamburger span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.site-header__menu-btn[aria-expanded="true"] .site-header__hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.site-header__menu-btn[aria-expanded="true"] .site-header__hamburger span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+ 
+/* Logo centralizado */
+.site-header__logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-on-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+ 
+.site-header__logo:hover {
+  text-decoration: none;
+  opacity: 0.9;
+}
+ 
+/* Empurra o theme-toggle para a direita */
+.site-header .theme-toggle {
+  margin-left: auto;
+}
+ 
+/* =============================================================================
+   9. COMPONENTE: NAV DRAWER (menu lateral deslizante)
+   ============================================================================= */
+ 
+.nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: var(--nav-drawer-width);
+  height: 100dvh; /* dvh: respeita barras de browser mobile */
+  background-color: var(--color-primary);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  /*
+    Decisão: transform em vez de left para animação.
+    transform é acelerado por GPU (compositor thread) — não causa reflow/repaint.
+    left animado causaria layout thrashing, especialmente em low-end mobile.
+  */
+  transform: translateX(-100%);
+  transition: transform var(--transition-slow);
+  overflow-y: auto;
+  overscroll-behavior: contain; /* Previne scroll chain para o body */
+}
+ 
+.nav-drawer.is-open {
+  transform: translateX(0);
+}
+ 
+.nav-drawer__nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: calc(var(--header-height) + var(--space-4));
+}
+ 
+.nav-drawer__list {
+  flex: 1;
+  padding: 0 var(--space-4);
+}
+ 
+.nav-drawer__item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+ 
+.nav-drawer__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-3);
+  color: var(--color-text-on-primary);
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast);
+}
+ 
+.nav-drawer__link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  text-decoration: none;
+}
+ 
+.nav-drawer__icon {
+  width: 20px;
+  text-align: center;
+  opacity: 0.9;
+}
+ 
+.nav-drawer__footer {
+  padding: var(--space-6) var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+ 
+.nav-drawer__logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background-color: #c62828;
+  color: #fff;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  transition: background-color var(--transition-fast);
+}
+ 
+.nav-drawer__logout:hover {
+  background-color: #b71c1c;
+  text-decoration: none;
+}
+ 
+/* OVERLAY: escurece o conteúdo por trás do menu aberto */
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+  backdrop-filter: blur(2px);
+}
+ 
+.nav-overlay.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+/* =============================================================================
+   10. COMPONENTE: THEME TOGGLE
+   ============================================================================= */
+ 
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-on-primary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  position: relative;
+}
+ 
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+ 
+/* Mostra apenas o ícone correspondente ao tema atual */
+.theme-toggle__icon {
+  position: absolute;
+  font-size: 1rem;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
+}
+ 
+/* Sistema padrão: mostra ícone de sistema */
+[data-theme="system"] .theme-toggle__icon--system,
+[data-theme="light"]  .theme-toggle__icon--light,
+[data-theme="dark"]   .theme-toggle__icon--dark {
+  opacity: 1;
+  transform: scale(1);
+}
+ 
+/* =============================================================================
+   11. COMPONENTE: CARROSSEL
+   (lógica de movimento fica em carousel.js)
+   ============================================================================= */
+ 
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  margin-inline: auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+  /*
+    Aspect ratio fixo: sem altura hardcoded.
+    Decisão: 16/9 mantém proporção em qualquer tamanho de tela.
+    Em mobile o carrossel fica mais compacto naturalmente.
+  */
+  aspect-ratio: 16 / 7;
+  user-select: none; /* Evita seleção de texto durante swipe */
+}
+ 
+/* Track: faixa que contém todos os slides lado a lado */
+.carousel__track {
+  display: flex;
+  height: 100%;
+  /*
+    Decisão: will-change: transform avisa o browser antecipadamente
+    que transform vai mudar — permite criar layer de compositor cedo.
+    Usar com moderação (só onde há animação contínua).
+  */
+  will-change: transform;
+  transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+ 
+/* Cada slide ocupa exatamente 100% da largura do carrossel */
+.carousel__slide {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+}
+ 
+.carousel__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  /* Evita drag de imagem durante swipe */
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+ 
+/* Botões prev/next */
+.carousel__btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  font-size: 1rem;
+  transition: background-color var(--transition-fast),
+              transform var(--transition-fast),
+              opacity var(--transition-fast);
+  opacity: 0.85;
+}
+ 
+.carousel__btn:hover {
+  background-color: #fff;
+  opacity: 1;
+  /* Amplifica levemente sem mover o layout (transform, não margin) */
+  transform: translateY(-50%) scale(1.08);
+}
+ 
+.carousel__btn:active {
+  transform: translateY(-50%) scale(0.96);
+}
+ 
+.carousel__btn--prev { left: var(--space-4); }
+.carousel__btn--next { right: var(--space-4); }
+ 
+/* Dots (indicadores de slide) */
+.carousel__dots {
+  position: absolute;
+  bottom: var(--space-4);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 10;
+}
+ 
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.55);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color var(--transition-base),
+              transform var(--transition-base),
+              width var(--transition-base);
+}
+ 
+.carousel__dot.is-active {
+  background-color: #fff;
+  width: 24px;
+  border-radius: var(--radius-pill);
+}
+ 
+.carousel__dot:hover:not(.is-active) {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+ 
+/* Mensagem fallback quando não há slides */
+.carousel__fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--color-text-muted);
+  font-size: var(--text-md);
+}
+ 
+/* =============================================================================
+   12. COMPONENTES: SEÇÕES DA HOME
+   ============================================================================= */
+ 
+/* SITE MAIN */
+.site-main {
+  /* tabindex="-1" permite que o skip link foque aqui sem alterar a aparência */
+  outline: none;
+}
+ 
+/* HERO */
+.hero {
+  padding: var(--space-16) var(--space-4) var(--space-8);
+  text-align: center;
+  background-color: var(--color-bg);
+}
+ 
+.hero__greeting {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+ 
+.hero__tagline {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-inline: auto;
+}
+ 
+/* SEÇÃO DO CARROSSEL */
+.carousel-section {
+  padding: var(--space-8) var(--space-4);
+  background-color: var(--color-bg);
+}
+ 
+/* SEÇÃO SOBRE */
+.about-section {
+  padding: var(--space-24) var(--space-4);
+  background-color: var(--color-surface-alt);
+}
+ 
+.about-section__inner {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: center;
+}
+ 
+.about-section__title {
+  font-size: var(--text-2xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-6);
+}
+ 
+.about-section__body {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+ 
+/* SEÇÕES DE INFO (blocos alternados imagem + texto) */
+.info-section {
+  padding: var(--space-24) var(--space-4);
+  background-color: var(--color-bg);
+}
+ 
+.info-section--alt {
+  background-color: var(--color-surface-alt);
+}
+ 
+.info-section__inner {
+  max-width: var(--container-max);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+ 
+.info-section__inner--reverse {
+  flex-direction: row-reverse;
+}
+ 
+.info-section__text { flex: 1; }
+ 
+/* Tag de categoria */
+.info-tag {
+  display: inline-block;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+  background-color: var(--color-danger-subtle);
+  color: var(--color-danger);
+}
+ 
+.info-tag--green {
+  background-color: var(--color-success-subtle);
+  color: var(--color-success);
+}
+ 
+.info-section__title {
+  font-size: var(--text-xl);
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  letter-spacing: -0.02em;
+}
+ 
+.info-section__body {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-4);
+}
+ 
+/* Stats (números de destaque) */
+.stats {
+  display: flex;
+  gap: var(--space-8);
+  margin-top: var(--space-6);
+}
+ 
+.stat__number {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+ 
+.stat__label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+ 
+/* Pills de materiais */
+.materials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-6);
+}
+ 
+.materials__tag {
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-primary-subtle);
+  color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+ 
+/* Imagem das seções info */
+.info-section__image-wrap { flex: 1; }
+ 
+.info-section__img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+ 
+/* =============================================================================
+   13. COMPONENTE: SITE FOOTER
+   ============================================================================= */
+ 
+.site-footer {
+  background-color: var(--color-primary-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: var(--space-8) var(--space-4);
+  margin-top: auto;
+}
+ 
+.site-footer__inner {
+  text-align: center;
+}
+ 
+.site-footer__copy {
+  font-size: var(--text-sm);
+}
+ 
+/* =============================================================================
+   14. RESPONSIVO — MOBILE FIRST
+   Breakpoints: 768px (tablet), 1024px (desktop)
+   ============================================================================= */
+ 
+/* Tablet (≥ 768px) */
+@media (min-width: 768px) {
+  .hero__greeting {
+    font-size: var(--text-3xl);
+  }
+ 
+  .hero__tagline {
+    font-size: var(--text-lg);
+  }
+ 
+  .carousel-section {
+    padding: var(--space-12) var(--space-8);
+  }
+ 
+  .info-section__title {
+    font-size: var(--text-2xl);
+  }
+}
+ 
+/* Desktop (≥ 1024px) */
+@media (min-width: 1024px) {
+  .info-section__inner {
+    gap: var(--space-24);
+  }
+}
+ 
+/* Mobile: empilha blocos info verticalmente */
+@media (max-width: 767px) {
+  .info-section__inner,
+  .info-section__inner--reverse {
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+ 
+  .info-section__img {
+    height: 240px;
+  }
+ 
+  .stats {
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+ 
+  .about-section__title,
+  .info-section__title {
+    font-size: var(--text-xl);
+  }
+ 
+  .hero__greeting {
+    font-size: var(--text-xl);
+  }
+ 
+  /* Em mobile o carrossel fica menor — aspect-ratio cuida disso automaticamente */
+  .carousel {
+    border-radius: var(--radius-md);
+  }
+ 
+  .carousel__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+ 
+/* Respeita a preferência por menos movimento (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+ 
+  .carousel__track {
+    transition: none;
+  }
+}
+ 
