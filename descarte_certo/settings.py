@@ -35,11 +35,23 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-produc
 
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost',
+        'http://127.0.0.1',
+    ]
 else:
     ALLOWED_HOSTS = [
         '.azurewebsites.net',
         'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
     ]
+    CSRF_TRUSTED_ORIGINS = [
+        'https://*.azurewebsites.net',
+        'https://descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
+    ]
+    # Azure App Service termina o SSL no proxy e repassa como HTTP.
+    # Sem isso o Django acha que está em HTTP e o cookie CSRF (Secure) não vai.
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
