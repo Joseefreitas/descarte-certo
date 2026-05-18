@@ -1,46 +1,46 @@
 /* ==========================================================================
-   ESTILOS DE DESKTOP (COMPUTADOR)
+   MAPA — usa variáveis do design system (base.css)
    ========================================================================== */
-html, body {
-    margin: 0;
-    font-family: sans-serif;
-    background-color: #e8f5e9 !important; 
-}
 
 .topo-mapa {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: var(--space-6) var(--space-8);
 }
 
-h2 {
-    color: #2e7d32;
-    margin-bottom: 20px;
-    margin-left: 6px;
-    font-size: 28px;
+.topo-mapa h2 {
+    color: var(--color-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    margin: 0;
 }
 
 #btn-add-ponto {
-    padding: 14px 14px;
-    background:#2e7d32;
-    color: white;
+    padding: var(--space-3) var(--space-6);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
     border: none;
-    border-radius: 8px;
+    border-radius: var(--radius-md);
     cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.2s ease;
+    font-size: var(--text-base);
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+}
+
+#btn-add-ponto:hover {
+    background: var(--color-primary-dark);
     text-decoration: none;
 }
-#btn-add-ponto:hover { background: #1b5e20; }
 
-/* Estrutura Lado a Lado no PC */
+/* Layout lado a lado */
 .mapa-wrapper {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    padding: 20px;
+    gap: var(--space-6);
+    padding: 0 var(--space-8) var(--space-8);
     height: calc(100vh - 160px);
     box-sizing: border-box;
 }
@@ -48,75 +48,147 @@ h2 {
 #mapa-container {
     flex: 2;
     height: 100%;
-    border-radius: 8px;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    border: #2e7d32 solid 2px;
+    box-shadow: var(--shadow-lg);
+    border: 2px solid var(--color-border);
     box-sizing: border-box;
 }
 
+/* Lista de pontos próximos */
 #lista-proximos {
     flex: 1;
     height: 95%;
     overflow-y: auto;
-    background: #F5F2EB;
-    border-radius: 8px;
-    border: #2e7d32 solid 2px;
-    padding: 16px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--color-border);
+    padding: var(--space-6);
+    box-shadow: var(--shadow-md);
     box-sizing: border-box;
 }
 
-#lista-proximos h3 { font-size: 18px; color: #2e7d32; margin-bottom: 8px; }
-.ponto-card { background: white; border-radius: 8px; padding: 10px; margin-bottom: 10px; border-left: 4px solid #4caf50; cursor: pointer; transition: box-shadow 0.2s; }
-.ponto-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
-.ponto-card .nome { font-weight: bold; font-size: 14px; }
-.ponto-card .distancia { color: #4caf50; font-size: 13px; margin: 4px 0; }
-.ponto-card .tipo { font-size: 12px; color: #666; }
-#btn-localizar { width: 100%; padding: 12px; background: #2e7d32; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
-#btn-localizar:hover { background: #1b5e20; }
-#status-localizacao { font-size: 12px; color: #888; margin-top: 7px; text-align: center; }
+#lista-proximos h3 {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    color: var(--color-primary);
+    margin-bottom: var(--space-4);
+    margin-top: 0;
+}
+
+/* Cards dos pontos */
+.ponto-card {
+    background: var(--color-surface-alt);
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-3);
+    border-left: 4px solid var(--color-primary-light);
+    cursor: pointer;
+    transition: box-shadow var(--transition-fast),
+                transform var(--transition-fast);
+}
+
+.ponto-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(2px);
+}
+
+.ponto-card .nome {
+    font-weight: 700;
+    font-size: var(--text-base);
+    color: var(--color-text);
+}
+
+.ponto-card .distancia {
+    color: var(--color-primary);
+    font-size: var(--text-sm);
+    margin: var(--space-1) 0;
+    font-weight: 600;
+}
+
+.ponto-card .tipo {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+}
+
+/* Botão de localização */
+#btn-localizar {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-weight: 600;
+    font-size: var(--text-base);
+    transition: background-color var(--transition-fast);
+    margin-bottom: var(--space-3);
+}
+
+#btn-localizar:hover {
+    background: var(--color-primary-dark);
+}
+
+#status-localizacao {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-bottom: var(--space-4);
+}
 
 /* ==========================================================================
-   MEDIA QUERY - FORÇA O MAPA EM CIMA E LISTA EMBAIXO
+   RESPONSIVO
    ========================================================================== */
 @media (max-width: 1024px) {
     .topo-mapa {
         flex-direction: column;
         align-items: stretch;
-        gap: 12px;
-        padding: 15px 10px;
+        gap: var(--space-3);
+        padding: var(--space-4);
     }
 
-    h2 {
-        font-size: 22px;
+    .topo-mapa h2 {
+        font-size: var(--text-lg);
         text-align: center;
-        margin: 0;
     }
 
     #btn-add-ponto {
-        font-size: 16px;
         text-align: center;
         width: 100%;
     }
 
-    /* ESSA LINHA TRABALHA O EMPILHAMENTO DE VERDADE */
     .mapa-wrapper {
-        flex-direction: column !important; /* Muda de linha para coluna */
-        height: auto !important;           /* Libera a altura da página */
-        padding: 10px;
+        flex-direction: column;
+        height: auto;
+        padding: var(--space-4);
     }
 
     #mapa-container {
-        height: 380px !important;          /* Altura fixa pro mapa não sumir */
-        width: 100% !important;
-        flex: none !important;
+        height: 380px;
+        width: 100%;
+        flex: none;
     }
 
     #lista-proximos {
-        width: 100% !important;
-        height: auto !important;
-        max-height: 450px !important;      /* Limita pro bloco de cards não ser infinito */
-        flex: none !important;
+        width: 100%;
+        height: auto;
+        max-height: 450px;
+        flex: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .topo-mapa {
+        padding: var(--space-3);
+    }
+
+    .mapa-wrapper {
+        padding: var(--space-3);
+        gap: var(--space-3);
+    }
+
+    #mapa-container {
+        height: 300px;
     }
 }
