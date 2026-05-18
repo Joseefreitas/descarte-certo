@@ -434,4 +434,11 @@ hr {
         font-size: 1rem;
     }
 
+}.autor-nome {
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.separador {
+    opacity: 0.4;
 }

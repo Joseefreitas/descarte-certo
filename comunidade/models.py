@@ -8,6 +8,8 @@ class Topic(models.Model):
     imagem = models.ImageField(upload_to='comunidade/', blank=True, null=True) 
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    # likes = models.ManyToManyField(User, related_name='liked_topics', blank=True)
+
 
     def __str__(self):
         return self.title
