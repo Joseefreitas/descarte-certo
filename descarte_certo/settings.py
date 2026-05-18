@@ -6,6 +6,9 @@ from pathlib import Path
 from dotenv import load_dotenv
 import dj_database_url
 
+LANGUAGE_CODE = 'pt-br'
+USE_L10N = True
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / '.env', override=True)
 
