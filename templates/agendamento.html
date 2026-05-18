@@ -1,74 +1,98 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/agendamento.css' %}">
+{% endblock %}
+
 {% block content %}
 
-{% if messages %}
-    {% for msg in messages %}
-        <p>{{ msg }}</p>
-    {% endfor %}
-{% endif %}
+<div class="agendamento-page">
 
-<h2>Agendar Coleta</h2>
+    <section class="agendamento-hero">
+        <h1>Agendar Coleta</h1>
+        <p>Preencha os dados abaixo para agendar a coleta do seu resíduo.</p>
+    </section>
 
-<form method="POST">
-    {% csrf_token %}
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="agendamento-alerta {% if 'sucesso' in msg.tags %}agendamento-alerta--sucesso{% else %}agendamento-alerta--erro{% endif %}">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
-    <label for="bairro">Bairro:</label>
-    <input type="text" name="bairro" id="bairro" placeholder="Ex: Boa Viagem" required>
+    <section class="agendamento-form-section">
+        <div class="agendamento-card">
+            <form method="POST">
+                {% csrf_token %}
 
-    <label for="data">Data:</label>
-    <input type="date" name="data" id="data" placeholder="dd/mm/aaaa" required>
+                <div class="campo">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" name="bairro" id="bairro" placeholder="Ex: Boa Viagem" required>
+                </div>
 
-    <label for="horario">Turno:</label>
-    <select name="horario" id="horario" required>
-        <option value="">Selecione um turno...</option>
-        <option value="manha">Manhã (06h - 12h)</option>
-        <option value="tarde">Tarde (12h - 18h)</option>
-        <option value="noite">Noite (18h - 22h)</option>
-    </select>
+                <div class="campo">
+                    <label for="data">Data</label>
+                    <input type="date" name="data" id="data" required>
+                </div>
 
-    <label for="tipo_residuo">Tipo de Resíduo:</label>
-    <select name="tipo_residuo" id="tipo_residuo" required>
-        <option value="">Selecione o tipo...</option>
-        <option value="papel">Papel e Papelão</option>
-        <option value="plastico">Plástico</option>
-        <option value="organico">Orgânico</option>
-        <option value="eletronico">Eletrônico</option>
-        <option value="metais">Metais</option>
-        <option value="vidro">Vidro</option>
-    </select>
+                <div class="campo">
+                    <label for="horario">Turno</label>
+                    <select name="horario" id="horario" required>
+                        <option value="">Selecione um turno...</option>
+                        <option value="manha">Manhã (06h - 12h)</option>
+                        <option value="tarde">Tarde (12h - 18h)</option>
+                        <option value="noite">Noite (18h - 22h)</option>
+                    </select>
+                </div>
 
-    <button type="submit">Confirmar Agendamento</button>
-</form>
+                <div class="campo">
+                    <label for="tipo_residuo">Tipo de Resíduo</label>
+                    <select name="tipo_residuo" id="tipo_residuo" required>
+                        <option value="">Selecione o tipo...</option>
+                        <option value="papel">Papel e Papelão</option>
+                        <option value="plastico">Plástico</option>
+                        <option value="organico">Orgânico</option>
+                        <option value="eletronico">Eletrônico</option>
+                        <option value="metais">Metais</option>
+                        <option value="vidro">Vidro</option>
+                    </select>
+                </div>
 
-<hr>
+                <button type="submit" class="btn-primary">Confirmar Agendamento</button>
+            </form>
+        </div>
+    </section>
 
-<h2>Meus Agendamentos</h2>
+    <section class="agendamento-lista">
+        <h2>Meus Agendamentos</h2>
 
-{% if agendamentos %}
-    <table>
-        <thead>
-            <tr>
-                <th>Bairro</th>
-                <th>Empresa Responsável</th>
-                <th>Data</th>
-                <th>Turno</th>
-                <th>Tipo de Resíduo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for ag in agendamentos %}
-                <tr>
-                    <td>{{ ag.bairro }}</td>
-                    <td>{% if ag.empresa %}{{ ag.empresa.nome_fantasia|default:ag.empresa.razao_social }}{% else %}Nenhuma empresa disponível{% endif %}</td>
-                    <td>{{ ag.data }}</td>
-                    <td>{{ ag.get_horario_display }}</td>
-                    <td>{{ ag.get_tipo_residuo_display }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>Você ainda não tem agendamentos.</p>
-{% endif %}
+        {% if agendamentos %}
+            <div class="agendamento-grid">
+                {% for ag in agendamentos %}
+                    <div class="agendamento-item">
+                        <div class="agendamento-item__header">
+                            <span class="info-tag">{{ ag.get_tipo_residuo_display }}</span>
+                        </div>
+                        <p><strong>Bairro:</strong> {{ ag.bairro|title }}</p>
+                        <p><strong>Empresa:</strong>
+                            {% if ag.empresa %}
+                                {{ ag.empresa.nome_fantasia|default:ag.empresa.razao_social }}
+                            {% else %}
+                                Nenhuma empresa disponível
+                            {% endif %}
+                        </p>
+                        <p><strong>Data:</strong> {{ ag.data }}</p>
+                        <p><strong>Turno:</strong> {{ ag.get_horario_display }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="agendamento-vazio">Você ainda não tem agendamentos.</p>
+        {% endif %}
+    </section>
+
+</div>
 
 {% endblock %}

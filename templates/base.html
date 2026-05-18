@@ -1,13 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br" data-theme="system">
-<!--
-  base.html — Template base do Descarte Certo
-  Decisão: data-theme no <html> para que o CSS possa aplicar o tema
-  antes de qualquer pintura, eliminando o FOUC (Flash of Unstyled Content).
-  O script inline no <head> é a única exceção à regra de "sem JS inline":
-  ele precisa rodar ANTES do navegador renderizar qualquer pixel.
--->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,11 +11,6 @@
 
   <title>{% block title %}Descarte Certo{% endblock %}</title>
 
-  <!--
-    ANTI-FOUC: Aplica o tema salvo ANTES de qualquer render.
-    Inline obrigatório — scripts externos chegam tarde demais.
-    Tamanho intencional: < 200 bytes, imperceptível para o usuário.
-  -->
   <script>
     (function () {
       var saved = localStorage.getItem('dc-theme') || 'system';
@@ -30,7 +18,6 @@
     })();
   </script>
 
-  <!-- Fonte: Syne (display) + DM Sans (body) — via Google Fonts com display=swap -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -44,10 +31,8 @@
 </head>
 
 <body>
-  <!-- Skip link: primeira coisa focável para leitores de tela e navegação via teclado (WCAG 2.4.1) -->
   <a class="skip-link" href="#main-content">Ir para o conteúdo principal</a>
 
-  <!-- Notificações Django: role="alert" garante que leitores de tela anunciem automaticamente -->
   {% if messages %}
     <div class="notifications" aria-live="polite" aria-atomic="false">
       {% for message in messages %}
@@ -69,14 +54,7 @@
     </div>
   {% endif %}
 
-  <!-- HEADER -->
   <header class="site-header" role="banner">
-    <!--
-      Decisão: button em vez de div para o toggle do menu.
-      divs não são focáveis por padrão e não disparam eventos de teclado (Enter/Space).
-      aria-expanded comunica o estado do menu para tecnologias assistivas.
-      aria-controls aponta para o ID do elemento controlado.
-    -->
     <button
       class="site-header__menu-btn"
       type="button"
@@ -97,7 +75,6 @@
       Descarte Certo
     </a>
 
-    <!-- Botão de tema: cicla entre claro → escuro → sistema -->
     <button
       class="theme-toggle"
       type="button"
@@ -111,12 +88,6 @@
     </button>
   </header>
 
-  <!--
-    NAV lateral: aside semântico.
-    aria-hidden="true" quando fechado evita que leitores de tela leiam itens invisíveis.
-    inert (via JS) bloqueia o foco de escapar para o menu quando ele está fechado.
-    role="dialog" + aria-modal ao abrir melhora UX em mobile com leitores de tela.
-  -->
   <aside
     class="nav-drawer"
     id="main-nav"
@@ -158,7 +129,13 @@
         <li class="nav-drawer__item">
           <a class="nav-drawer__link" href="{% url 'buscar_agenda' %}">
             <i class="fa-solid fa-calendar-days nav-drawer__icon" aria-hidden="true"></i>
-            Agenda de Coleta
+            Horários de Coleta
+          </a>
+        </li>
+        <li class="nav-drawer__item">
+          <a class="nav-drawer__link" href="{% url 'criar_agendamento' %}">
+            <i class="fa-solid fa-calendar-check nav-drawer__icon" aria-hidden="true"></i>
+            Agendar Coleta
           </a>
         </li>
       </ul>
@@ -174,15 +151,12 @@
     </nav>
   </aside>
 
-  <!-- Overlay do menu: clicável para fechar, aria-hidden sempre (decorativo) -->
   <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
 
-  <!-- MAIN: id="main-content" é o alvo do skip link -->
   <main class="site-main" id="main-content" tabindex="-1">
     {% block content %}{% endblock %}
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="site-footer__inner container">
       <p class="site-footer__copy">
@@ -191,7 +165,6 @@
     </div>
   </footer>
 
-  <!-- Scripts ao final do body: não bloqueiam renderização -->
   <script src="{% static 'js/darkmode.js' %}" defer></script>
   <script src="{% static 'js/menu.js' %}" defer></script>
 

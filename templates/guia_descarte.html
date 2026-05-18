@@ -9,139 +9,122 @@
 
 <div class="guia-container">
 
-    <h1>Preparando seu material para o descarte seguro:</h1>
+    <div class="header">
+        <h1>Guia de descarte</h1>
+        <p>Toque em cada resíduo para ver como descartar corretamente</p>
+    </div>
 
-    <div class="grid-categorias">
+    <div class="ig-grid">
 
         <!-- RECICLÁVEIS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/materiais.reciclaveis.jpg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/materiais.reciclaveis.jpg' %}" alt="Recicláveis">
+            <div class="ig-overlay">
+                <h3>Recicláveis</h3>
+                <span class="badge low">Baixo risco</span>
+                <div class="divider"></div>
+                <p>Lave embalagens e separe plástico, papel, metal e vidro.</p>
+                <p class="risco">Pode se contaminar com outros resíduos.</p>
             </div>
-
-            <h3>Recicláveis</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Lave embalagens e separe plástico, papel, metal e vidro.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Pode se contaminar com outros resíduos e dificultar sua reciclagem.</p>
         </div>
 
         <!-- VIDROS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descartevidro.jpg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descartevidro.jpg' %}" alt="Vidros">
+            <div class="ig-overlay">
+                <h3>Vidros</h3>
+                <span class="badge mid">Médio risco</span>
+                <div class="divider"></div>
+                <p>Embale em jornal ou caixa e sinalize que é vidro.</p>
+                <p class="risco">Pode causar ferimentos em pessoas e animais.</p>
             </div>
-            <h3>Vidros</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Embale em jornal ou caixa e sinalize que é vidro para evitar cortes.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Pode causar ferimentos em pessoas e animais.</p>
         </div>
 
         <!-- ELETRÔNICOS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descarteeletronicos.jpeg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descarteeletronicos.jpeg' %}" alt="Eletrônicos">
+            <div class="ig-overlay">
+                <h3>Eletrônicos</h3>
+                <span class="badge high">Alto risco</span>
+                <div class="divider"></div>
+                <p>Leve a pontos específicos ou lojas que recebem.</p>
+                <p class="risco">Libera metais pesados no solo e na água.</p>
             </div>
-            <h3>Eletrônicos</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Leve a pontos específicos ou lojas que recebem.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Libera metais pesados contaminando solo e água.</p>
         </div>
 
         <!-- ROUPAS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descarteroupas.jpeg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descarteroupas.jpeg' %}" alt="Roupas">
+            <div class="ig-overlay">
+                <h3>Roupas</h3>
+                <span class="badge low">Baixo risco</span>
+                <div class="divider"></div>
+                <p>Doe ou leve a pontos de coleta têxtil.</p>
+                <p class="risco">Acúmulo em lixões gera poluição e desperdício.</p>
             </div>
-            <h3>Roupas</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Doe ou leve a pontos de coleta têxtil.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Acúmulo em lixões gera poluição e desperdício.</p>
         </div>
 
         <!-- MEDICAMENTOS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descartemedicamentos.jpeg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descartemedicamentos.jpeg' %}" alt="Medicamentos">
+            <div class="ig-overlay">
+                <h3>Medicamentos</h3>
+                <span class="badge high">Alto risco</span>
+                <div class="divider"></div>
+                <p>Entregue em farmácias ou pontos de coleta.</p>
+                <p class="risco">Contamina água e pode intoxicar pessoas e animais.</p>
             </div>
-            <h3>Medicamentos</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Entregue em farmácias ou pontos de coleta.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Contamina água e pode intoxicar pessoas e animais.</p>
         </div>
 
         <!-- PNEUS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descartedepneus.jpeg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descartedepneus.jpeg' %}" alt="Pneus">
+            <div class="ig-overlay">
+                <h3>Pneus</h3>
+                <span class="badge mid">Médio risco</span>
+                <div class="divider"></div>
+                <p>Leve a borracharias ou ecopontos.</p>
+                <p class="risco">Acumulam água e favorecem doenças como dengue.</p>
             </div>
-            <h3>Pneus</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Leve a borracharias ou ecopontos.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Acumulam água e favorecem doenças como dengue.</p>
         </div>
 
         <!-- COSMÉTICOS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descartecosmeticos.jpg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descartecosmeticos.jpg' %}" alt="Cosméticos">
+            <div class="ig-overlay">
+                <h3>Cosméticos</h3>
+                <span class="badge mid">Médio risco</span>
+                <div class="divider"></div>
+                <p>Separe embalagens e veja programas de coleta.</p>
+                <p class="risco">Químicos podem poluir água e solo.</p>
             </div>
-            <h3>Cosméticos</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Separe embalagens e veja programas de coleta.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Produtos químicos podem poluir água e solo.</p>
         </div>
 
         <!-- ORGÂNICOS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/descarteorganicos.jpg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/descarteorganicos.jpg' %}" alt="Orgânicos">
+            <div class="ig-overlay">
+                <h3>Orgânicos</h3>
+                <span class="badge low">Baixo risco</span>
+                <div class="divider"></div>
+                <p>Ideal para compostagem doméstica.</p>
+                <p class="risco">Gera mau cheiro, gás e atrai pragas.</p>
             </div>
-            <h3>Orgânicos</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Ideal para compostagem doméstica.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Gera mau cheiro, gás e atrai pragas.</p>
         </div>
 
         <!-- DEJETOS -->
-        <div class="card">
-            <div class="img-placeholder">
-                <img src="{% static 'image/imgg/dejetos.jpg' %}">
+        <div class="ig-cell">
+            <img src="{% static 'image/imgg/dejetos.jpg' %}" alt="Dejetos">
+            <div class="ig-overlay">
+                <h3>Dejetos</h3>
+                <span class="badge high">Alto risco</span>
+                <div class="divider"></div>
+                <p>Lixo comum, bem embalado.</p>
+                <p class="risco">Pode transmitir doenças e contaminar o ambiente.</p>
             </div>
-            <h3>Dejetos</h3>
-
-            <p><strong>Como descartar:</strong><br>
-            Lixo comum, bem embalado.</p>
-
-            <p><strong>Riscos:</strong><br>
-            Pode transmitir doenças e contaminar o ambiente.</p>
         </div>
 
     </div>
-
 </div>
 
 {% endblock %}
