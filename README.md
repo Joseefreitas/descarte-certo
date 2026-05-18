@@ -186,6 +186,8 @@ Pipeline criada no GitHub com execução dos testes automatizados.
 
 ### 📋 Quadro da Sprint 04 Atualizado
 <!-- Adicione o print do quadro aqui -->
+<img width="1920" height="967" alt="image" src="https://github.com/user-attachments/assets/3e27153a-4b77-488b-94ef-90332e750621" />
+
 
 ---
 
