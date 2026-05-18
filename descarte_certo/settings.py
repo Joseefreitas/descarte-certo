@@ -1,4 +1,4 @@
-"""
+""""
 Django settings for descarte_certo project.
 """
 import os
@@ -33,14 +33,7 @@ DEBUG = not is_production_environment()
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production!')
 
-if DEBUG:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
-else:
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
-
-CSRF_TRUSTED_ORIGINS = [
-    'https://descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net'
-]
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
