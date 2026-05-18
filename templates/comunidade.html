@@ -121,11 +121,9 @@
 
             {% endif %}
 
-<<<<<<< HEAD
             <!-- CONTEÚDO -->
 
-=======
->>>>>>> 55e05925398b3319a87aecb29cf5dc4851a0daf5
+
             <div class="card-top">
 
                 <!-- IMAGEM -->
@@ -156,8 +154,6 @@
                     </p>
 
                     <small class="info">
-<<<<<<< HEAD
-
                         <i class="fa-solid fa-user"></i>
 
                         {% if topic.author %}
@@ -171,18 +167,11 @@
                         <i class="fa-solid fa-clock"></i>
 
                         {{ topic.created_at }}
-
-=======
                          {% if topic.author %}
                              {% if topic.author.id in empresas_ids %}
                                  <span class="tag-empresa">Empresa</span>
                              {% endif %}
-                            por  {{ topic.author.username }}
-                         {% else %}
-                            por Anônimo
-                         {% endif %}
-                         • {{ topic.created_at }}
->>>>>>> 55e05925398b3319a87aecb29cf5dc4851a0daf5
+                            {% endif %}
                     </small>
 
                     <a
