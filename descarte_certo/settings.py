@@ -33,7 +33,13 @@ DEBUG = not is_production_environment()
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-production!')
 
-ALLOWED_HOSTS = ['*']
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
+else:
+    ALLOWED_HOSTS = [
+        '.azurewebsites.net',
+        'descarte-certo-axcqfwfscke0euf0.brazilsouth-01.azurewebsites.net',
+    ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
