@@ -434,7 +434,8 @@ hr {
         font-size: 1rem;
     }
 
-}.autor-nome {
+}
+.autor-nome {
     font-weight: 600;
     color: var(--color-text);
 }
