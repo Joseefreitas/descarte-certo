@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('bairro', models.CharField(max_length=100)),
                 ('data', models.DateField()),
-                ('horario', models.TimeField(choices=[('manha', 'Manhã (06h - 12h)'), ('tarde', 'Tarde (12h - 18h)'), ('noite', 'Noite (18h - 22h)')], max_length=10)),
+                ('horario', models.CharField(choices=[('manha', 'Manhã (06h - 12h)'), ('tarde', 'Tarde (12h - 18h)'), ('noite', 'Noite (18h - 22h)')], max_length=10)),
                 ('tipo_residuo', models.CharField(choices=[('papel', 'Papel e papelão'), ('plastico', 'Plástico'), ('organico', 'Orgânico'), ('eletronico', 'Eletrônico'), ('metais', 'Metais'), ('vidro', 'Vidro')], max_length=50)),
                 ('criado_em', models.DateTimeField(auto_now_add=True)),
                 ('empresa', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='agendamentos', to='login.pessoajuridica')),
