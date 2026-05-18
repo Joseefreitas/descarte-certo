@@ -2,7 +2,7 @@
 
 > Transformando o descarte de resíduos em uma ação consciente e tecnológica.
 
-## 📌 Sobre o Projeto
+## 📌 Sobre o Projeto :
 
 O **Descarte Certo** é uma plataforma web desenvolvida em **Django** que facilita o descarte correto de resíduos, conectando cidadãos a pontos de coleta adequados e oferecendo guias de separação inteligente. O objetivo é reduzir o impacto ambiental através da informação e acessibilidade.
 
