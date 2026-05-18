@@ -6,238 +6,155 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="container">
+  <!-- HEADER -->
+  <h1 class="titulo">Comunidade</h1>
+  <p class="subtitulo">
+    Compartilhe ideias, dúvidas, dicas sustentáveis e converse com outras pessoas sobre reciclagem, descarte consciente e preservação ambiental.
+  </p>
 
-    <!-- HEADER -->
+  <!-- FORMULÁRIO -->
+  <div class="form-container">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <input type="text" name="titulo" placeholder="Título do tópico" required class="input">
+      
+      <textarea name="conteudo" placeholder="Compartilhe uma dica, faça uma pergunta ou inicie uma conversa..." required class="textarea"></textarea>
+      
+      <div class="form-bottom">
+        <div class="upload-area">
+          <label class="upload-label">
+            <i class="fa-solid fa-image"></i> Adicionar foto
+            <input type="file" name="imagem" accept="image/*" class="input-file" onchange="mostrarNomeArquivo(this)">
+          </label>
+          <span id="nome-arquivo" class="nome-arquivo"></span>
+        </div>
+        
+        <button type="submit" class="botao">Publicar tópico</button>
+      </div>
+    </form>
+  </div>
 
-    <h1 class="titulo">
-        Comunidade
-    </h1>
+  <hr>
 
-    <p class="subtitulo">
-        Compartilhe ideias, dúvidas, dicas sustentáveis e converse com outras pessoas sobre reciclagem, descarte consciente e preservação ambiental.
-    </p>
+  <!-- LISTA DE TÓPICOS -->
+  <div class="lista-topicos">
+    {% for topic in topics %}
+    <div class="card">
+      <div class="card-top">
+        <!-- IMAGEM -->
+        {% if topic.imagem %}
+        <div class="img-holder">
+          <img src="{{ topic.imagem.url }}" alt="Imagem do tópico">
+        </div>
+        {% endif %}
 
-    <!-- FORMULÁRIO -->
-
-    <div class="form-container">
-
-        <form method="POST" enctype="multipart/form-data">
-
-            {% csrf_token %}
-
-            <input
-                type="text"
-                name="titulo"
-                placeholder="Título do tópico"
-                required
-                class="input"
-            >
-
-            <textarea
-                name="conteudo"
-                placeholder="Compartilhe uma dica, faça uma pergunta ou inicie uma conversa..."
-                required
-                class="textarea"
-            ></textarea>
-
-            <div class="form-bottom">
-
-                <div class="upload-area">
-
-                    <label class="upload-label">
-
-                        <i class="fa-solid fa-image"></i>
-
-                        Adicionar foto
-
-                        <input
-                            type="file"
-                            name="imagem"
-                            accept="image/*"
-                            class="input-file"
-                            onchange="mostrarNomeArquivo(this)"
-                        >
-
-                    </label>
-
-                    <span id="nome-arquivo" class="nome-arquivo"></span>
-
-                </div>
-
-                <button type="submit" class="botao">
-                    Publicar tópico
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-    <hr>
-
-    <!-- LISTA DE TÓPICOS -->
-
-    <div class="lista-topicos">
-
-        {% for topic in topics %}
-
-        <div class="card">
-
-            <div class="card-top">
-
-                <!-- IMAGEM -->
-
-                {% if topic.imagem %}
-                <div class="img-holder">
-                    <img src="{{ topic.imagem.url }}" alt="Imagem do tópico">
-                </div>
-                {% endif %}
-
-                <!-- TEXTO -->
-
-                <div class="card-texto">
-
-                    <small class="info">
-                        <i class="fa-solid fa-clock"></i>
-                        {{ topic.created_at }}
-                        <span class="separador">•</span>
-                        {% if topic.author %}
-                            {% if topic.author.id in empresas_ids %}
-                                <span class="tag-empresa">Empresa</span>
-                            {% endif %}
-                            <span class="autor-nome">{{ topic.author.username }}</span>
-                        {% else %}
-                            <span class="autor-nome">Anônimo</span>
-                        {% endif %}
-                    </small>
-
-                    <h3>{{ topic.title }}</h3>
-
-                    <p class="conteudo">{{ topic.content }}</p>
-
-                    <a href="/comunidade/{{ topic.id }}/" class="link">
-                        Ver respostas →
-                    </a>
-
-                </div>
-
-                <!-- AÇÕES: lixeira em cima, like embaixo -->
-
-                <div class="side-actions">
-
-                    {% if request.user.id == topic.author.id %}
-                    <form
-                        method="POST"
-                        action="/comunidade/{{ topic.id }}/deletar/"
-                        class="delete-form"
-                        onsubmit="return confirm('Tem certeza que deseja apagar este post?')"
-                    >
-                        {% csrf_token %}
-                        <button type="submit" class="delete-btn" title="Apagar post">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </form>
-                    {% else %}
-                    <span class="delete-placeholder"></span>
-                    {% endif %}
-
-                    <div
-                        class="like-wrap"
-                        onclick="toggleLike(this)"
-                        data-topic-id="{{ topic.id }}"
-                        data-liked="false"
-                    >
-                        <span class="like-count">0</span>
-                        <button class="heart-btn" type="button" aria-label="Curtir post">
-                            <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true">
-                                <path class="heart-path"
-                                    d="M12 20
-                                       C12 20 2.5 13 2.5 7.5
-                                       C2.5 4.3 5 2 8 2
-                                       C10 2 11.4 3.2 12 6
-                                       C12.6 3.2 14 2 16 2
-                                       C19 2 21.5 4.3 21.5 7.5
-                                       C21.5 13 12 20 12 20Z"/>
-                            </svg>
-                            <div class="burst">
-                                <span></span><span></span><span></span><span></span>
-                                <span></span><span></span><span></span><span></span>
-                            </div>
-                        </button>
-                    </div>
-
-                </div>
-
-            </div>
-
+        <!-- TEXTO -->
+        <div class="card-texto">
+          <small class="info">
+            <i class="fa-solid fa-clock"></i> {{ topic.created_at }}
+            <span class="separador">•</span>
+            {% if topic.author %}
+              {% if topic.author.id in empresas_ids %}
+              <span class="tag-empresa">Empresa</span>
+              {% endif %}
+              <span class="autor-nome">{{ topic.author.username }}</span>
+            {% else %}
+              <span class="autor-nome">Anônimo</span>
+            {% endif %}
+          </small>
+          
+          <h3>{{ topic.title }}</h3>
+          <p class="conteudo">{{ topic.content }}</p>
+          <a href="/comunidade/{{ topic.id }}/" class="link">Ver respostas →</a>
         </div>
 
-        {% empty %}
+        <!-- AÇÕES: lixeira em cima, like embaixo -->
+        <div class="side-actions">
+          {% if request.user.id == topic.author.id %}
+          <form method="POST" action="/comunidade/{{ topic.id }}/deletar/" class="delete-form" onsubmit="return confirm('Tem certeza que deseja apagar este post?')">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn" title="Apagar post">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </form>
+          {% else %}
+          <span class="delete-placeholder"></span>
+          {% endif %}
 
-        <p class="vazio">
-            Nenhum tópico foi criado ainda.
-        </p>
-
-        {% endfor %}
-
+          <div class="like-wrap" onclick="toggleLike(this)" data-topic-id="{{ topic.id }}" data-liked="{% if request.user in topic.likes.all %}true{% else %}false{% endif %}">
+            <span class="like-count {% if request.user in topic.likes.all %}liked{% endif %}">{{ topic.likes.count }}</span>
+            <button class="heart-btn" type="button" aria-label="Curtir post">
+              <svg class="heart-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="heart-path {% if request.user in topic.likes.all %}liked{% endif %}" d="M12 20 C12 20 2.5 13 2.5 7.5 C2.5 4.3 5 2 8 2 C10 2 11.4 3.2 12 6 C12.6 3.2 14 2 16 2 C19 2 21.5 4.3 21.5 7.5 C21.5 13 12 20 12 20Z"/>
+              </svg>
+              <div class="burst">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-
+    {% empty %}
+    <p class="vazio">Nenhum tópico foi criado ainda.</p>
+    {% endfor %}
+  </div>
 </div>
 
 <script>
 function mostrarNomeArquivo(input) {
-    const span = document.getElementById('nome-arquivo');
-    if (input.files && input.files[0]) {
-        span.textContent = input.files[0].name;
-    } else {
-        span.textContent = '';
-    }
+  const span = document.getElementById('nome-arquivo');
+  if (input.files && input.files[0]) {
+    span.textContent = input.files[0].name;
+  } else {
+    span.textContent = '';
+  }
 }
 
 function toggleLike(wrap) {
-    const topicId = wrap.dataset.topicId;
-    const path = wrap.querySelector('.heart-path');
-    const icon = wrap.querySelector('.heart-icon');
-    const countEl = wrap.querySelector('.like-count');
-    const burst = wrap.querySelector('.burst');
+  const topicId = wrap.dataset.topicId;
+  const path = wrap.querySelector('.heart-path');
+  const icon = wrap.querySelector('.heart-icon');
+  const countEl = wrap.querySelector('.like-count');
+  const burst = wrap.querySelector('.burst');
 
-    fetch(`/comunidade/${topicId}/like/`, {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken'),
-            'Content-Type': 'application/json',
-        },
-    })
+  fetch(`/comunidade/${topicId}/like/`, {
+    method: 'POST',
+    headers: {
+      'X-CSRFToken': getCookie('csrftoken'),
+      'Content-Type': 'application/json',
+    },
+  })
     .then(res => res.json())
     .then(data => {
-        countEl.textContent = data.total_likes;
-        if (data.liked) {
-            wrap.dataset.liked = 'true';
-            path.classList.add('liked');
-            countEl.classList.add('liked');
-            icon.classList.remove('popping');
-            void icon.offsetWidth;
-            icon.classList.add('popping');
-            burst.classList.remove('fire');
-            void burst.offsetWidth;
-            burst.classList.add('fire');
-        } else {
-            wrap.dataset.liked = 'false';
-            path.classList.remove('liked');
-            countEl.classList.remove('liked');
-        }
+      countEl.textContent = data.total_likes;
+      
+      if (data.liked) {
+        wrap.dataset.liked = 'true';
+        path.classList.add('liked');
+        countEl.classList.add('liked');
+        icon.classList.remove('popping');
+        void icon.offsetWidth;
+        icon.classList.add('popping');
+        burst.classList.remove('fire');
+        void burst.offsetWidth;
+        burst.classList.add('fire');
+      } else {
+        wrap.dataset.liked = 'false';
+        path.classList.remove('liked');
+        countEl.classList.remove('liked');
+      }
     })
     .catch(err => console.error('Erro ao curtir:', err));
 }
 
 function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(';').shift();
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
 }
 </script>
-
 {% endblock %}
