@@ -175,7 +175,7 @@ Pipeline criada no GitHub com execução dos testes automatizados.
 ### 🧪 Testes de Sistema (E2E) Automatizados
 
 #### 🎥 Screencast dos testes
-- ▶️ [Assista no YouTube]()
+- ▶️ [Assista no YouTube](https://youtu.be/3l0RhfAK6Ac)
 
 ---
 
